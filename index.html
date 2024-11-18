@@ -219,12 +219,10 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar ul {
@@ -253,6 +251,40 @@
                 font-size: 1rem;
             }
         }
+        .section ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .section ul li a:hover {
+            color: #fff;
+            background-color: var(--secondary-color);
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1.2em;
+        }
+        a:hover {
+            color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -260,7 +292,7 @@
         <div class="container">
             <h1><a href="#">Khbich ENSTTIC</a></h1>
             <ul>
-                <li><a href="#1CP">1CP</a>
+                <li><a href="cp1.html">1CP</a>
                     <ul>
                         <li><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">Semestre 1</a></li>
                         <li><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">Semestre 2</a></li>
@@ -290,8 +322,7 @@
                         <li><a href="https://drive.google.com/drive/folders/1JVu80Cp5HHxiEjfei5NBRh8hGGjmMfuc?usp=drive_link" target="_blank">TTN</a></li>
                         <li><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">RIP</a></li>
                         <li><a href="https://drive.google.com/drive/folders/16l3dW4bzvccVGZPATIj2bCc4uvAtjGqv?usp=drive_link" target="_blank">ST</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1SNkcUKA7DUbSyCSA2cyme2Sl36UIkhiw?usp=drive_link" target="_blank">Tous les PFE</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1yAeSR_UE10h5le3h4jjUzJd2MxDTSVE0?usp=drive_link" target="_blank">PFE (Guide et Canvas + les Thèmes)</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1U1_p-VjazrUIIe7_tIVoZuUWUfctFl_H?usp=drive_link" target="_blank">PFE</a></li>
                     </ul>
                 </li>
             </ul>
@@ -343,8 +374,7 @@
                 <li><a href="https://drive.google.com/drive/folders/1JVu80Cp5HHxiEjfei5NBRh8hGGjmMfuc?usp=drive_link" target="_blank">TTN</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">RIP</a></li>
                 <li><a href="https://drive.google.com/drive/folders/16l3dW4bzvccVGZPATIj2bCc4uvAtjGqv?usp=drive_link" target="_blank">ST</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1SNkcUKA7DUbSyCSA2cyme2Sl36UIkhiw?usp=drive_link" target="_blank">Tous les PFE</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1yAeSR_UE10h5le3h4jjUzJd2MxDTSVE0?usp=drive_link" target="_blank">PFE (Guide et Canvas + les Thèmes)</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1U1_p-VjazrUIIe7_tIVoZuUWUfctFl_H?usp=drive_link" target="_blank">PFE</a></li>
             </ul>
         </section>
     </main>
