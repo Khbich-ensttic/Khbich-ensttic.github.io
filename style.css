@@ -1,0 +1,54 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    position: sticky; /* يجعله ثابتًا في الأعلى */
+    top: 0; /* يحدد أنه يلتصق عند بداية الصفحة */
+    z-index: 1000; /* للتأكد من ظهوره فوق أي عنصر آخر */
+    background-color: #f8f9fa; /* لون خلفية الشريط */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+}
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #0047ab 0%, #008cff 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section h1 {
+    color: white;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background-color: #0047ab;
+    color: white;
+}
+
+/* Search Input */
+input[type="text"] {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+.mt-5 {
+    margin-top: 1rem !important;
+}
+

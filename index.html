@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khbich ENSTTIC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        /* Global Styles */
+        :root {
+            --primary-color: #0047ab;
+            --secondary-color: #00a8ff;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-color);
+            padding: 0;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar ul li:hover > ul {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .navbar ul li ul li {
+            width: 200px;
+            float: none;
+            display: list-item;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,71,171,0.1) 0%, rgba(0,168,255,0.1) 100%);
+            transition: all 0.5s ease;
+        }
+
+        .section:hover::before {
+            top: 0;
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .section ul li:hover {
+            transform: translateX(10px);
+        }
+
+        .section ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .section ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0,71,171,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: rotate 20s linear infinite;
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+            }
+
+            .navbar ul li {
+                text-align: center;
+            }
+
+            .navbar ul li ul {
+                position: static;
+                display: none;
+                background-color: rgba(0,0,0,0.1);
+            }
+
+            .navbar ul li:hover > ul {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1><a href="#">Khbich ENSTTIC</a></h1>
+            <ul>
+                <li><a href="#1CP">1CP</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#2CP">2CP</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/112TO2POpOwT_-TdvoBa6vRXp8E6dYmeR?usp=drive_link" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1Hd32l0JrlvfOPQXOpEDjyYB5_jvstfKw?usp=drive_link" target="_blank">Semestre 2</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1ATs6sGEhLcOp0KDX4gfJiC5rus3O5Xtx?usp=drive_link" target="_blank">Concour</a></li>
+                    </ul>
+                </li>
+                <li><a href="#1CS">1CS</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/1LVYitJC_HNq4nMlEW82vIr1Rwsht0UI3?usp=sharing" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1H6aGnnv-5hp8PDW8u8YwBTjjG1qYgE3j?usp=sharing" target="_blank">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#2CS">2CS</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/1p4IFTJqxNC7mbWRZxp-r4P8lhMxYiVl0?usp=drive_link" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1hO9QrwK_iNRc2na7MWdtOLyjmZEEsk-Y?usp=drive_link" target="_blank">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#3CS">3CS</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/1JVu80Cp5HHxiEjfei5NBRh8hGGjmMfuc?usp=drive_link" target="_blank">TTN</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">RIP</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/16l3dW4bzvccVGZPATIj2bCc4uvAtjGqv?usp=drive_link" target="_blank">ST</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1SNkcUKA7DUbSyCSA2cyme2Sl36UIkhiw?usp=drive_link" target="_blank">Tous les PFE</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1yAeSR_UE10h5le3h4jjUzJd2MxDTSVE0?usp=drive_link" target="_blank">PFE (Guide et Canvas + les Thèmes)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Bienvenue à Khbich ENSTTIC</h1>
+            <p>Ressources et documents pour les étudiants de l'ENSTTIC</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="1CP" class="section">
+            <h2>1CP</h2>
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">Semestre 1</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">Semestre 2</a></li>
+            </ul>
+        </section>
+
+        <section id="2CP" class="section">
+            <h2>2CP</h2>
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/112TO2POpOwT_-TdvoBa6vRXp8E6dYmeR?usp=drive_link" target="_blank">Semestre 1</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1Hd32l0JrlvfOPQXOpEDjyYB5_jvstfKw?usp=drive_link" target="_blank">Semestre 2</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1ATs6sGEhLcOp0KDX4gfJiC5rus3O5Xtx?usp=drive_link" target="_blank">Concour</a></li>
+            </ul>
+        </section>
+
+        <section id="1CS" class="section">
+            <h2>1CS</h2>
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/1LVYitJC_HNq4nMlEW82vIr1Rwsht0UI3?usp=sharing" target="_blank">Semestre 1</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1H6aGnnv-5hp8PDW8u8YwBTjjG1qYgE3j?usp=sharing" target="_blank">Semestre 2</a></li>
+            </ul>
+        </section>
+
+        <section id="2CS" class="section">
+            <h2>2CS</h2>
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/1p4IFTJqxNC7mbWRZxp-r4P8lhMxYiVl0?usp=drive_link" target="_blank">Semestre 1</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1hO9QrwK_iNRc2na7MWdtOLyjmZEEsk-Y?usp=drive_link" target="_blank">Semestre 2</a></li>
+            </ul>
+        </section>
+
+        <section id="3CS" class="section">
+            <h2>3CS</h2>
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/1JVu80Cp5HHxiEjfei5NBRh8hGGjmMfuc?usp=drive_link" target="_blank">TTN</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">RIP</a></li>
+                <li><a href="https://drive.google.com/drive/folders/16l3dW4bzvccVGZPATIj2bCc4uvAtjGqv?usp=drive_link" target="_blank">ST</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1SNkcUKA7DUbSyCSA2cyme2Sl36UIkhiw?usp=drive_link" target="_blank">Tous les PFE</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1yAeSR_UE10h5le3h4jjUzJd2MxDTSVE0?usp=drive_link" target="_blank">PFE (Guide et Canvas + les Thèmes)</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
+            <p>NOUS CONTACTER</p>
+            <p>Email: khbich.ensttic@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
