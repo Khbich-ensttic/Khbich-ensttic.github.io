@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Khbich ENSTTIC</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+            /* Global Styles */
+            :root {
+                --primary-color: #0047ab;
+                --secondary-color: #00a8ff;
+                --text-color: #333;
+                --bg-color: #f4f4f4;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                background-color: var(--bg-color);
+                overflow-x: hidden;
+            }
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            /* Navigation */
+            .navbar {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                padding: 1rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+            .navbar:hover {
+                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+            }
+            .navbar .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navbar a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                transition: all 0.3s ease;
+            }
+            .navbar a:hover {
+                background-color: rgba(255,255,255,0.1);
+                border-radius: 5px;
+            }
+            .navbar ul {
+                display: flex;
+                list-style: none;
+            }
+            .navbar ul li {
+                position: relative;
+            }
+            .navbar ul li ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--primary-color);
+                padding: 0;
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .navbar ul li:hover > ul {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+            .navbar ul li ul li {
+                width: 200px;
+                float: none;
+                display: list-item;
+                position: relative;
+            }
+            /* Hero Section */
+            .hero {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                text-align: center;
+                padding: 4rem 0;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+                animation: rotate 20s linear infinite;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                position: relative;
+                z-index: 1;
+            }
+            .hero p {
+                font-size: 1.2rem;
+                position: relative;
+                z-index: 1;
+            }
+            /* Main Content */
+            main {
+                padding: 2rem 0;
+            }
+            .section {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 10rem;
+                margin-bottom: 2rem;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+            }
+            .section:hover::before {
+                top: 0;
+            }
+            .section h2 {
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                position: relative;
+            }
+            .section ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .section ul li {
+                margin-bottom: 0.5rem;
+                transition: all 0.3s ease;
+            }
+            .section ul li:hover {
+                transform: translateX(10px);
+            }
+            .section ul li a {
+                color: var(--text-color);
+                text-decoration: none;
+                transition: color 0.3s ease;
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            .section ul li a:hover {
+                color: var(--primary-color);
+                background-color: rgba(0,71,171,0.1);
+            }
+            /* Footer */
+            footer {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                text-align: center;
+                padding: 2rem 0;
+                margin-top: 2rem;
+                position: relative;
+                overflow: hidden;
+            }
+            footer::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+                animation: rotate 20s linear infinite;
+            }
+            footer p {
+                position: relative;
+                z-index: 1;
+            }
+            /* Animations */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .navbar ul {
+                    flex-direction: column;
+                }
+    
+                .navbar ul li {
+                    text-align: center;
+                }
+    
+                .navbar ul li ul {
+                    position: static;
+                    display: none;
+                    background-color: rgba(0,0,0,0.1);
+                }
+    
+                .navbar ul li:hover > ul {
+                    display: block;
+                }
+    
+                .hero h1 {
+                    font-size: 2rem;
+                }
+    
+                .hero p {
+                    font-size: 1rem;
+                }
+            }
+            .section ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            }
+            .section ul li a:hover {
+            color: #fff;
+            background-color: var(--secondary-color);
+            }
+            .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            }
+            ul {
+            list-style: none;
+            padding: 0;
+            }
+            li {
+            margin: 10px 0;
+            }
+            a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1.2em;
+            }
+            a:hover {
+            color: #0056b3;
+            }
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0px auto;
+            padding: 0px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2em;
+            color: #1c5db6;
+            background-color: #eef3fc;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            flex: 1 1 calc(50% - 40px);
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: left;
+        }
+        .card h2 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .card ul li img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .card ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1em;
+        }
+        .card ul li a:hover {
+            color: #0056b3;
+        }
+        .card .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007BFF;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+        </style>
+    </head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1><a href="index.html">Khbich ENSTTIC</a></h1>
+            <ul>
+                <li><a href="cp1.html">1CP</a>
+                    <ul>
+                        <li><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="cp2.html">2CP</a>
+                    <ul>
+                        <li><a href="cp2.html">Semestre 1</a></li>
+                        <li><a href="cp2.html" >Semestre 2</a></li>
+                        <li><a href="cp2.html#Concour" >Concour</a></li>
+                    </ul>
+                </li>
+                <li><a href="cs1.html">1CS</a>
+                    <ul>
+                        <li><a href="cs1.html">Semestre 1</a></li>
+                        <li><a href="cs1.html">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="cs2.html">2CS</a>
+                    <ul>
+                        <li><a href="cs2.html">Semestre 1</a></li>
+                        <li><a href="cs2.html">Semestre 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="cs3.html">3CS</a>
+                    <ul>
+                        <li><a href="cs3.html">TTN</a></li>
+                        <li><a href="cs3.html">RIP</a></li>
+                        <li><a href="cs3.html#st">ST</a></li>
+                        <li><a href="cs3.html#pfe">PFE</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section id="1CP" class="section">
+        <div class="container">
+            <div class="header">
+                <h1>1CP</h1>
+            </div>
+            <div class="grid">
+                <!-- Semester 1 -->
+                <div class="card">
+                    <h2><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">SEMESTRE 1</a></h2>
+                    <ul>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/16vf2kP2P-sxmlaPp52-00e7DLjO49Scu?usp=drive_link">Electricité</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1Fj96rpKjIPYv5svfWuTyhtTNRvEaZrZB?usp=drive_link">Informatique 1</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1tm-Ym1JJdKRzB09lAabLdLppBYqdG87D?usp=drive_link">Algebre 1</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1G50sn-0gLzN4uPPIzmBlIvEKGCdqByuV?usp=drive_link">Analyse mathématique 1</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1mgdDJYkhnQlJYo7jUK_qx5LhQQNGNfgq?usp=drive_link">TE</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/17zzNL3ERx7iM1tKDff5x7j_y6bpyQxzw?usp=drive_link">Chime</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1-W5yXnRMDs4k29wJqcEemWzBg-UGMjYp?usp=drive_link">Mécanique</a></li>
+                    </ul>
+                </div>
+                <!-- Semester 2 -->
+                <div class="card">
+                    <h2><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">SEMESTRE 2</a></h2>
+                    <ul>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1_Fb53JW1mwm4tXFK6bFa3nvglnuimqV1?usp=drive_link">Algebre 2</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1YS8NyAp16cWBuMCrN7f5lO3zXrvXI3cu?usp=drive_link">ELECTRONIQUE</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1me-yjO_JAhHNTqcIEGlGEolYtllT0ayo?usp=drive_link">Informatique 2</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1dOCMmg7F53nilx_gEbi8ic3hxNLFJucA?usp=drive_link">Analyse mathématique 2</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1DSIm-UCalGx0Axw2W_kkiwqwEWyPc6yc?usp=drive_link">TE 2</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1ueuHxO2DZHsarNTi41fEfjx7_OmA54bf?usp=drive_link">DCMI</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1XrF1cQfUeQCJKlKOD84XIuLx0LSCLtRc?usp=drive_link">Anglais 1</a></li>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
+            <p>NOUS CONTACTER</p>
+            <p>Email: khbich.ensttic@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
