@@ -64,11 +64,9 @@
             display: flex;
             list-style: none;
         }
-
         .navbar ul li {
             position: relative;
         }
-
         .navbar ul li ul {
             display: none;
             position: absolute;
@@ -79,19 +77,16 @@
             border-radius: 0 0 5px 5px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
         .navbar ul li:hover > ul {
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
-
         .navbar ul li ul li {
             width: 200px;
             float: none;
             display: list-item;
             position: relative;
         }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -101,7 +96,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -112,14 +106,12 @@
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
             animation: rotate 20s linear infinite;
         }
-
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
         }
-
         .hero p {
             font-size: 1.2rem;
             position: relative;
@@ -140,13 +132,10 @@
             position: relative;
             overflow: hidden;
         }
-
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.2);
         }
-
-
         .section:hover::before {
             top: 0;
         }
@@ -186,7 +175,6 @@
             color: var(--primary-color);
             background-color: rgba(0,71,171,0.1);
         }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -213,7 +201,6 @@
             position: relative;
             z-index: 1;
         }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
@@ -285,40 +272,65 @@
         a:hover {
             color: #0056b3;
         }
+        @media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu > li {
+        margin: 5px 0;
+    }
+
+    .menu > li > a {
+        width: 100%;
+        text-align: left;
+    }
+}
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <h1><a href="index.html">Khbich ENSTTIC</a></h1>
-            <ul>
-                <li><a href="cp1.html">1CP</a>
-                    <ul>
-                        <li><a href="cp1.html">Semestre 1</a></li>
-                        <li><a href="cp1.html">Semestre 2</a></li>
+            <ul class="menu">
+                <li>
+                    <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
+                    <ul class="dropdown">
+                        <li><a href="https://drive.google.com/drive/folders/1Fk4IJAiJZ1677F-8uVjL2aCZ9-3s7RVy?usp=drive_link" target="_blank">Semestre 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1vIzgNNWJwo0ae_VICLDnfhZxcNhtCjL4?usp=drive_link" target="_blank">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li><a href="cp2.html">2CP</a>
-                    <ul>
+                <li>
+                    <a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
+                    <ul class="dropdown">
                         <li><a href="cp2.html">Semestre 1</a></li>
                         <li><a href="cp2.html">Semestre 2</a></li>
                         <li><a href="cp2.html#Concour">Concour</a></li>
                     </ul>
                 </li>
-                <li><a href="cs1.html">1CS</a>
-                    <ul>
+                <li>
+                    <a href="cs1.html" title="1er Classes Spécialité">1CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs1.html">Semestre 1</a></li>
                         <li><a href="cs1.html">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li><a href="cs2.html">2CS</a>
-                    <ul>
+                <li>
+                    <a href="cs2.html" title="2eme Classes Spécialité">2CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs2.html">Semestre 1</a></li>
                         <li><a href="cs2.html">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li><a href="cs3.html">3CS</a>
-                    <ul>
+                <li>
+                    <a href="cs3.html" title="3er Classes Spécialité">3CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs3.html">TTN</a></li>
                         <li><a href="cs3.html">RIP</a></li>
                         <li><a href="cs3.html#st">ST</a></li>
@@ -327,7 +339,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav>      
     <header class="hero">
         <div class="container">
             <h1>Bienvenue à Khbich ENSTTIC</h1>
@@ -336,40 +348,36 @@
     </header>
     <main class="container">
         <section id="1CP" class="section">
-            <h2><a href="cp1.html">1CP</a></h2>
+            <h2 title="1er Classes Préparatoires"><a href="cp1.html">1CP</a></h2>
             <ul>
                 <li><a href="cp1.html" >Semestre 1</a></li>
                 <li><a href="cp1.html" >Semestre 2</a></li>
             </ul>
         </section>
-
         <section id="2CP" class="section">
-            <h2><a href="cp2.html">2CP</a></h2>
+            <h2 title="2eme Classes Préparatoires"><a href="cp2.html">2CP</a></h2>
             <ul>
                 <li><a href="cp2.html">Semestre 1</a></li>
                 <li><a href="cp2.html">Semestre 2</a></li>
                 <li><a href="cp2.html#Concour">Concour</a></li>
             </ul>
         </section>
-
         <section id="1CS" class="section">
-            <h2><a href="cs1.html">1CS</a></h2>
+            <h2 title="1er Classes Spécialité"><a href="cs1.html">1CS</a></h2>
             <ul>
                 <li><a href="cs1.html">Semestre 1</a></li>
                 <li><a href="cs1.html">Semestre 2</a></li>
             </ul>
         </section>
-
         <section id="2CS" class="section">
-            <h2><a href="cs2.html">2CS</a></h2>
+            <h2 title="2eme Classes Spécialité"><a href="cs2.html">2CS</a></h2>
             <ul>
                 <li><a href="cs2.html">Semestre 1</a></li>
                 <li><a href="cs2.html">Semestre 2</a></li>
             </ul>
         </section>
-
         <section id="3CS" class="section">
-            <h2><a href="cs3.html">3CS</a></h2>
+            <h2 title="3er Classes Spécialité"><a href="cs3.html">3CS</a></h2>
             <ul>
                 <li><a href="cs3.html">TTN</a></li>
                 <li><a href="cs3.html">RIP</a></li>
