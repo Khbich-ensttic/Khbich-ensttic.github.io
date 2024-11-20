@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Khbich ENSTTIC</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-            /* Global Styles */
+            
             :root {
                 --primary-color: #0047ab;
                 --secondary-color: #00a8ff;
                 --text-color: #333;
                 --bg-color: #f4f4f4;
             }
+            
             * {
                 margin: 0;
                 padding: 0;
@@ -23,15 +24,13 @@
                 line-height: 1.6;
                 color: var(--text-color);
                 background-color: var(--bg-color);
-                overflow-x: hidden;
             }
             .container {
                 width: 90%;
                 max-width: 1200px;
                 margin: 0 auto;
-                padding: 0 20px;
+                padding: 0  ;
             }
-            /* Navigation */
             .navbar {
                 background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
                 color: #fff;
@@ -40,86 +39,159 @@
                 top: 0;
                 z-index: 1000;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transition: all 0.3s ease;
             }
-            .navbar:hover {
-                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-            }
+            
             .navbar .container {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
-            .navbar a {
-                color: #fff;
+            
+            .navbar h1 {
+                margin: 0;
+            }
+            
+            .navbar h1 a {
                 text-decoration: none;
-                padding: 0.5rem 1rem;
-                transition: all 0.3s ease;
+                color: #fff;
+                font-size: 24px;
             }
-            .navbar a:hover {
-                background-color: rgba(255,255,255,0.1);
-                border-radius: 5px;
+            
+            .menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 24px;
+                cursor: pointer;
             }
-            .navbar ul {
+            
+            .menu {
                 display: flex;
                 list-style: none;
             }
-            .navbar ul li {
+            
+            .menu > li {
                 position: relative;
+                margin: 0 15px;
             }
-            .navbar ul li ul {
+            
+            .menu > li > a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                display: block;
+                transition: background-color 0.3s ease;
+            }
+            
+            .menu > li > a:hover {
+                background-color: rgba(255,255,255,0.1);
+            }
+            .dropdown {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 background-color: var(--primary-color);
-                padding: 0;
+                padding: 10px 0;
                 border-radius: 0 0 5px 5px;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
-            .navbar ul li:hover > ul {
+            
+            .menu > li:hover > .dropdown {
                 display: block;
-                animation: fadeIn 0.3s ease-in-out;
             }
-            .navbar ul li ul li {
-                width: 200px;
-                float: none;
-                display: list-item;
-                position: relative;
-            }
-            /* Hero Section */
-            .hero {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            
+            .dropdown li a {
                 color: #fff;
+                padding: 0.5rem 1rem;
+                display: block;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: background-color 0.3s ease;
+            }
+            
+            .dropdown li a:hover {
+                background-color: var(--secondary-color);
+            }
+            
+            .header {
                 text-align: center;
-                padding: 4rem 0;
-                position: relative;
-                overflow: hidden;
+                margin-bottom: 30px;
             }
-            .hero::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-                animation: rotate 20s linear infinite;
+            .header h1 {
+                font-size: 2em;
+                color: #1c5db6;
+                background-color: #eef3fc;
+                display: inline-block;
+                padding: 10px 20px;
+                border-radius: 5px;
             }
-            .hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-                position: relative;
-                z-index: 1;
+             .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
             }
-            .hero p {
-                font-size: 1.2rem;
-                position: relative;
-                z-index: 1;
+            .card {
+            flex: 1 1 calc(50% - 40px);
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: left;
             }
-            /* Main Content */
-            main {
-                padding: 2rem 0;
+            .card h2 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #007BFF;
+            margin-bottom: 10px;
+            }
+            .card ul {
+                list-style: none;
+               padding: 0;
+                margin: 0;
+            }
+            .card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            }
+            .card ul li img {
+            width: 20px;
+            margin-right: 10px;
+            }
+            .card ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1em;
+            }
+            .card ul li a:hover {
+            color: #0056b3;
+            }
+            .card .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007BFF;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            }
+            ul {
+            list-style: none;
+            padding: 0;
+            }
+            li {
+            margin: 10px 0;
+            }
+            a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1em;
+            }
+            a:hover {
+            color: #0056b3;
             }
             .section {
                 background-color: #fff;
@@ -168,67 +240,6 @@
                 color: var(--primary-color);
                 background-color: rgba(0,71,171,0.1);
             }
-            /* Footer */
-            footer {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: #fff;
-                text-align: center;
-                padding: 2rem 0;
-                margin-top: 2rem;
-                position: relative;
-                overflow: hidden;
-            }
-            footer::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-                animation: rotate 20s linear infinite;
-            }
-            footer p {
-                position: relative;
-                z-index: 1;
-            }
-            /* Animations */
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            @keyframes rotate {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
-            /* Responsive Design */
-            @media (max-width: 768px) {
-                .navbar ul {
-                    flex-direction: column;
-                }
-    
-                .navbar ul li {
-                    text-align: center;
-                }
-    
-                .navbar ul li ul {
-                    position: static;
-                    display: none;
-                    background-color: rgba(0,0,0,0.1);
-                }
-    
-                .navbar ul li:hover > ul {
-                    display: block;
-                }
-    
-                .hero h1 {
-                    font-size: 2rem;
-                }
-    
-                .hero p {
-                    font-size: 1rem;
-                }
-            }
             .section ul li a {
             color: var(--text-color);
             text-decoration: none;
@@ -248,134 +259,93 @@
             border-radius: 8px;
             background-color: #f9f9f9;
             }
-            ul {
-            list-style: none;
-            padding: 0;
+            footer {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                text-align: center;
+                padding: 2rem 0;
+                margin-top: 2rem;
             }
-            li {
-            margin: 10px 0;
+            
+            footer a {
+                color: #fff;
+                text-decoration: underline;
             }
-            a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 1.2em;
+            
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block;
+                }
+                
+                .menu {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background-color: var(--primary-color);
+                }
+                
+                .menu.active {
+                    display: flex;
+                }
+                
+                .menu > li {
+                    margin: 0;
+                    text-align: center;
+                }
+                
+                .dropdown {
+                    position: static;
+                    background-color: var(--secondary-color);
+                    display: none;
+                }
+                
+                .menu > li:hover > .dropdown {
+                    display: none;
+                }
+                
+                .menu > li > a:focus + .dropdown,
+                .menu > li > a:active + .dropdown {
+                    display: block;
+                }
             }
-            a:hover {
-            color: #0056b3;
-            }
-            body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0px auto;
-            padding: 0px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            font-size: 2em;
-            color: #1c5db6;
-            background-color: #eef3fc;
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        .grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .card {
-            flex: 1 1 calc(50% - 40px);
-            max-width: 500px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-        }
-        .card h2 {
-            text-align: center;
-            font-size: 1.5em;
-            color: #007BFF;
-            margin-bottom: 10px;
-        }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .card ul li img {
-            width: 20px;
-            margin-right: 10px;
-        }
-        .card ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1em;
-        }
-        .card ul li a:hover {
-            color: #0056b3;
-        }
-        .card .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #007BFF;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-        }
-        @media (max-width: 768px) {
-            .card {
-                flex: 1 1 100%;
-            }
-        }
         </style>
     </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <h1><a href="index.html">Khbich ENSTTIC</a></h1>
-            <ul>
-                <li title="1er Classes Préparatoires"><a href="cp1.html">1CP</a>
-                    <ul>
-                        <li><a href="cp1.html#sem1" >Semestre 1</a></li>
-                        <li><a href="cp1.html#sem2" >Semestre 2</a></li>
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+            <ul class="menu">
+                <li><a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
+                    <ul class="dropdown">
+                        <li><a href="#sem1">Semestre 1</a></li>
+                        <li><a href="#sem2">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li title="2eme Classes Préparatoires"><a href="cp2.html">2CP</a>
-                    <ul>
-                        <li><a href="https://drive.google.com/drive/folders/112TO2POpOwT_-TdvoBa6vRXp8E6dYmeR?usp=drive_link" target="_blank">Semestre 1</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1Hd32l0JrlvfOPQXOpEDjyYB5_jvstfKw?usp=drive_link" target="_blank">Semestre 2</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1ATs6sGEhLcOp0KDX4gfJiC5rus3O5Xtx?usp=drive_link" target="_blank">Concour</a></li>
+                <li><a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
+                    <ul class="dropdown">
+                        <li><a href="cp2.html#sem3">Semestre 1</a></li>
+                        <li><a href="cp2.html#sem4">Semestre 2</a></li>
+                        <li><a href="cp2.html#Concour">Concour</a></li>
                     </ul>
                 </li>
-                <li title="1er Classes Spécialité"><a href="cs1.html">1CS</a>
-                    <ul>
+                <li><a href="cs1.html" title="1er Classes Spécialité">1CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs1.html#sem5">Semestre 1</a></li>
                         <li><a href="cs1.html#sem6">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li title="2eme Classes Spécialité"><a href="cs2.html">2CS</a>
-                    <ul>
+                <li><a href="cs2.html" title="2eme Classes Spécialité">2CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs2.html#sem7">Semestre 1</a></li>
                         <li><a href="cs2.html#sem8">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li title="3er Classes Spécialité"><a href="cs3.html">3CS</a>
-                    <ul>
+                <li><a href="cs3.html" title="3er Classes Spécialité">3CS</a>
+                    <ul class="dropdown">
                         <li><a href="cs3.html#ttn">TTN</a></li>
                         <li><a href="cs3.html#rip">RIP</a></li>
                         <li><a href="cs3.html#st">ST</a></li>
@@ -438,5 +408,40 @@
             <p>Email: khbich.ensttic@gmail.com</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.menu');
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            const dropdownLinks = document.querySelectorAll('.menu > li > a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768 && this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menu.classList.remove('active');
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.style.display = '';
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
