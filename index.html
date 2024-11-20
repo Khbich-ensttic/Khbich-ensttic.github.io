@@ -282,75 +282,54 @@
                 display: block;
             }         
             .menu {
-                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
                 background-color: var(--primary-color);
-            }
-            .menu.active {
-                display: flex;
-            }       
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 999;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }      
             .menu > li {
                 margin: 0;
                 text-align: center;
             }
-            
+            .menu.active {
+                visibility: visible;
+                opacity: 1;
+            }        
             .dropdown {
                 position: static;
                 background-color: var(--secondary-color);
                 display: none;
             }
-            
             .menu > li:hover > .dropdown {
                 display: none;
             }
-            
             .menu > li > a:focus + .dropdown,
             .menu > li > a:active + .dropdown {
                 display: block;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .menu > li {
+                text-align: center;
+                margin: 0;
+            }
+            .menu > li ul {
+                position: static;
             }            
             .hero h1 {
                 font-size: 2rem;
             }
             .hero p {
                 font-size: 1rem;
-            }
-            #dropdownMenu {
-                display: none;
-                position: absolute;
-                background-color: #007bff; /* Adjust color as needed */
-                width: 100%; /* Full width */
-                top: 50px; /* Adjust based on your button's height */
-                left: 0;
-                z-index: 10;
-                text-align: center;
-            }
-            #dropdownMenu.active {
-                display: block;
-            }
-            #dropdownMenu ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-            #dropdownMenu li {
-                margin: 10px 0;
-            }
-            #dropdownMenu a {
-                text-decoration: none;
-                color: white;
-                font-size: 18px;
-            }
-            #menuToggle {
-                background-color: #007bff;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
             }
         }
     </style>
@@ -441,7 +420,7 @@
         <section id="3CS" class="section">
             <h2 title="3er Classes Spécialité"><a href="cs3.html">3CS</a></h2>
             <ul>
-                <li><a href="cs3.html#ttm">TTN</a></li>
+                <li><a href="cs3.html#ttn">TTN</a></li>
                 <li><a href="cs3.html#rip">RIP</a></li>
                 <li><a href="cs3.html#st">ST</a></li>
                 <li><a href="cs3.html#pfe">PFE</a></li>
@@ -456,46 +435,30 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function()  {
             const menuToggle = document.querySelector('.menu-toggle');
             const menu = document.querySelector('.menu');
-            const dropdowns = document.querySelectorAll('.dropdown');
-
-            // Toggle menu on button click
+            if (!menuToggle || !menu) {
+            console.error('Menu or toggle button not found!');
+            }
+            // Debugging logs
+            console.log('Menu Toggle button loaded:', menuToggle);
+            console.log('Menu element loaded:', menu);
+    
+            // Event listener for toggle button
             menuToggle.addEventListener('click', function() {
-                menu.classList.toggle('active');
-            });
-
-            // Close the mobile menu when a link is clicked
-            document.querySelectorAll('.menu a').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        if (this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
-                            e.preventDefault();
-                            this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
-                        } else {
-                            menu.classList.remove('active');
-                            dropdowns.forEach(dropdown => dropdown.style.display = 'none');
-                        }
-                    }
-                });
-            });
-
-            // Close menu and dropdowns when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-                    menu.classList.remove('active');
-                    dropdowns.forEach(dropdown => dropdown.style.display = 'none');
-                }
-            });
-
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    menu.classList.remove('active');
-                    dropdowns.forEach(dropdown => dropdown.style.display = '');
-                }
-            });
+        console.log('Toggle button clicked');
+        menu.classList.toggle('active');
+        console.log('Menu active state: ', menu.classList.contains('active'));
+    });
+    
+            // Close the menu when clicking outside of it
+            document.addEventListener('click', function(event) {
+        if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+            console.log('Clicked outside, closing menu');
+            menu.classList.remove('active');
+        }
+    });
         });
     </script>
 </body>
