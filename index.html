@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" lang="fr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khbich ENSTTIC</title>
     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         :root {
             --primary-color: #0047ab;
             --secondary-color: #00a8ff;
@@ -17,6 +17,14 @@
             padding: 0;
             box-sizing: border-box;
         }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
         .container {
             width: 90%;
             max-width: 1200px;
@@ -24,13 +32,14 @@
             padding: 0 20px;
         }
         .navbar {
-            background: linear-gradient(135deg, #0047ab 0%, #00a8ff 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: #fff;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
         }
         .navbar:hover {
             box-shadow: 0 6px 8px rgba(0,0,0,0.2);
@@ -44,9 +53,9 @@
             margin: 0;
         }
         .navbar h1 a {
-        text-decoration: none;
-        color: #fff;
-        font-size: 24px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
         }   
         .navbar a {
             color: #fff;
@@ -58,41 +67,89 @@
             background-color: rgba(255,255,255,0.1);
             border-radius: 5px;
         }
-        .navbar ul {
-            display: flex;
+        .menu {
             list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
         }
-        .navbar ul li {
+        .menu > li {
             position: relative;
+            margin: 0 15px;
         }
-        .navbar ul li ul {
-            display: none;
+        .menu > li > a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .menu > li > a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .dropdown {
+            list-style: none;
             position: absolute;
             top: 100%;
             left: 0;
             background-color: var(--primary-color);
-            padding: 0;
+            display: none;
+            padding: 10px 0;
             border-radius: 0 0 5px 5px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .navbar ul li:hover > ul {
+        .menu > li:hover > .dropdown {
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
-        .navbar ul li ul li {
-            width: 200px;
-            float: none;
-            display: list-item;
+        .dropdown li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            display: block;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown li a:hover {
+            background-color: var(--secondary-color);
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
             position: relative;
+            overflow: hidden;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: rotate 20s linear infinite;
         }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
+        .hero p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }   
         main {
             padding: 2rem 0;
         }
@@ -132,10 +189,6 @@
         .section ul li:hover {
             transform: translateX(10px);
         }
-        .section ul li a:hover {
-            color: #fff;
-            background-color: var(--secondary-color);
-        }
         .section ul li a {
             color: #0047ab;
             text-decoration: none;
@@ -143,6 +196,10 @@
             display: inline-block;
             padding: 5px 10px;
             border-radius: 5px;
+        }
+        .section ul li a:hover {
+            color: #fff;
+            background-color: var(--secondary-color);
         }
         ul {
             list-style: none;
@@ -159,97 +216,6 @@
         a:hover {
             color: #0056b3;
         }
-        .menu {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .menu > li {
-            position: relative;
-            margin: 0 15px;
-        }
-        .menu > li:hover > .dropdown {
-            display: block;
-        }
-        .menu > li > a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .menu > li > a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-        .dropdown {
-            list-style: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #0047ab;
-            display: none;
-            padding: 10px 0;
-            border-radius: 0 0 5px 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .dropdown li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            display: block;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown li a:hover {
-            background-color: #00a8ff;
-        }
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            text-align: center;
-            padding: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-            animation: rotate 20s linear infinite;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }   
         footer {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: #fff;
@@ -277,6 +243,14 @@
             color: #fff;
             text-decoration: underline;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -293,7 +267,7 @@
                 z-index: 999;
                 visibility: hidden;
                 opacity: 0;
-                transition: opacity 0.3s ease;
+                transition: visibility 0s, opacity 0.3s ease;
             }      
             .menu > li {
                 margin: 0;
@@ -314,13 +288,6 @@
             .menu > li > a:focus + .dropdown,
             .menu > li > a:active + .dropdown {
                 display: block;
-            }
-            .menu.active {
-                display: flex;
-            }
-            .menu > li {
-                text-align: center;
-                margin: 0;
             }
             .menu > li ul {
                 position: static;
@@ -343,16 +310,16 @@
                 <li>
                     <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
                     <ul class="dropdown">
-                        <li><a href="cp1.html#sem1" >Semestre 1</a></li>
-                        <li><a href="cp1.html#sem2" >Semestre 2</a></li>
+                        <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                        <li><a href="cp1.html#sem2">Semestre 2</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
-                    <ul>
+                    <ul class="dropdown">
                         <li><a href="cp2.html#sem3">Semestre 1</a></li>
-                        <li><a href="cp2.html#sem4" >Semestre 2</a></li>
-                        <li><a href="cp2.html#Concour" >Concour</a></li>
+                        <li><a href="cp2.html#sem4">Semestre 2</a></li>
+                        <li><a href="cp2.html#Concour">Concour</a></li>
                     </ul>
                 </li>
                 <li>
@@ -391,8 +358,8 @@
         <section id="1CP" class="section">
             <h2 title="1er Classes Préparatoires"><a href="cp1.html">1CP</a></h2>
             <ul>
-                <li><a href="cp1.html#sem1" >Semestre 1</a></li>
-                <li><a href="cp1.html#sem2" >Semestre 2</a></li>
+                <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                <li><a href="cp1.html#sem2">Semestre 2</a></li>
             </ul>
         </section>
         <section id="2CP" class="section">
@@ -431,34 +398,42 @@
         <div class="container">
             <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
             <p>NOUS CONTACTER</p>
-            <p>Email: <a href="mailto:khbich.ensttic@gmail.com">khbich.ensttic@gmail.com</a></p>
+            <p>Email: <a href="mailto:contact@khbichensttic.com">contact@khbichensttic.com</a></p>
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function()  {
+        document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const menu = document.querySelector('.menu');
-            if (!menuToggle || !menu) {
-            console.error('Menu or toggle button not found!');
-            }
-            // Debugging logs
-            console.log('Menu Toggle button loaded:', menuToggle);
-            console.log('Menu element loaded:', menu);
-    
-            // Event listener for toggle button
+            
             menuToggle.addEventListener('click', function() {
-        console.log('Toggle button clicked');
-        menu.classList.toggle('active');
-        console.log('Menu active state: ', menu.classList.contains('active'));
-    });
-    
-            // Close the menu when clicking outside of it
+                menu.classList.toggle('active');
+            });
+
             document.addEventListener('click', function(event) {
-        if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-            console.log('Clicked outside, closing menu');
-            menu.classList.remove('active');
-        }
-    });
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+
+            const dropdownLinks = document.querySelectorAll('.menu > li > a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768 && this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menu.classList.remove('active');
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.style.display = '';
+                    });
+                }
+            });
         });
     </script>
 </body>
