@@ -33,30 +33,41 @@
                 padding: 0  ;
             }
             .navbar {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: #fff;
-                padding: 1rem 0;
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-            
-            .navbar .container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            .navbar h1 {
-                margin: 0;
-            }
-            
-            .navbar h1 a {
-                text-decoration: none;
-                color: #fff;
-                font-size: 24px;
-            }
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .navbar:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar h1 a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }   
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
             
             .menu-toggle {
                 display: none;
@@ -68,26 +79,25 @@
             }
             
             .menu {
-                display: flex;
-                list-style: none;
-            }
-            
-            .menu > li {
-                position: relative;
-                margin: 0 15px;
-            }
-            
-            .menu > li > a {
-                color: #fff;
-                text-decoration: none;
-                padding: 0.5rem 1rem;
-                display: block;
-                transition: background-color 0.3s ease;
-            }
-            
-            .menu > li > a:hover {
-                background-color: rgba(255,255,255,0.1);
-            }
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .menu > li {
+            position: relative;
+            margin: 0 15px;
+        }
+        .menu > li > a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .menu > li > a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
             .dropdown {
                 display: none;
                 position: absolute;
