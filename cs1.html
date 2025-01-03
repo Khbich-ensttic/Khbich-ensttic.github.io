@@ -33,41 +33,65 @@
                 padding: 0  ;
             }
             .navbar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease;
-        }
-        .navbar:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        }
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar h1 {
-            margin: 0;
-        }
-        .navbar h1 a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 24px;
-        }   
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .navbar a:hover {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                padding: 1rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: box-shadow 0.3s ease;
+            }
+            .navbar:hover {
+                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+            }
+            .navbar .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navbar h1 {
+                margin: 0;
+            }
+            .navbar h1 a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 24px;
+            }
+            .navbar a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                transition: all 0.3s ease;
+            }
+            .navbar a:hover {
+                background-color: rgba(255,255,255,0.1);
+                border-radius: 5px;
+            }
+            .menu {
+                list-style: none;
+                display: flex;
+                margin: 0;
+                padding: 0;
+            }
+            .menu > li {
+                position: relative;
+                margin: 0 15px;
+            }
+            .menu > li > a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                display: block;
+                transition: background-color 0.3s ease;
+            }
+            .menu > li > a:hover {
+                background-color: rgba(255,255,255,0.1);
+            }
+            .menu > li:hover > .dropdown {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
             .menu-toggle {
                 display: none;
                 background: none;
@@ -76,27 +100,70 @@
                 font-size: 24px;
                 cursor: pointer;
             }
-            
-            .menu {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .menu > li {
-            position: relative;
-            margin: 0 15px;
-        }
-        .menu > li > a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .menu > li > a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
+            .dropdown {
+                list-style: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--primary-color);
+                display: none;
+                padding: 10px 0;
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .dropdown li a {
+                text-decoration: none;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                display: block;
+                white-space: nowrap;
+                transition: background-color 0.3s ease;
+            }
+            .dropdown li a:hover {
+                background-color: var(--secondary-color);
+            }
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block;
+                }
+                .menu {
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background-color: var(--primary-color);
+                    padding: 1rem 0;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    z-index: 999;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: visibility 0s, opacity 0.3s ease;
+                }
+                .menu > li {
+                    margin: 0;
+                    text-align: center;
+                }
+                .menu.active {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .dropdown {
+                    position: static;
+                    background-color: var(--secondary-color);
+                    display: none;
+                }
+                .menu > li:hover > .dropdown {
+                    display: none;
+                }
+                .menu > li > a:focus + .dropdown,
+                .menu > li > a:active + .dropdown {
+                    display: block;
+                }
+                .menu > li ul {
+                    position: static;
+                }
+            }
             .dropdown {
                 display: none;
                 position: absolute;
@@ -333,8 +400,8 @@
             <ul class="menu">
                 <li><a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
                     <ul class="dropdown">
-                        <li><a href="cp1.html">Semestre 1</a></li>
-                        <li><a href="cp1.html">Semestre 2</a></li>
+                        <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                        <li><a href="cp1.html#sem2">Semestre 2</a></li>
                     </ul>
                 </li>
                 <li><a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
@@ -364,6 +431,7 @@
                         <li><a href="cs3.html#pfe">PFE</a></li>
                     </ul>
                 </li>
+                <li><a href="cal.html" class="calc-link"><span>Calculer la Moyenne</span></a></li>
             </ul>
         </div>
     </nav>
@@ -394,8 +462,8 @@
                     <ul>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1m2UqPtCQdUy8cBmy30mVq_93EgZeF2fV?usp=drive_link">Traitement du signal 2</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1yqj_tV04GeYE5Sa80B8pc56RmCn4pshS?usp=drive_link">Réseaux de données 2</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1qc2duER_3EBQx9bVDcomKuBCInWhROjH?usp=drive_link">Antennes et propagation</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1gmOeR_6xQEGN5vpcGR6QCtJsb64IFxtN?usp=drive_link">Analyse de données</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1qc2duER_3EBQx9bVDcomKuBCInWhROjH?usp=drive_link">Antennes et propagation</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1KsoVzCSIuvZzLHxicYNz4zWj7WmPSQy7?usp=drive_link">Bases des Télécommunications</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1DEp1Sq2Y4njp3_95Vxjsai1Sh4cYTUGG?usp=drive_link">Technologies Web 1</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1sgTfn_OTIcrjH-L_6HqejXPdYxsFDMDF?usp=drive_link">Traitement d'image</a></li>

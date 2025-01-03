@@ -7,124 +7,133 @@
         <title>Khbich ENSTTIC</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-            
-            :root {
-                --primary-color: #0047ab;
-                --secondary-color: #00a8ff;
-                --text-color: #333;
-                --bg-color: #f4f4f4;
-            }
-            
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body {
-                font-family: 'Poppins', sans-serif;
-                line-height: 1.6;
-                color: var(--text-color);
-                background-color: var(--bg-color);
-            }
-            .container {
-                width: 90%;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0  ;
-            }
-            .navbar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease;
+        :root {
+            --primary-color: #0047ab;
+            --secondary-color: #00a8ff;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
         }
-        .navbar:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        }
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar h1 {
-            margin: 0;
-        }
-        .navbar h1 a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 24px;
-        }   
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .navbar a:hover {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
-            
-            .menu-toggle {
-                display: none;
-                background: none;
-                border: none;
-                color: #fff;
-                font-size: 24px;
-                cursor: pointer;
-            }
-            .menu {
-            list-style: none;
-            display: flex;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .menu > li {
-            position: relative;
-            margin: 0 15px;
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
         }
-        .menu > li > a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: background-color 0.3s ease;
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .menu > li > a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-            .dropdown {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background-color: var(--primary-color);
-                padding: 10px 0;
-                border-radius: 0 0 5px 5px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            }
-            
-            .menu > li:hover > .dropdown {
-                display: block;
-            }
-            
-            .dropdown li a {
-                color: #fff;
-                padding: 0.5rem 1rem;
-                display: block;
-                text-decoration: none;
-                white-space: nowrap;
-                transition: background-color 0.3s ease;
-            }
-            
-            .dropdown li a:hover {
-                background-color: var(--secondary-color);
-            }
-            
+        .navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar h1 a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    position: relative;
+    margin: 0 15px; /* Adjust spacing between items */
+}
+
+.menu > li > a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Consistent padding for clickable area */
+    display: block;
+    font-size: 1rem; /* Adjust font size */
+    transition: background-color 0.3s ease;
+}
+
+.menu > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.dropdown {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    display: none;
+    padding: 10px 0;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: block;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown li a:hover {
+    background-color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
             .header {
                 text-align: center;
                 margin-bottom: 30px;
@@ -264,6 +273,7 @@
             }
             .section { 
             padding: 15px;
+            padding-bottom: 40px;
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #f9f9f9;
@@ -333,8 +343,8 @@
             <ul class="menu">
                 <li><a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
                     <ul class="dropdown">
-                        <li><a href="#sem1">Semestre 1</a></li>
-                        <li><a href="#sem2">Semestre 2</a></li>
+                        <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                        <li><a href="cp1.html#sem2">Semestre 2</a></li>
                     </ul>
                 </li>
                 <li><a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
@@ -356,7 +366,7 @@
                         <li><a href="cs2.html#sem8">Semestre 2</a></li>
                     </ul>
                 </li>
-                <li><a href="cs3.html" title="3er Classes Spécialité">3CS</a>
+                <li><a href="cs3.html" title="3eme Classes Spécialité">3CS</a>
                     <ul class="dropdown">
                         <li><a href="cs3.html#ttn">TTN</a></li>
                         <li><a href="cs3.html#rip">TRIP</a></li>
@@ -364,6 +374,7 @@
                         <li><a href="cs3.html#pfe">PFE</a></li>
                     </ul>
                 </li>
+                <li><a href="cal.html" class="calc-link"><span>Calculer la Moyenne</span></a></li>
             </ul>
         </div>
     </nav>

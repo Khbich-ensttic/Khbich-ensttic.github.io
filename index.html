@@ -88,6 +88,18 @@
         .menu > li > a:hover {
             background-color: rgba(255,255,255,0.1);
         }
+        .menu > li:hover > .dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
         .dropdown {
             list-style: none;
             position: absolute;
@@ -99,10 +111,6 @@
             border-radius: 0 0 5px 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .menu > li:hover > .dropdown {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
         .dropdown li a {
             text-decoration: none;
             color: #fff;
@@ -113,14 +121,6 @@
         }
         .dropdown li a:hover {
             background-color: var(--secondary-color);
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
         }
         .hero {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -351,7 +351,11 @@
                     </ul>
                 </li>
                 <!-- Add this inside your navbar's menu ul element -->
- 
+<li>
+    <a href="cal.html" class="calc-link">
+      <span>Calculer la Moyenne</span>
+    </a>
+  </li>
             </ul>
         </div>
     </nav>      

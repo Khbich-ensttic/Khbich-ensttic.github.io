@@ -97,6 +97,12 @@
         .menu > li > a:hover {
             background-color: rgba(255,255,255,0.1);
         }
+            
+            
+            .menu > li:hover > .dropdown {
+                display: block;
+            }
+            
             .dropdown {
                 display: none;
                 position: absolute;
@@ -107,11 +113,6 @@
                 border-radius: 0 0 5px 5px;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
-            
-            .menu > li:hover > .dropdown {
-                display: block;
-            }
-            
             .dropdown li a {
                 color: #fff;
                 padding: 0.5rem 1rem;
@@ -333,8 +334,8 @@
             <ul class="menu">
                 <li><a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
                     <ul class="dropdown">
-                        <li><a href="#sem1">Semestre 1</a></li>
-                        <li><a href="#sem2">Semestre 2</a></li>
+                        <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                        <li><a href="cp1.html#sem2">Semestre 2</a></li>
                     </ul>
                 </li>
                 <li><a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
@@ -364,6 +365,7 @@
                         <li><a href="cs3.html#pfe">PFE</a></li>
                     </ul>
                 </li>
+                <li><a href="cal.html" class="calc-link"><span>Calculer la Moyenne</span></a></li>
             </ul>
         </div>
     </nav>
@@ -376,12 +378,12 @@
                 <div id="ttn" class="card">
                     <h2><a href="https://drive.google.com/drive/folders/1JVu80Cp5HHxiEjfei5NBRh8hGGjmMfuc?usp=drive_link" target="_blank">TTN</a></h2>
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/16e6cG5B8oPzaUo-mPX1Ka3QmpDpY4SNo?usp=drive_link">Traitement et Analyse de Données Massives -Big Data-</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/16e6cG5B8oPzaUo-mPX1Ka3QmpDpY4SNo?usp=drive_link">Traitement et Analyse de Données Massives -Big Data- </a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1I1cUvDMk6uLyC_9lPihywFtcpxXeKK9e?usp=drive_link">Systèmes distribués</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1x0UwUI1OJ0CeHXR5ezh80wfe1Q0A1VWV?usp=drive_link">Génie logiciel</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/18bMh28tKEAAGZgjaJpZbW6XbhClHxTT7?usp=drive_link">Architectures Réparties</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1ud4gKPQwVob8P-TSac_WbSXI0wvg3c-l?usp=drive_link">Bases de Données Non Relationnelles</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/17i49xlKinCidZSRH1yaQDZhnJKePaOi7?usp=drive_link">Apprentissage automatique -Machine Learning-</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1x0UwUI1OJ0CeHXR5ezh80wfe1Q0A1VWV?usp=drive_link">Génie logiciel</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/18bMh28tKEAAGZgjaJpZbW6XbhClHxTT7?usp=drive_link">Architectures Réparties</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1P8W5Isu0RjGHFGVDtlbfGaoHxhUJ2p1Z?usp=drive_link">Sécurité des données et des réseaux</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1ZAtogjhJK3o8JHOGN36pB7bCclm2f5WC?usp=drive_link">Systèmes embarqués, mobilités et objets communicants </a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/17BfcIeeveV8qYeGUgSqYN-lWHhHNwH0Q?usp=drive_link">Economie numérique et Management de l'Innovation </a></li>
@@ -390,13 +392,13 @@
                     </ul>
                 </div>
                 <div id="rip" class="card">
-                    <h2><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">TRIP</a></h2>
+                    <h2><a href="https://drive.google.com/drive/folders/1VgD00X4CBXfoo3seXsViNoLpjzV1CANJ?usp=drive_link" target="_blank">RIP</a></h2>
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1dFnruV__w8-vG1IX3o35DXH4JMVDG-tW?usp=drive_link">Software-Defined Networking</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1vP9l38LHB823Dhz0u7kjPzddJFNvGCoe?usp=drive_link">Réseaux avancés</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1dFnruV__w8-vG1IX3o35DXH4JMVDG-tW?usp=drive_link">Software-Defined Networking</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1azl4-lcXQyJftrjdil1LcUPNx5FGQgz3?usp=drive_link">Ingénierie de trafic dans les réseaux</a></li> 
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1rxa1fU8u0dmRZTNZySydrMCrJfXd0eDe?usp=drive_link">Sécurité des données et des réseaux</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/14TElvJaWvJ4Jq0Mcru0vhGj5oMAnsOAE?usp=drive_link">Systèmes et réseaux de télécommunications optiques </a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1azl4-lcXQyJftrjdil1LcUPNx5FGQgz3?usp=drive_link">Ingénierie de trafic dans les réseaux</a></li> 
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1W0kjaLD5kXMR_PcrxHdY6CF4VLYINq_t?usp=drive_link">Gestion et maintenance des réseaux </a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1EfL4twMu8H5eJvZC1C3AxN3SiT_9NHkv?usp=drive_link">Systèmes embarqués, mobilités et objets communicants</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/17BfcIeeveV8qYeGUgSqYN-lWHhHNwH0Q?usp=drive_link">Economie numérique et Management de l'Innovation </a></li>
@@ -407,13 +409,13 @@
                 <div id="st" class="card">
                     <h2 ><a href="https://drive.google.com/drive/folders/16l3dW4bzvccVGZPATIj2bCc4uvAtjGqv?usp=drive_link" target="_blank">ST</a></h2>
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a >Radiocommunications avancées</a></li>
-                        <li><img src="doc.png" alt="icon"><a >Techniques des systèmes FHN </a></li> 
-                        <li><img src="doc.png" alt="icon"><a >Systèmes Satellitaires</a></li>
-                        <li><img src="doc.png" alt="icon"><a >Réseaux mobiles</a></li>
-                        <li><img src="doc.png" alt="icon"><a >Conception RF</a></li> 
+                        <li><img src="doc.png" alt="icon"><a  >Radiocommunications avancées</a></li>
+                        <li><img src="doc.png" alt="icon"><a  >Réseaux mobiles</a></li>
+                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1azl4-lcXQyJftrjdil1LcUPNx5FGQgz3?usp=drive_link">Ingénierie de trafic dans les réseaux</a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/14TElvJaWvJ4Jq0Mcru0vhGj5oMAnsOAE?usp=drive_link">Systèmes et réseaux de télécommunications optiques </a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1azl4-lcXQyJftrjdil1LcUPNx5FGQgz3?usp=drive_link">Ingénierie de trafic dans les réseaux</a></li> 
+                        <li><img src="doc.png" alt="icon"><a  >Systèmes Satellitaires</a></li> 
+                        <li><img src="doc.png" alt="icon"><a  >Techniques des systèmes FHN </a></li> 
+                        <li><img src="doc.png" alt="icon"><a  >Conception RF</a></li> 
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1W0kjaLD5kXMR_PcrxHdY6CF4VLYINq_t?usp=drive_link">Gestion et maintenance des réseaux </a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1ZAtogjhJK3o8JHOGN36pB7bCclm2f5WC?usp=drive_link">Systèmes embarqués, mobilités et objets communicants </a></li>
                         <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/17BfcIeeveV8qYeGUgSqYN-lWHhHNwH0Q?usp=drive_link">Economie numérique et Management de l'Innovation </a></li>

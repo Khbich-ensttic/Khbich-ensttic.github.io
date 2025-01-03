@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en" lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="go.png">
+        <title>Khbich ENSTTIC</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+            :root {
+                --primary-color: #0047ab;
+                --secondary-color: #00a8ff;
+                --text-color: #333;
+                --bg-color: #f4f4f4;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: 'Poppins', Arial, sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                background-color: var(--bg-color);
+            }
+            body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .Tablee {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .Tablee h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #0047ab;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .grade-selector {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .grade-selector select {
+            width: 48%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Grades Table */
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .grades-table thead th {
+            background-color: #0047ab;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .grades-table tbody td {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.95rem;
+            border: 1px solid #ddd;
+        }
+
+        .grades-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .grades-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .grades-table input[type="number"] {
+            width: 80%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .grades-table input[type="number"]:focus {
+            border-color: #0047ab;
+            outline: none;
+        }
+
+        .grades-table tfoot td {
+            text-align: center;
+            font-weight: bold;
+            background-color: #0047ab;
+            color: #ffffff;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .navbar:hover {
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar h1 a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }   
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+        .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .menu > li {
+            position: relative;
+            margin: 0 15px;
+        }
+        .menu > li > a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .menu > li > a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .menu > li:hover > .dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+            .dropdown {
+                list-style: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--primary-color);
+                display: none;
+                padding: 10px 0;
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .dropdown li a {
+                text-decoration: none;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                display: block;
+                white-space: nowrap;
+                transition: background-color 0.3s ease;
+            }
+            .dropdown li a:hover {
+                background-color: var(--secondary-color);
+            }
+            .hero {
+                background: var(--primary-color);
+                color: #fff;
+                text-align: center;
+                padding: 4rem 0;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+                animation: rotate 20s linear infinite;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                position: relative;
+                z-index: 1;
+            }
+            .hero p {
+                font-size: 1.2rem;
+                position: relative;
+                z-index: 1;
+            }   
+            main {
+                padding: 2rem 0;
+            }
+            .section {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 2rem;
+                margin-bottom: 2rem;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid #ddd;
+            }
+            .section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+            }
+            .section:hover::before {
+                top: 0;
+            }
+            .section h2 {
+                color: #0047ab;
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                position: relative;
+            }
+            .section ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .section ul li {
+                margin-bottom: 0.5rem;
+                transition: all 0.3s ease;
+            }
+            .section ul li:hover {
+                transform: translateX(10px);
+            }
+            .section ul li a {
+                color: #0047ab;
+                text-decoration: none;
+                transition: color 0.3s ease, background-color 0.3s ease;
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            .section ul li a:hover {
+                color: #fff;
+                background-color: var(--secondary-color);
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            li {
+                margin: 10px 0;
+            }
+            a {
+                text-decoration: none;
+                color: #007BFF;
+                font-size: 1.2em;
+            }
+            a:hover {
+                color: #0056b3;
+            }
+            footer {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                color: #fff;
+                text-align: center;
+                padding: 2rem 0;
+                margin-top: 2rem;
+                position: relative;
+                overflow: hidden;
+            }
+            footer::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+             }
+            footer p {
+                position: relative;
+                z-index: 1;
+            }
+            footer a {
+                color: #fff;
+                text-decoration: underline;
+            }
+            footer .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .container p {
+                margin: 5px 0;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            @media (max-width: 768px) {
+                .menu-toggle {
+                    display: block;
+                }         
+                .menu {
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background-color: var(--primary-color);
+                    padding: 1rem 0;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    z-index: 999;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: visibility 0s, opacity 0.3s ease;
+                }      
+                .menu > li {
+                    margin: 0;
+                    text-align: center;
+                }
+                .menu.active {
+                    visibility: visible;
+                    opacity: 1;
+                }        
+                .dropdown {
+                    position: static;
+                    background-color: var(--secondary-color);
+                    display: none;
+                }
+                .menu > li:hover > .dropdown {
+                    display: none;
+                }
+                .menu > li > a:focus + .dropdown,
+                .menu > li > a:active + .dropdown {
+                    display: block;
+                }
+                .menu > li ul {
+                    position: static;
+                }            
+                .hero h1 {
+                    font-size: 2rem;
+                }
+                .hero p {
+                    font-size: 1rem;
+                }
+                .card {
+                flex: 1 1 100%;
+                max-width: none;
+            }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <h1><a href="index.html">Khbich ENSTTIC</a></h1>
+                <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+                <ul class="menu">
+                    <li>
+                        <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
+                        <ul class="dropdown">
+                            <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                            <li><a href="cp1.html#sem2">Semestre 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
+                        <ul class="dropdown">
+                            <li><a href="cp2.html#sem3">Semestre 1</a></li>
+                            <li><a href="cp2.html#sem4">Semestre 2</a></li>
+                            <li><a href="cp2.html#Concour">Concour</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="cs1.html" title="1er Classes Spécialité">1CS</a>
+                        <ul class="dropdown">
+                            <li><a href="cs1.html#sem5">Semestre 1</a></li>
+                            <li><a href="cs1.html#sem6">Semestre 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="cs2.html" title="2eme Classes Spécialité">2CS</a>
+                        <ul class="dropdown">
+                            <li><a href="cs2.html#sem7">Semestre 1</a></li>
+                            <li><a href="cs2.html#sem8">Semestre 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="cs3.html" title="3er Classes Spécialité">3CS</a>
+                        <ul class="dropdown">
+                            <li><a href="cs3.html#ttn">TTN</a></li>
+                            <li><a href="cs3.html#rip">TRIP</a></li>
+                            <li><a href="cs3.html#st">ST</a></li>
+                            <li><a href="cs3.html#pfe">PFE</a></li>
+                        </ul>
+                    </li>
+                    <!-- Add this inside your navbar's menu ul element -->
+    <li>
+        <a href="cal.html" class="calc-link">
+          <span>Calculer la Moyenne</span>
+        </a>
+      </li>
+                </ul>
+            </div>
+        </nav>
+    <div class="Tablee">
+        <h1>Relevé de Notes</h1>
+        <div class="grade-selector">
+            <select id="yearSelect">
+                <option value="1CP">1CP</option>
+                <option value="2CP">2CP</option>
+                <option value="1CS">1CS</option>
+                <option value="2CS">2CS</option>
+                <option value="3CS">3CS</option>
+            </select>
+            <select id="semesterSelect">
+                <option value="S1">Semestre 1</option>
+                <option value="S2">Semestre 2</option>
+                <option value="G">General</option>
+            </select>
+        </div>  
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th>Matière</th>
+                    <th>Coef</th>
+                    <th>ECD</th>
+                    <th>TP</th>
+                    <th>EMD</th>
+                    <th>Moyenne</th>
+                </tr>
+            </thead>
+            <tbody id="gradesTableBody">
+                <tr>
+                    <td><input type="text" name="subject" placeholder="Matière"></td>
+                    <td><input type="number" name="coef" step="0.01" placeholder="Coef"></td>
+                    <td><input type="number" name="ecd" step="0.01" placeholder="ECD"></td>
+                    <td><input type="number" name="tp" step="0.01" placeholder="TP"></td>
+                    <td><input type="number" name="emd" step="0.01" placeholder="EMD"></td>
+                    <td><input type="number" name="average" step="0.01" placeholder="Moyenne" readonly></td>
+                </tr>
+                <!-- Les lignes seront ajoutées ici par JavaScript -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="footer" colspan="5">Moyenne Générale:</td>
+                    <td class="footer-value" id="overall-average-value">0.00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <footer>
+        <div class="container">
+            <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
+            <p>NOUS CONTACTER</p>
+           <p>Email: <a href="mailto:khbich.ensttic@gmail.com">khbich.ensttic@gmail.com</a></p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.menu');
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+            document.getElementById('yearSelect').addEventListener('change', function () {
+            const year = this.value; // Get selected year
+            const semesterSelect = document.getElementById('semesterSelect'); // Get semester dropdown
+
+            // Clear the current options in the semester dropdown
+            semesterSelect.innerHTML = '';
+
+            if (year === '3CS') {
+                // Add specific options for 3CS
+                semesterSelect.innerHTML = `
+                    <option value="TTN">TTN</option>
+                    <option value="TRIP">TRIP</option>
+                    <option value="ST">ST</option>
+                `;
+            } else {
+                // Default semester options for other years
+                semesterSelect.innerHTML = `
+                    <option value="S1">Semestre 1</option>
+                    <option value="S2">Semestre 2</option>
+                    <option value="G">General</option>
+                `;
+            }
+
+            updateGradesTable(); // Update the table based on the new selection
+        });
+    });
+            const dropdownLinks = document.querySelectorAll('.menu > li > a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768 && this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menu.classList.remove('active');
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.style.display = '';
+                    });
+                }
+            });
+         
+        const subjects = {
+            '1CP': {
+                'S1': [
+                    { name: 'Analyse mathématique 1', coef: 5 },
+                    { name: 'Electricité', coef: 5, hasTP: true },
+                    { name: 'Informatique 1', coef: 4, hasTP: true },
+                    { name: 'Algèbre 1', coef: 3 },
+                    { name: 'Chimie', coef: 2 },
+                    { name: 'Mécanique', coef: 2 },
+                    { name: 'Technique d\'expression 1', coef: 2 }
+                ],
+                'S2': [
+                    { name: 'Analyse mathématique 2', coef: 5 },
+                    { name: 'Electronique 1', coef: 5, hasTP: true  },
+                    { name: 'Informatique 2', coef: 4, hasTP: true },
+                    { name: 'Algèbre 2', coef: 3 },
+                    { name: 'Domaines connexes au métier d\'ingénieur', coef: 3 },
+                    { name: 'Anglais 1', coef: 2 },
+                    { name: 'Technique d\'expression 2', coef: 2 }
+                ],
+                'G': [
+                    { name: 'Analyse mathématique 1', coef: 5 },
+                    { name: 'Electricité', coef: 5, hasTP: true },
+                    { name: 'Informatique 1', coef: 4, hasTP: true },
+                    { name: 'Algèbre 1', coef: 3 },
+                    { name: 'Chimie', coef: 2 },
+                    { name: 'Mécanique', coef: 2 },
+                    { name: 'Technique d\'expression 1', coef: 2 },
+                    { name: 'Analyse mathématique 2', coef: 5 },
+                    { name: 'Electronique 1', coef: 5, hasTP: true  },
+                    { name: 'Informatique 2', coef: 4, hasTP: true },
+                    { name: 'Algèbre 2', coef: 3 },
+                    { name: 'Domaines connexes au métier d\'ingénieur', coef: 3 },
+                    { name: 'Anglais 1', coef: 2 },
+                    { name: 'Technique d\'expression 2', coef: 2 }
+                ]
+            },
+            '2CP': {
+                'S1': [
+                    { name: 'Analyse mathématique 3', coef: 5 },
+                    { name: 'Informatique 3', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 1', coef: 4 },
+                    { name: 'Théorie du signal', coef: 4 },
+                    { name: 'Ondes et vibrations', coef: 3 },
+                    { name: 'Analyse numérique', coef: 3 },
+                    { name: 'Mesures électriques et électroniques', coef: 2 , hasTP: true},
+                    { name: 'Anglais 2', coef: 2 }
+                ],
+                'S2': [
+                    { name: 'Analyse mathématique 4', coef: 5 },
+                    { name: 'Informatique 4', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 2', coef: 4 },
+                    { name: 'Optique et ondes électromagnétiques et Optique', coef: 4 },
+                    { name: 'Logique', coef: 4, hasTP: true },
+                    { name: 'Electronique 2', coef: 3  },
+                    { name: 'Anglais 3', coef: 2 } 
+                ],
+                'G': [
+                    { name: 'Analyse mathématique 3', coef: 5 },
+                    { name: 'Informatique 3', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 1', coef: 4 },
+                    { name: 'Théorie du signal', coef: 4 },
+                    { name: 'Ondes et vibrations', coef: 3 },
+                    { name: 'Analyse numérique', coef: 3 },
+                    { name: 'Mesures électriques et électroniques', coef: 2 , hasTP: true},
+                    { name: 'Anglais 2', coef: 2 } , 
+                    { name: 'Analyse mathématique 4', coef: 5 },
+                    { name: 'Informatique 4', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 2', coef: 4 },
+                    { name: 'Optique et ondes électromagnétiques et Optique', coef: 4 },
+                    { name: 'Logique', coef: 4, hasTP: true },
+                    { name: 'Electronique 2', coef: 3  },
+                    { name: 'Anglais 3', coef: 2 } 
+                ] 
+            },
+            '1CS': {
+                'S1': [
+                    { name: 'Traitement du signal 1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité', coef: 2 },
+                    { name: 'Anglais 4', coef: 2 }
+                ],
+                'S2': [
+                    { name: 'Traitement du signal 2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2', coef: 3 , hasTP: true},
+                    { name: 'Marketing', coef: 2 },
+                    { name: 'Anglais 5', coef: 2 }
+                ],
+                'G': [
+                    { name: 'Traitement du signal 1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité', coef: 2 },
+                    { name: 'Anglais 4', coef: 2 },
+                    { name: 'Traitement du signal 2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2', coef: 3 , hasTP: true},
+                    { name: 'Marketing', coef: 2 },
+                    { name: 'Anglais 5', coef: 2 }
+                ] 
+            },
+            '2CS': {
+                'S1': [
+                    { name: 'Théorie de l\'information et codage', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises', coef: 3 },
+                    { name: 'Management de Projet', coef: 2  },
+                    { name: 'Anglais 6', coef: 2 }
+                ],
+                'S2': [ 
+                    { name: 'Radio communications', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès', coef: 5 , hasTP: true},
+                    { name: 'DataCenter', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2', coef: 3 }, 
+                    { name: 'Anglais 7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise', coef: 1 , hasTP: true} 
+                ],
+                'G': [
+                    { name: 'Théorie de l\'information et codage', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises', coef: 3 },
+                    { name: 'Management de Projet', coef: 2  },
+                    { name: 'Anglais 6', coef: 2 },
+                    { name: 'Radio communications', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès', coef: 5 , hasTP: true},
+                    { name: 'DataCenter', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2', coef: 3 }, 
+                    { name: 'Anglais 7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise', coef: 1 , hasTP: true}
+                ] 
+            },
+            '3CS': {
+                'TTN': [
+                    { name: 'Traitement et Analyse de Données Massives -Big Data-', coef: 5 },
+                    { name: 'Systèmes distribués', coef: 5  },
+                    { name: 'Bases de Données Non Relationnelles', coef: 5 }, 
+                    { name: 'Apprentissage automatique -Machine Learning-', coef: 5 }, 
+                    { name: 'Génie logiciel', coef: 4,  },
+                    { name: 'Architectures Réparties', coef: 4  },
+                    { name: 'Sécurité des données et des réseaux', coef: 4 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
+                    { name: 'Création d\'entreprises', coef: 2 },
+                    { name: 'Anglais 8', coef: 2 }
+                ],
+                'TRIP': [ 
+                    { name: 'Réseaux avancés', coef: 6  },
+                    { name: 'Software-Defined Networking', coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux', coef: 5 }, 
+                    { name: 'Sécurité des données et des réseaux', coef: 4 },
+                    { name: 'Systèmes et réseaux de télécommunications optiques', coef: 4  },
+                    { name: 'Gestion et maintenance des réseaux', coef: 3  },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
+                    { name: 'Création d\'entreprises', coef: 2 },
+                    { name: 'Anglais 8', coef: 2 }
+                ],
+                'ST': [
+                    { name: 'Radiocommunications avancées', coef: 5  },
+                    { name: 'Réseaux mobiles ', coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux', coef: 5 }, 
+                    { name: 'Systèmes et réseaux de télécommunications optiques', coef: 4 },
+                    { name: 'Systèmes Satellitaires', coef: 4 },
+                    { name: 'Techniques des systèmes FHN', coef: 3 },
+                    { name: 'Conception RF', coef: 3 },
+                    { name: 'Gestion et maintenance des réseaux', coef: 3 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
+                    { name: 'Création d\'entreprises', coef: 2 },
+                    { name: 'Anglais 8', coef: 2 }
+                ] 
+            }
+        }; 
+        let grades = {}; 
+        function calculateAverage(subject) {
+    const year = document.getElementById('yearSelect').value;
+    const subjectGrades = grades[subject.name] || { ecd: '', tp: '', emd: '' };
+    const ecd = parseFloat(subjectGrades.ecd) || 0;
+    const tp = parseFloat(subjectGrades.tp) || 0;
+    const emd = parseFloat(subjectGrades.emd) || 0;
+
+    if (year === '1CP' || year === '2CP') {
+        if (subject.hasTP) {
+            // Matière with TP
+            return (((ecd + tp) / 2 + emd * 2) / 3).toFixed(2);
+        } else if (!subject.hasTP && !subjectGrades.ecd) {
+            return emd.toFixed(2);
+        }else {
+            // Matière without TP
+            return ((ecd + emd * 2) / 3).toFixed(2);
+        }
+    }
+
+    // Special cases for other years
+    if (subject.name === 'Projet électronique 2') {
+        return ((0.7 * tp) + (0.3 * emd)).toFixed(2);
+    } else if (subject.name === 'Bases des Télécommunications') {
+        return ((0.5 * tp) + (0.5 * emd)).toFixed(2);
+    }
+    if (!subject.hasTP && !subjectGrades.ecd) {
+    return emd ? emd.toFixed(2) : '0.00';
+}
+
+    // General rules for other years
+    if (subject.hasTP && subjectGrades.ecd) {
+        return ((0.2 * ecd) + (0.2 * tp) + (0.6 * emd)).toFixed(2);
+    } else if (subject.hasTP) {
+        return ((0.4 * tp) + (0.6 * emd)).toFixed(2);
+    } else if (subjectGrades.ecd) {
+        return ((0.4 * ecd) + (0.6 * emd)).toFixed(2);
+    }
+
+    // Default case
+    return '-';
+}
+        function calculateOverallAverage() {
+            const year = document.getElementById('yearSelect').value;
+            const semester = document.getElementById('semesterSelect').value;
+            if (!subjects[year][semester]) return '0.00';
+            let totalWeightedGrade = 0;
+            let totalCoef = 0;
+    
+            subjects[year][semester].forEach(subject => {
+                const average = parseFloat(calculateAverage(subject)) || 0;
+                totalWeightedGrade += average * subject.coef;
+                totalCoef += subject.coef;
+            });
+    
+            return totalCoef > 0 ? (totalWeightedGrade / totalCoef).toFixed(2) : '0.00';
+        }
+        function updateGradesTable() {
+            const gradesTableBody = document.getElementById('gradesTableBody');
+            gradesTableBody.innerHTML = '';
+            const year = document.getElementById('yearSelect').value;
+            const semester = document.getElementById('semesterSelect').value;
+            if (!subjects[year][semester]) return;
+            subjects[year][semester].forEach(subject => {
+                const row = document.createElement('tr');
+                const excludeECD = [
+                    "Réseaux de données 1",
+                    "Réseaux de données 2",
+                    "Introduction aux Systèmes d'Exploitation",
+                    "Programmation Orientée Objet",
+                    "Systèmes d'Information et Bases de Données",
+                    "Projet électronique 1",
+                    "Analyse de données",
+                    "Bases des Télécommunications",
+                    "Technologies Web 1",
+                    "Traitement d'image",
+                    "Composants photoniques pour télécoms optiques",
+                    "Technologies Web 2",
+                    "Communications unifiées et NGN",
+                    "Cyber Sécurité",
+                    "Projet 1",
+                    "Projet 2",
+                    "Infrastructure des télécommunications & Techniques d\'Accès",
+                    "DataCenter",
+                    "Communication multimédia",
+                    "Optimisation numérique", 
+                    "Programmation réseaux", 
+                    "Stage de découverte de l'éntreprise",
+                    "Technique d\'expression 1",
+                    "Technique d\'expression 2", 
+                    "Traitement et Analyse de Données Massives -Big Data-",
+                    "Systèmes distribués",
+                    "Bases de Données Non Relationnelles",
+                    "Apprentissage automatique -Machine Learning-",
+                    "Génie logiciel",
+                    "Architectures Réparties",
+                    "Sécurité des données et des réseaux",
+                    "Systèmes embarqués, mobilités et objets communicants",
+                    "Economie numérique et Management de l\'Innovation",
+                    "Création d\'entreprises",
+                    "Anglais 8",
+                    "Réseaux avancés",
+                    "Software-Defined Networking",
+                    "Systèmes et réseaux de télécommunications optiques",
+                    "Gestion et maintenance des réseaux",
+                    "Conception RF",
+                    "Techniques des systèmes FHN",
+                    "Systèmes Satellitaires",
+                    "Réseaux mobiles ",
+                    "Radiocommunications avancées", 
+                    "Ingénierie de trafic dans les réseaux", 
+                    "Projet électronique 2"
+            ].includes(subject.name);
+                if (subject.hasTP) {
+                    row.innerHTML = `
+                        <td>${subject.name}</td>
+                        <td>${subject.coef}</td>
+                        <td>${excludeECD ? '____' : '<input type="number" min="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
+                        <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="tp"></td>
+                        <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                        <td class="average"></td>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <td>${subject.name}</td>
+                        <td>${subject.coef}</td>
+                        <td>${excludeECD ? '____' : '<input type="number" min="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
+                        <td>____</td>
+                        <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                        <td class="average"></td>
+                    `;
+                }
+                gradesTableBody.appendChild(row);
+            });
+    
+            updateGrades();
+        }
+    
+        function updateGrades() {
+    const year = document.getElementById('yearSelect').value;
+    const semester = document.getElementById('semesterSelect').value;
+    const rows = document.querySelectorAll('#gradesTableBody tr');
+
+    rows.forEach((row, index) => {
+        const subject = subjects[year][semester][index];
+        if (!subject) return;
+
+        const ecdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="ecd"]`);
+        const tpInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="tp"]`);
+        const emdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="emd"]`);
+        const averageCell = row.querySelector('.average');
+
+        grades[subject.name] = {
+            ecd: ecdInput ? ecdInput.value : '',
+            tp: tpInput ? tpInput.value : '',
+            emd: emdInput ? emdInput.value : ''
+        };
+
+        averageCell.textContent = calculateAverage(subject) || '-';
+    });
+
+    document.getElementById('overall-average-value').textContent = calculateOverallAverage();
+}
+
+    
+        document.getElementById('yearSelect').addEventListener('change', updateGradesTable);
+        document.getElementById('semesterSelect').addEventListener('change', function () {
+    updateGradesTable();
+});
+
+        document.addEventListener('input', function (e) {
+            if (e.target.type === 'number') {
+                const subject = e.target.dataset.subject;
+                const type = e.target.dataset.type;
+                const value = e.target.value;
+    
+                if (value === '' || (!isNaN(value) && parseFloat(value) >= 0 && parseFloat(value) <= 20)) {
+                    if (!grades[subject]) {
+                        grades[subject] = {};
+                    }
+                    grades[subject][type] = value;
+                    updateGrades();
+                } else {
+                    e.target.value = grades[subject]?.[type] || '';
+                }
+            }
+        });
+    
+        document.addEventListener('keydown', function (e) {
+            if (e.target.type === 'number' && (e.key === ',')) {
+                e.preventDefault();
+            }
+        });
+        
+        updateGradesTable();
+    </script>
+</body>
+</html>
