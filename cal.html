@@ -401,6 +401,13 @@
                 flex: 1 1 100%;
                 max-width: none;
             }
+            .grades-table {
+        font-size: 0.9rem;
+    }
+
+    .grades-table td {
+        padding: 5px;
+    }
             }
             
         </style>
@@ -569,213 +576,231 @@
                     });
                 }
             });
-         
+            function updateSubjectNames() {
+    const isMobile = window.innerWidth <= 768; // Mobile screen threshold
+    const year = document.getElementById('yearSelect').value;
+    const semester = document.getElementById('semesterSelect').value;
+
+    if (!subjects[year][semester]) return;
+
+    const rows = document.querySelectorAll('#gradesTableBody tr');
+    rows.forEach((row, index) => {
+        const subject = subjects[year][semester][index];
+        if (!subject) return;
+
+        const nameCell = row.querySelector('td:first-child');
+        nameCell.textContent = isMobile ? subject.shortName : subject.name;
+    });
+}
+// Call this function on page load and window resize
+window.addEventListener('resize', updateSubjectNames);
+document.addEventListener('DOMContentLoaded', updateSubjectNames);
         const subjects = {
             '1CP': {
                 'S1': [
-                    { name: 'Analyse mathématique 1', coef: 5 },
-                    { name: 'Electricité', coef: 5, hasTP: true },
-                    { name: 'Informatique 1', coef: 4, hasTP: true },
-                    { name: 'Algèbre 1', coef: 3 },
-                    { name: 'Chimie', coef: 2 },
-                    { name: 'Mécanique', coef: 2 },
-                    { name: 'Technique d\'expression 1', coef: 2 }
+                    { name: 'Analyse mathématique 1', shortName: 'AM1', coef: 5 },
+                    { name: 'Electricité', shortName: 'Elec', coef: 5, hasTP: true },
+                    { name: 'Informatique 1', shortName: 'INFO1', coef: 4, hasTP: true },
+                    { name: 'Algèbre 1', shortName: 'ALG1', coef: 3 },
+                    { name: 'Chimie', shortName: 'CHIM', coef: 2 },
+                    { name: 'Mécanique', shortName: 'Meca', coef: 2 },
+                    { name: 'Technique d\'expression 1', shortName: 'TE1', coef: 2 }
                 ],
                 'S2': [
-                    { name: 'Analyse mathématique 2', coef: 5 },
-                    { name: 'Electronique 1', coef: 5, hasTP: true  },
-                    { name: 'Informatique 2', coef: 4, hasTP: true },
-                    { name: 'Algèbre 2', coef: 3 },
-                    { name: 'Domaines connexes au métier d\'ingénieur', coef: 3 },
-                    { name: 'Anglais 1', coef: 2 },
-                    { name: 'Technique d\'expression 2', coef: 2 }
+                    { name: 'Analyse mathématique 2', shortName: 'AM2', coef: 5 },
+                    { name: 'Electronique 1', shortName: 'Electro1', coef: 5, hasTP: true  },
+                    { name: 'Informatique 2', shortName: 'INFO2', coef: 4, hasTP: true },
+                    { name: 'Algèbre 2', shortName: 'ALG2', coef: 3 },
+                    { name: 'Domaines connexes au métier d\'ingénieur', shortName: 'DCMI', coef: 3 },
+                    { name: 'Anglais 1', shortName: 'Ang1', coef: 2 },
+                    { name: 'Technique d\'expression 2', shortName: 'TE2', coef: 2 }
                 ],
                 'G': [
-                    { name: 'Analyse mathématique 1', coef: 5 },
-                    { name: 'Electricité', coef: 5, hasTP: true },
-                    { name: 'Informatique 1', coef: 4, hasTP: true },
-                    { name: 'Algèbre 1', coef: 3 },
-                    { name: 'Chimie', coef: 2 },
-                    { name: 'Mécanique', coef: 2 },
-                    { name: 'Technique d\'expression 1', coef: 2 },
-                    { name: 'Analyse mathématique 2', coef: 5 },
-                    { name: 'Electronique 1', coef: 5, hasTP: true  },
-                    { name: 'Informatique 2', coef: 4, hasTP: true },
-                    { name: 'Algèbre 2', coef: 3 },
-                    { name: 'Domaines connexes au métier d\'ingénieur', coef: 3 },
-                    { name: 'Anglais 1', coef: 2 },
-                    { name: 'Technique d\'expression 2', coef: 2 }
+                    { name: 'Analyse mathématique 1', shortName: 'AM1', coef: 5 },
+                    { name: 'Electricité', shortName: 'Elec', coef: 5, hasTP: true },
+                    { name: 'Informatique 1', shortName: 'INFO1', coef: 4, hasTP: true },
+                    { name: 'Algèbre 1', shortName: 'ALG1', coef: 3 },
+                    { name: 'Chimie', shortName: 'CHIM', coef: 2 },
+                    { name: 'Mécanique', shortName: 'Meca', coef: 2 },
+                    { name: 'Technique d\'expression 1', shortName: 'TE1', coef: 2 },
+                    { name: 'Analyse mathématique 2', shortName: 'AM2', coef: 5 },
+                    { name: 'Electronique 1', shortName: 'Electro1', coef: 5, hasTP: true  },
+                    { name: 'Informatique 2', shortName: 'INFO2', coef: 4, hasTP: true },
+                    { name: 'Algèbre 2', shortName: 'ALG2', coef: 3 },
+                    { name: 'Domaines connexes au métier d\'ingénieur', shortName: 'DCMI', coef: 3 },
+                    { name: 'Anglais 1', shortName: 'Ang1', coef: 2 },
+                    { name: 'Technique d\'expression 2', shortName: 'TE2', coef: 2 }
                 ]
             },
             '2CP': {
                 'S1': [
-                    { name: 'Analyse mathématique 3', coef: 5 },
-                    { name: 'Informatique 3', coef: 4, hasTP: true },
-                    { name: 'Probabilités et statistiques 1', coef: 4 },
-                    { name: 'Théorie du signal', coef: 4 },
-                    { name: 'Ondes et vibrations', coef: 3 },
-                    { name: 'Analyse numérique', coef: 3 },
-                    { name: 'Mesures électriques et électroniques', coef: 2 , hasTP: true},
-                    { name: 'Anglais 2', coef: 2 }
+                    { name: 'Analyse mathématique 3',shortName: 'AM3', coef: 5 },
+                    { name: 'Informatique 3', coef: 4,shortName: 'INFO3', hasTP: true },
+                    { name: 'Probabilités et statistiques 1',shortName: 'PS1', coef: 4 },
+                    { name: 'Théorie du signal',shortName: 'TS1', coef: 4 },
+                    { name: 'Ondes et vibrations',shortName: 'OV', coef: 3 },
+                    { name: 'Analyse numérique',shortName: 'AN', coef: 3 },
+                    { name: 'Mesures électriques et électroniques',shortName: 'Msur', coef: 2 , hasTP: true},
+                    { name: 'Anglais 2',shortName: 'Ang2', coef: 2 }
                 ],
                 'S2': [
-                    { name: 'Analyse mathématique 4', coef: 5 },
-                    { name: 'Informatique 4', coef: 4, hasTP: true },
-                    { name: 'Probabilités et statistiques 2', coef: 4 },
-                    { name: 'Optique et ondes électromagnétiques et Optique', coef: 4 },
-                    { name: 'Logique', coef: 4, hasTP: true },
-                    { name: 'Electronique 2', coef: 3  },
-                    { name: 'Anglais 3', coef: 2 } 
+                    { name: 'Analyse mathématique 4',shortName: 'AM4', coef: 5 },
+                    { name: 'Informatique 4',shortName: 'INFO4', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 2',shortName: 'PS2', coef: 4 },
+                    { name: 'Optique et ondes électromagnétiques et Optique',shortName: 'OEM', coef: 4 },
+                    { name: 'Logique',shortName: 'Logi', coef: 4, hasTP: true },
+                    { name: 'Electronique 2',shortName: 'Electro2', coef: 3  },
+                    { name: 'Anglais 3',shortName: 'Ang3', coef: 2 } 
                 ],
                 'G': [
-                    { name: 'Analyse mathématique 3', coef: 5 },
-                    { name: 'Informatique 3', coef: 4, hasTP: true },
-                    { name: 'Probabilités et statistiques 1', coef: 4 },
-                    { name: 'Théorie du signal', coef: 4 },
-                    { name: 'Ondes et vibrations', coef: 3 },
-                    { name: 'Analyse numérique', coef: 3 },
-                    { name: 'Mesures électriques et électroniques', coef: 2 , hasTP: true},
-                    { name: 'Anglais 2', coef: 2 } , 
-                    { name: 'Analyse mathématique 4', coef: 5 },
-                    { name: 'Informatique 4', coef: 4, hasTP: true },
-                    { name: 'Probabilités et statistiques 2', coef: 4 },
-                    { name: 'Optique et ondes électromagnétiques et Optique', coef: 4 },
-                    { name: 'Logique', coef: 4, hasTP: true },
-                    { name: 'Electronique 2', coef: 3  },
-                    { name: 'Anglais 3', coef: 2 } 
+                    { name: 'Analyse mathématique 3',shortName: 'AM3', coef: 5 },
+                    { name: 'Informatique 3', coef: 4,shortName: 'INFO3', hasTP: true },
+                    { name: 'Probabilités et statistiques 1',shortName: 'PS1', coef: 4 },
+                    { name: 'Théorie du signal',shortName: 'TS1', coef: 4 },
+                    { name: 'Ondes et vibrations',shortName: 'OV', coef: 3 },
+                    { name: 'Analyse numérique',shortName: 'AN', coef: 3 },
+                    { name: 'Mesures électriques et électroniques',shortName: 'Msur', coef: 2 , hasTP: true},
+                    { name: 'Anglais 2',shortName: 'Ang2', coef: 2 }, 
+                    { name: 'Analyse mathématique 4',shortName: 'AM4', coef: 5 },
+                    { name: 'Informatique 4',shortName: 'INFO4', coef: 4, hasTP: true },
+                    { name: 'Probabilités et statistiques 2',shortName: 'PS2', coef: 4 },
+                    { name: 'Optique et ondes électromagnétiques et Optique',shortName: 'OEM', coef: 4 },
+                    { name: 'Logique',shortName: 'Logi', coef: 4, hasTP: true },
+                    { name: 'Electronique 2',shortName: 'Electro2', coef: 3  },
+                    { name: 'Anglais 3',shortName: 'Ang3', coef: 2 }
                 ] 
             },
             '1CS': {
                 'S1': [
-                    { name: 'Traitement du signal 1', coef: 5, hasTP: true },
-                    { name: 'Réseaux de données 1', coef: 5, hasTP: true },
-                    { name: 'Introduction aux Systèmes d\'Exploitation', coef: 4 , hasTP: true},
-                    { name: 'Dispositifs Micro-Ondes', coef: 4 , hasTP: true},
-                    { name: 'Programmation Orientée Objet', coef: 4 , hasTP: true},  // ECD removed
-                    { name: 'Systèmes d\'Information et Bases de Données', coef: 4 , hasTP: true},
-                    { name: 'Projet électronique 1', coef: 4 , hasTP: true},
-                    { name: 'Gestion financière et comptabilité', coef: 2 },
-                    { name: 'Anglais 4', coef: 2 }
+                    { name: 'Traitement du signal 1',shortName: 'TS1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1',shortName: 'RDD1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation',shortName: 'ISE', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes',shortName: 'M.Onde', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet',shortName: 'POO', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données',shortName: 'SIBD', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1',shortName: 'P.elctro1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité',shortName: 'GFC', coef: 2 },
+                    { name: 'Anglais 4',shortName: 'Ang4', coef: 2 }
                 ],
                 'S2': [
-                    { name: 'Traitement du signal 2', coef: 5, hasTP: true },
-                    { name: 'Réseaux de données 2', coef: 5, hasTP: true },
-                    { name: 'Analyse de données', coef: 4 , hasTP: true},
-                    { name: 'Antennes et propagation', coef: 4 , hasTP: true},
-                    { name: 'Bases des Télécommunications', coef: 3 , hasTP: true},
-                    { name: 'Technologies Web 1', coef: 3 , hasTP: true},
-                    { name: 'Traitement d\'image', coef: 3 , hasTP: true},
-                    { name: 'Projet électronique 2', coef: 3 , hasTP: true},
-                    { name: 'Marketing', coef: 2 },
-                    { name: 'Anglais 5', coef: 2 }
+                    { name: 'Traitement du signal 2',shortName: 'TS2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2',shortName: 'RDD2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données',shortName: 'AD', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation',shortName: 'AP', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications',shortName: 'BT', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1',shortName: 'T.Web1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image',shortName: 'TI', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2',shortName: 'P.elctro1', coef: 3 , hasTP: true},
+                    { name: 'Marketing',shortName: 'Market', coef: 2 },
+                    { name: 'Anglais 5',shortName: 'Ang5',  coef: 2 }
                 ],
                 'G': [
-                    { name: 'Traitement du signal 1', coef: 5, hasTP: true },
-                    { name: 'Réseaux de données 1', coef: 5, hasTP: true },
-                    { name: 'Introduction aux Systèmes d\'Exploitation', coef: 4 , hasTP: true},
-                    { name: 'Dispositifs Micro-Ondes', coef: 4 , hasTP: true},
-                    { name: 'Programmation Orientée Objet', coef: 4 , hasTP: true},  // ECD removed
-                    { name: 'Systèmes d\'Information et Bases de Données', coef: 4 , hasTP: true},
-                    { name: 'Projet électronique 1', coef: 4 , hasTP: true},
-                    { name: 'Gestion financière et comptabilité', coef: 2 },
-                    { name: 'Anglais 4', coef: 2 },
-                    { name: 'Traitement du signal 2', coef: 5, hasTP: true },
-                    { name: 'Réseaux de données 2', coef: 5, hasTP: true },
-                    { name: 'Analyse de données', coef: 4 , hasTP: true},
-                    { name: 'Antennes et propagation', coef: 4 , hasTP: true},
-                    { name: 'Bases des Télécommunications', coef: 3 , hasTP: true},
-                    { name: 'Technologies Web 1', coef: 3 , hasTP: true},
-                    { name: 'Traitement d\'image', coef: 3 , hasTP: true},
-                    { name: 'Projet électronique 2', coef: 3 , hasTP: true},
-                    { name: 'Marketing', coef: 2 },
-                    { name: 'Anglais 5', coef: 2 }
+                    { name: 'Traitement du signal 1',shortName: 'TS1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1',shortName: 'RDD1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation',shortName: 'ISE', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes',shortName: 'M.Onde', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet',shortName: 'POO', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données',shortName: 'SIBD', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1',shortName: 'P.elctro1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité',shortName: 'GFC', coef: 2 },
+                    { name: 'Anglais 4',shortName: 'Ang4', coef: 2 },
+                    { name: 'Traitement du signal 2',shortName: 'TS2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2',shortName: 'RDD2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données',shortName: 'AD', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation',shortName: 'AP', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications',shortName: 'BT', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1',shortName: 'T.Web1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image',shortName: 'TI', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2',shortName: 'P.elctro1', coef: 3 , hasTP: true},
+                    { name: 'Marketing',shortName: 'Market', coef: 2 },
+                    { name: 'Anglais 5',shortName: 'Ang5',  coef: 2 }
                 ] 
             },
             '2CS': {
                 'S1': [
-                    { name: 'Théorie de l\'information et codage', coef: 5, hasTP: true },
-                    { name: 'Communications Numériques', coef: 5 , hasTP: true},
-                    { name: 'Communications unifiées et NGN', coef: 5, hasTP: true },
-                    { name: 'Cyber Sécurité', coef: 4 , hasTP: true},
-                    { name: 'Technologies Web 2', coef: 4 , hasTP: true}, 
-                    { name: 'Projet 1', coef: 3 }, 
-                    { name: 'Economie et stratégies d\'entreprises', coef: 3 },
-                    { name: 'Management de Projet', coef: 2  },
-                    { name: 'Anglais 6', coef: 2 }
+                    { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1',shortName: 'Proj1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises',shortName: 'ESE', coef: 3 },
+                    { name: 'Management de Projet',shortName: 'MP', coef: 2  },
+                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 }
                 ],
                 'S2': [ 
-                    { name: 'Radio communications', coef: 5 , hasTP: true},
-                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès', coef: 5 , hasTP: true},
-                    { name: 'DataCenter', coef: 5 , hasTP: true},
-                    { name: 'Composants photoniques pour télécoms optiques', coef: 4 , hasTP: true},
-                    { name: 'Programmation réseaux', coef: 4 , hasTP: true},
-                    { name: 'Communication multimédia', coef: 4 , hasTP: true},
-                    { name: 'Optimisation numérique', coef: 4 ,hasTP: true }, 
-                    { name: 'Projet 2', coef: 3 }, 
-                    { name: 'Anglais 7', coef: 2 },
-                    { name: 'Stage de découverte de l\'éntreprise', coef: 1 , hasTP: true} 
+                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès',shortName: 'ITTA', coef: 5 , hasTP: true},
+                    { name: 'DataCenter',shortName: 'DC', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques',shortName: 'CPTO', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux',shortName: 'PR', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia',shortName: 'CM', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique',shortName: 'ON', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2',shortName: 'Proj2', coef: 3 }, 
+                    { name: 'Anglais 7',shortName: 'Ang7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise',shortName: 'Stage', coef: 1 , hasTP: true} 
                 ],
                 'G': [
-                    { name: 'Théorie de l\'information et codage', coef: 5, hasTP: true },
-                    { name: 'Communications Numériques', coef: 5 , hasTP: true},
-                    { name: 'Communications unifiées et NGN', coef: 5, hasTP: true },
-                    { name: 'Cyber Sécurité', coef: 4 , hasTP: true},
-                    { name: 'Technologies Web 2', coef: 4 , hasTP: true}, 
-                    { name: 'Projet 1', coef: 3 }, 
-                    { name: 'Economie et stratégies d\'entreprises', coef: 3 },
-                    { name: 'Management de Projet', coef: 2  },
-                    { name: 'Anglais 6', coef: 2 },
-                    { name: 'Radio communications', coef: 5 , hasTP: true},
-                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès', coef: 5 , hasTP: true},
-                    { name: 'DataCenter', coef: 5 , hasTP: true},
-                    { name: 'Composants photoniques pour télécoms optiques', coef: 4 , hasTP: true},
-                    { name: 'Programmation réseaux', coef: 4 , hasTP: true},
-                    { name: 'Communication multimédia', coef: 4 , hasTP: true},
-                    { name: 'Optimisation numérique', coef: 4 ,hasTP: true }, 
-                    { name: 'Projet 2', coef: 3 }, 
-                    { name: 'Anglais 7', coef: 2 },
-                    { name: 'Stage de découverte de l\'éntreprise', coef: 1 , hasTP: true}
+                    { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1',shortName: 'Proj1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises',shortName: 'ESE', coef: 3 },
+                    { name: 'Management de Projet',shortName: 'MP', coef: 2  },
+                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 },
+                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès',shortName: 'ITTA', coef: 5 , hasTP: true},
+                    { name: 'DataCenter',shortName: 'DC', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques',shortName: 'CPTO', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux',shortName: 'PR', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia',shortName: 'CM', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique',shortName: 'ON', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2',shortName: 'Proj2', coef: 3 }, 
+                    { name: 'Anglais 7',shortName: 'Ang7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise',shortName: 'Stage', coef: 1 , hasTP: true} 
                 ] 
             },
             '3CS': {
                 'TTN': [
-                    { name: 'Traitement et Analyse de Données Massives -Big Data-', coef: 5 },
-                    { name: 'Systèmes distribués', coef: 5  },
-                    { name: 'Bases de Données Non Relationnelles', coef: 5 }, 
-                    { name: 'Apprentissage automatique -Machine Learning-', coef: 5 }, 
-                    { name: 'Génie logiciel', coef: 4,  },
-                    { name: 'Architectures Réparties', coef: 4  },
-                    { name: 'Sécurité des données et des réseaux', coef: 4 },
-                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
-                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
-                    { name: 'Création d\'entreprises', coef: 2 },
-                    { name: 'Anglais 8', coef: 2 }
+                    { name: 'Traitement et Analyse de Données Massives -Big Data-',shortName: 'TADM-BD-', coef: 5 },
+                    { name: 'Systèmes distribués',shortName: 'SD', coef: 5  },
+                    { name: 'Bases de Données Non Relationnelles',shortName: 'BDNR', coef: 5 }, 
+                    { name: 'Apprentissage automatique -Machine Learning-',shortName: 'AA-ML-', coef: 5 }, 
+                    { name: 'Génie logiciel',shortName: 'GL', coef: 4,  },
+                    { name: 'Architectures Réparties',shortName: 'AR', coef: 4  },
+                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', coef: 4 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises',shortName: 'CE', coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
                 ],
                 'TRIP': [ 
-                    { name: 'Réseaux avancés', coef: 6  },
-                    { name: 'Software-Defined Networking', coef: 5 },
-                    { name: 'Ingénierie de trafic dans les réseaux', coef: 5 }, 
-                    { name: 'Sécurité des données et des réseaux', coef: 4 },
-                    { name: 'Systèmes et réseaux de télécommunications optiques', coef: 4  },
-                    { name: 'Gestion et maintenance des réseaux', coef: 3  },
-                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
-                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
-                    { name: 'Création d\'entreprises', coef: 2 },
-                    { name: 'Anglais 8', coef: 2 }
+                    { name: 'Réseaux avancés',shortName: 'RA', coef: 6  },
+                    { name: 'Software-Defined Networking',shortName: 'SDN', coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux',shortName: 'ITR', coef: 5 }, 
+                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', coef: 4 },
+                    { name: 'Systèmes et réseaux de télécommunications optiques',shortName: 'SRTO', coef: 4  },
+                    { name: 'Gestion et maintenance des réseaux', shortName: 'GMR',coef: 3  },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises',shortName: 'CE', coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
                 ],
                 'ST': [
-                    { name: 'Radiocommunications avancées', coef: 5  },
-                    { name: 'Réseaux mobiles ', coef: 5 },
-                    { name: 'Ingénierie de trafic dans les réseaux', coef: 5 }, 
-                    { name: 'Systèmes et réseaux de télécommunications optiques', coef: 4 },
-                    { name: 'Systèmes Satellitaires', coef: 4 },
-                    { name: 'Techniques des systèmes FHN', coef: 3 },
-                    { name: 'Conception RF', coef: 3 },
-                    { name: 'Gestion et maintenance des réseaux', coef: 3 },
-                    { name: 'Systèmes embarqués, mobilités et objets communicants', coef: 3  },
-                    { name: 'Economie numérique et Management de l\'Innovation', coef: 2 },
-                    { name: 'Création d\'entreprises', coef: 2 },
-                    { name: 'Anglais 8', coef: 2 }
+                    { name: 'Radiocommunications avancées',shortName: 'RA', coef: 5  },
+                    { name: 'Réseaux mobiles ',shortName: 'RM', coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux',shortName: 'ITR', coef: 5 }, 
+                    { name: 'Systèmes et réseaux de télécommunications optiques',shortName: 'SRTO', coef: 4 },
+                    { name: 'Systèmes Satellitaires',shortName: 'SS', coef: 4 },
+                    { name: 'Techniques des systèmes FHN',shortName: 'TSFHN', coef: 3 },
+                    { name: 'Conception RF',shortName: 'CRF', coef: 3 },
+                    { name: 'Gestion et maintenance des réseaux',shortName: 'GMR', coef: 3 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises', shortName: 'CE',coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
                 ] 
             }
         }; 
@@ -913,7 +938,7 @@
                 }
                 gradesTableBody.appendChild(row);
             });
-    
+            updateSubjectNames();
             updateGrades();
         }
     
