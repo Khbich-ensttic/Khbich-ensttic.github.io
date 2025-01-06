@@ -409,7 +409,18 @@
         padding: 5px;
     }
             }
-            
+            @media (max-width: 768px) {
+    .grades-table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        table-layout: auto; /* Ensures table cells adjust for smaller screens */
+    }
+
+    .grades-table td, .grades-table th {
+        white-space: nowrap; /* Prevents text wrapping and keeps data in a single line */
+    }
+}   
         </style>
     </head>
     <body>
