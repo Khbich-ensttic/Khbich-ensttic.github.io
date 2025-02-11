@@ -788,8 +788,8 @@ document.addEventListener('DOMContentLoaded', updateSubjectNames);
                     { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
                 ],
                 'TRIP': [ 
-                    { name: 'Réseaux avancés',shortName: 'RA', coef: 6  },
-                    { name: 'Software-Defined Networking',shortName: 'SDN', coef: 5 },
+                    { name: 'Réseaux avancés',shortName: 'RA',hasTP: true, coef: 6  },
+                    { name: 'Software-Defined Networking',shortName: 'SDN',hasTP: true, coef: 5 },
                     { name: 'Ingénierie de trafic dans les réseaux',shortName: 'ITR', coef: 5 }, 
                     { name: 'Sécurité des données et des réseaux',shortName: 'SDR', hasTP: true, coef: 4 },
                     { name: 'Systèmes et réseaux de télécommunications optiques',shortName: 'SRTO', coef: 4  },
@@ -914,15 +914,12 @@ document.addEventListener('DOMContentLoaded', updateSubjectNames);
                     "Sécurité des données et des réseaux",
                     "Systèmes embarqués, mobilités et objets communicants", 
                     "Réseaux avancés",
-                    "Software-Defined Networking",
-                    "Systèmes et réseaux de télécommunications optiques",
-                    "Gestion et maintenance des réseaux",
+                    "Software-Defined Networking", 
                     "Conception RF",
                     "Techniques des systèmes FHN",
                     "Systèmes Satellitaires",
                     "Réseaux mobiles ",
-                    "Radiocommunications avancées", 
-                    "Ingénierie de trafic dans les réseaux", 
+                    "Radiocommunications avancées",  
                     "Projet électronique 2"
             ].includes(subject.name);
                 if (subject.hasTP) {
