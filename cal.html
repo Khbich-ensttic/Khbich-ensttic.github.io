@@ -400,27 +400,25 @@
                 .card {
                 flex: 1 1 100%;
                 max-width: none;
-            }
-            .grades-table {
-        font-size: 0.9rem;
-    }
-
-    .grades-table td {
-        padding: 5px;
-    }
-            }
+                }
+                .grades-table {
+                    font-size: 0.9rem;
+                } 
+                .grades-table td {
+                    padding: 5px;
+                }
+                }
             @media (max-width: 768px) {
-    .grades-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-        table-layout: auto; /* Ensures table cells adjust for smaller screens */
-    }
-
-    .grades-table td, .grades-table th {
-        white-space: nowrap; /* Prevents text wrapping and keeps data in a single line */
-    }
-}   
+                .grades-table {
+                    width: 100%;
+                    overflow-x: auto;
+                    display: block;
+                    table-layout: auto;  
+                } 
+                .grades-table td, .grades-table th {
+                    white-space: nowrap; 
+                }
+            } 
         </style>
     </head>
     <body>
@@ -506,10 +504,10 @@
             <tbody id="gradesTableBody">
                 <tr>
                     <td><input type="text" name="subject" placeholder="Matière"></td>
-                    <td><input type="number" name="coef" step="0.01" placeholder="Coef"></td>
+                    <td><input type="number" name="coef"  placeholder="Coef"></td>
                     <td><input type="number" name="ecd" step="0.01" placeholder="ECD"></td>
                     <td><input type="number" name="tp" step="0.01" placeholder="TP"></td>
-                    <td><input type="number" name="emd" step="0.01" placeholder="EMD"></td>
+                    <td><input type="number" name="emd"  step="0.01" placeholder="EMD"></td>
                     <td><input type="number" name="average" step="0.01" placeholder="Moyenne" readonly></td>
                 </tr>
                 <!-- Les lignes seront ajoutées ici par JavaScript -->
@@ -775,13 +773,13 @@ document.addEventListener('DOMContentLoaded', updateSubjectNames);
             },
             '3CS': {
                 'TTN': [
-                    { name: 'Traitement et Analyse de Données Massives -Big Data-',shortName: 'TADM-BD-', hasTP: true, coef: 5 },
-                    { name: 'Systèmes distribués',shortName: 'SD', hasTP: true, coef: 5  },
+                    { name: 'Traitement et Analyse de Données Massives -Big Data-', hasTP: true ,shortName: 'TADM-BD-', coef: 5 },
+                    { name: 'Systèmes distribués',shortName: 'SD', hasTP: true , coef: 5  },
                     { name: 'Bases de Données Non Relationnelles',shortName: 'BDNR', hasTP: true, coef: 5 }, 
-                    { name: 'Apprentissage automatique -Machine Learning-',shortName: 'AA-ML-', hasTP: true, coef: 5 }, 
-                    { name: 'Génie logiciel',shortName: 'GL', hasTP: true, coef: 4,  },
-                    { name: 'Architectures Réparties',shortName: 'AR', hasTP: true, coef: 4  },
-                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', hasTP: true, coef: 4 },
+                    { name: 'Apprentissage automatique -Machine Learning-',shortName: 'AA-ML-', hasTP: true , coef: 5 }, 
+                    { name: 'Génie logiciel',shortName: 'GL', hasTP: true , coef: 4,  },
+                    { name: 'Architectures Réparties',shortName: 'AR', hasTP: true , coef: 4  },
+                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', hasTP: true , coef: 4 },
                     { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
                     { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
                     { name: 'Création d\'entreprises',shortName: 'CE', coef: 2 },
@@ -935,9 +933,9 @@ document.addEventListener('DOMContentLoaded', updateSubjectNames);
                     row.innerHTML = `
                         <td>${subject.name}</td>
                         <td>${subject.coef}</td>
-                        <td>${excludeECD ? '____' : '<input type="number" value="0" min="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
+                        <td>${excludeECD ? '____' : '<input type="number" min="0" value="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
                         <td>____</td>
-                        <td><input type="number" min="0" value="0" max="20" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                        <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
                         <td class="average"></td>
                     `;
                 }
@@ -978,27 +976,35 @@ document.addEventListener('DOMContentLoaded', updateSubjectNames);
         document.getElementById('semesterSelect').addEventListener('change', function () {
     updateGradesTable();
 });
+ 
+document.addEventListener('input', function (e) {
+    if (e.target.type === 'number') {
+        const subject = e.target.dataset.subject;
+        const type = e.target.dataset.type;
+        const value = e.target.value;
 
-       document.addEventListener('input', function (e) {
-            if (e.target.type === 'number') {
-                const subject = e.target.dataset.subject;
-                const type = e.target.dataset.type;
-                let value = e.target.value;
-
-                // If the field is empty, set it back to 0
-                if (value === '') {
-                    value = '0';
-                    e.target.value = value;
-                }
-
-                if (!grades[subject]) {
-                    grades[subject] = {};
-                }
-        
-                grades[subject][type] = value;
-                updateGrades();
-             }
-        });
+        if (value === '' || (!isNaN(value) && parseFloat(value) >= 0 && parseFloat(value) <= 20)) {
+            if (value === '') {
+            value = '0';
+            e.target.value = value;
+        }
+            if (!grades[subject]) {
+                grades[subject] = {};
+            }
+            grades[subject][type] = value;
+            updateGrades();
+        } else {
+            e.target.value = grades[subject]?.[type] || '';
+        }
+    }
+});
+document.addEventListener('blur', function (e) {
+    if (e.target.type === 'number' && e.target.value.trim() === '') {
+        e.target.value = '';  // Keep it visually empty
+        grades[e.target.dataset.subject][e.target.dataset.type] = '0'; // Store as 0
+        updateGrades();
+    }
+}, true);
 
     
         document.addEventListener('keydown', function (e) {
