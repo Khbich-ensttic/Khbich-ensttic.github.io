@@ -1,375 +1,537 @@
 <!DOCTYPE html>
-<html lang="en" lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="go.png">
-        <title>Khbich ENSTTIC</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-            
-            :root {
-                --primary-color: #0047ab;
-                --secondary-color: #00a8ff;
-                --text-color: #333;
-                --bg-color: #f4f4f4;
-            }
-            
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body {
-                font-family: 'Poppins', sans-serif;
-                line-height: 1.6;
-                color: var(--text-color);
-                background-color: var(--bg-color);
-            }
-            .container {
-                width: 90%;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0  ;
-            }
-            .navbar {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: #fff;
-                padding: 1rem 0;
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transition: box-shadow 0.3s ease;
-            }
-            .navbar:hover {
-                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-            }
-            .navbar .container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .navbar h1 {
-                margin: 0;
-            }
-            .navbar h1 a {
-                text-decoration: none;
-                color: #fff;
-                font-size: 24px;
-            }
-            .navbar a {
-                color: #fff;
-                text-decoration: none;
-                padding: 0.5rem 1rem;
-                transition: all 0.3s ease;
-            }
-            .navbar a:hover {
-                background-color: rgba(255,255,255,0.1);
-                border-radius: 5px;
-            }
-            .menu {
-                list-style: none;
-                display: flex;
-                margin: 0;
-                padding: 0;
-            }
-            .menu > li {
-            position: relative;
-            margin: 0px 0px 0px 15px;
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="go.png">
+    <title>2CP - Khbich ENSTTIC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0047ab;
+            --primary-light: #3a7bd5;
+            --secondary-color: #00a8ff;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
         }
-            .menu > li > a {
-                color: #fff;
-                text-decoration: none;
-                padding: 0.5rem 1rem;
-                display: block;
-                transition: background-color 0.3s ease;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            margin: 0;
+        }
+        
+        .navbar h1 a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar h1 a i {
+            margin-right: 10px;
+        }
+        
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+        
+        .navbar a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu > li {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .menu > li > a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.7rem 1rem;
+            display: block;
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+        
+        .menu > li > a:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .menu > li:hover > .dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .dropdown {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            display: none;
+            padding: 10px 0;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: var(--box-shadow);
+            min-width: 180px;
+        }
+        
+        .dropdown li a {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.7rem 1.5rem;
+            display: block;
+            white-space: nowrap;
+            transition: var(--transition);
+            font-weight: 400;
+        }
+        
+        .dropdown li a:hover {
+            background-color: rgba(0,71,171,0.08);
+            color: var(--primary-color);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Course Cards */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+            gap: 25px;
+            margin: 30px auto;
+            justify-content: center;
+        }
+        
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .course-card-header {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .course-card-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .course-card-header h2 a {
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .course-card-header h2 a:hover {
+            opacity: 0.9;
+        }
+        
+        .course-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .course-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .course-card-body ul li {
+            margin-bottom: 12px;
+            transition: var(--transition);
+            border-radius: 6px;
+            padding: 3px;
+        }
+        
+        .course-card-body ul li:hover {
+            transform: translateX(5px);
+            background-color: rgba(0,71,171,0.05);
+        }
+        
+        .course-card-body ul li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .course-card-body ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            transition: var(--transition);
+            font-weight: 400;
+        }
+        
+        .course-card-body ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .course-card-body ul li a i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        footer .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer p {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+        
+        footer .contact-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+        
+        footer a:hover {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        footer .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        footer .social-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .course-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-            .menu > li > a:hover {
-                background-color: rgba(255,255,255,0.1);
-            }
-            .menu > li:hover > .dropdown {
-                display: block;
-                animation: fadeIn 0.3s ease-in-out;
-            }
+        }
+        
+        @media (max-width: 768px) {
             .menu-toggle {
-                display: none;
-                background: none;
-                border: none;
-                color: #fff;
-                font-size: 24px;
-                cursor: pointer;
+                display: block;
             }
-            .dropdown {
-                list-style: none;
+            
+            .menu {
+                flex-direction: column;
                 position: absolute;
                 top: 100%;
                 left: 0;
+                right: 0;
                 background-color: var(--primary-color);
-                display: none;
-                padding: 10px 0;
-                border-radius: 0 0 5px 5px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-            .dropdown li a {
-                text-decoration: none;
-                color: #fff;
-                padding: 0.5rem 1rem;
-                display: block;
-                white-space: nowrap;
-                transition: background-color 0.3s ease;
-            }
-            .dropdown li a:hover {
-                background-color: var(--secondary-color);
-            }
-            @media (max-width: 768px) {
-                .menu-toggle {
-                    display: block;
-                }
-                .menu {
-                    flex-direction: column;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    background-color: var(--primary-color);
-                    padding: 1rem 0;
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                    z-index: 999;
-                    visibility: hidden;
-                    opacity: 0;
-                    transition: visibility 0s, opacity 0.3s ease;
-                }
-                .menu > li {
-                    margin: 0;
-                    text-align: center;
-                }
-                .menu.active {
-                    visibility: visible;
-                    opacity: 1;
-                }
-                .dropdown {
-                    position: static;
-                    background-color: var(--secondary-color);
-                    display: none;
-                }
-                .menu > li:hover > .dropdown {
-                    display: none;
-                }
-                .menu > li > a:focus + .dropdown,
-                .menu > li > a:active + .dropdown {
-                    display: block;
-                }
-                .menu > li ul {
-                    position: static;
-                }
-            }
-            .header {
-                text-align: center;
-                margin-bottom: 30px;
-            }
-            .header h1 {
-                font-size: 2em;
-                color: #1c5db6;
-                background-color: #eef3fc;
-                display: inline-block;
-                padding: 10px 20px;
-                border-radius: 5px;
-            }
-             .grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 15px;
-            }
-            .card {
-            flex: 1 1 calc(50% - 40px);
-            max-width: 500px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-            }
-            .card h2 {
-            text-align: center;
-            font-size: 1.5em;
-            color: #007BFF;
-            margin-bottom: 10px;
-            }
-            .card ul {
-                list-style: none;
-               padding: 0;
-                margin: 0;
-            }
-            .card ul li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            }
-            .card ul li img {
-            width: 40px;
-            margin-right: 0px;
-            }
-            .card ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1em;
-            }
-            .card ul li a:hover {
-            color: #0056b3;
-            }
-            .card .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-            color: #007BFF;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-            }
-            ul {
-            list-style: none;
-            padding: 0;
-            }
-            li {
-            margin: 10px 0;
-            }
-            a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 1em;
-            }
-            a:hover {
-            color: #0056b3;
-            }
-            .section {
-                background-color: #fff;
-                border-radius: 10px;
+                padding: 1rem 0;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                padding: 10rem;
-                 
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
+                z-index: 999;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s, opacity 0.3s ease;
             }
-            .section:hover { 
-                box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-            }
-            .section:hover::before {
-                top: 0;
-            }
-            .section h2 {
-                color: var(--primary-color);
-                border-bottom: 2px solid var(--primary-color);
-                padding-bottom: 0.5rem;
-                margin-bottom: 1rem;
-                position: relative;
-            }
-            .section ul {
-                list-style-type: none;
-                padding: 0;
-            }
-            .section ul li {
-                margin-bottom: 0.5rem;
-                transition: all 0.3s ease;
-            }
-            .section ul li:hover {
-                transform: translateX(10px);
-            }
-            .section ul li a {
-                color: var(--text-color);
-                text-decoration: none;
-                transition: color 0.3s ease;
-                display: inline-block;
-                padding: 5px 10px;
-                border-radius: 5px;
-            }
-            .section ul li a:hover {
-                color: var(--primary-color);
-                background-color: rgba(0,71,171,0.1);
-            }
-            .section ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            }
-            .section ul li a:hover {
-            color: #fff;
-            background-color: var(--secondary-color);
-            }
-            .section { 
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            }
-            footer {
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-                color: #fff;
+            
+            .menu > li {
+                margin: 0;
                 text-align: center;
-                padding: 2rem 0; 
             }
             
-            footer a {
+            .menu.active {
+                visibility: visible;
+                opacity: 1;
+            }
+            
+            .dropdown {
+                position: static;
+                background-color: rgba(0,0,0,0.1);
+                display: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .dropdown li a {
                 color: #fff;
-                text-decoration: underline;
+                padding: 0.7rem 2rem;
             }
             
-            @media (max-width: 768px) {
-                .menu-toggle {
-                    display: block;
-                }
-                
-                .menu {
-                    display: none;
-                    flex-direction: column;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    background-color: var(--primary-color);
-                }
-                
-                .menu.active {
-                    display: flex;
-                }
-                
-                .menu > li {
-                    margin: 0;
-                    text-align: center;
-                }
-                
-                .dropdown {
-                    position: static;
-                    background-color: var(--secondary-color);
-                    display: none;
-                }
-                
-                .menu > li:hover > .dropdown {
-                    display: none;
-                }
-                
-                .menu > li > a:focus + .dropdown,
-                .menu > li > a:active + .dropdown {
-                    display: block;
-                }
-                .card {
-            flex: 1 1 100%;
-            max-width: none;
-        }
+            .dropdown li a:hover {
+                background-color: rgba(255,255,255,0.1);
+                color: #fff;
             }
-        </style>
-    </head>
+            
+            .menu > li:hover > .dropdown {
+                display: none;
+            }
+            
+            .menu > li > a:focus + .dropdown,
+            .menu > li > a:active + .dropdown {
+                display: block;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .navbar h1 a {
+                font-size: 20px;
+            }
+            
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Active menu item styling */
+        .menu > li > a.active {
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        .menu > li > a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; width: 40%; }
+            50% { opacity: 1; width: 60%; }
+            100% { opacity: 0.6; width: 40%; }
+        }
+
+        /* Active dropdown item */
+        .dropdown li a.active {
+            background-color: rgba(0,71,171,0.1);
+            color: var(--primary-color);
+            font-weight: 500;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* Mobile active menu styling */
+        @media (max-width: 768px) {
+            .menu > li > a.active::after {
+                width: 30%;
+            }
+            
+            @keyframes pulse {
+                0% { opacity: 0.6; width: 20%; }
+                50% { opacity: 1; width: 30%; }
+                100% { opacity: 0.6; width: 20%; }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .course-grid {
+                grid-template-columns: repeat(3, minmax(300px, 350px));
+                max-width: 1200px;
+            }
+        }
+    </style>
+</head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1><a href="index.html">Khbich ENSTTIC</a></h1>
-             
-            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+            <h1><a href="index.html"><i class="fas fa-graduation-cap"></i> Khbich ENSTTIC</a></h1>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="menu">
                 <li>
                     <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
@@ -383,7 +545,7 @@
                     <ul class="dropdown">
                         <li><a href="cp2.html#sem3">Semestre 1</a></li>
                         <li><a href="cp2.html#sem4">Semestre 2</a></li>
-                        <li><a href="cp2.html#Concour">Concour</a></li>
+                        <li><a href="cp2.html#Concour">Concours</a></li>
                     </ul>
                 </li>
                 <li>
@@ -409,73 +571,89 @@
                         <li><a href="cs3.html#pfe">PFE</a></li>
                     </ul>
                 </li>
-                <!-- Add this inside your navbar's menu ul element -->
                 <li>
                     <a href="cal.html" class="calc-link">
-                        <span>Calculer-Moyenne</span>
+                        <i class="fas fa-calculator"></i> Calculer Moyenne
                     </a>
                 </li>
                 <li>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIRn6v09BPkYqIb_fJld8hJaZZub3zz6KtT1LFMfn1siechw/viewform?usp=header" target="_blank" class="calc-link">
-                        <span>Contribution</span>
+                        <i class="fas fa-edit"></i> Contribution
                     </a>
                 </li>
-            </ul> 
+            </ul>
         </div>
-    </nav>   
-    <section id="2CP" class="section">
+    </nav>
+    
+    <header class="page-header">
         <div class="container">
-            <div class="header">
-                <h1><a href="https://drive.google.com/drive/folders/1PUKDJ6EdmmxR0UbYE2ppb1hJ8kKski-F?usp=drive_link" target="_blank">2CP</a></h1>
-            </div>
-            <div class="grid">
-                <!-- Semester 1 -->
-                <div id="sem3" class="card">
+            <h1>2CP - Deuxième Année Classes Préparatoires</h1>
+            <p>Ressources et documents pour les étudiants de deuxième année</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="course-grid">
+            <div id="sem3" class="course-card">
+                <div class="course-card-header">
                     <h2><a href="https://drive.google.com/drive/folders/112TO2POpOwT_-TdvoBa6vRXp8E6dYmeR?usp=drive_link" target="_blank">SEMESTRE 1</a></h2>
+                </div>
+                <div class="course-card-body">
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1sOGPJShIytimqWecR9sEjlAy_DzdoRZw?usp=drive_link">Analyse mathématique 3</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1L7gawPPMw_TqY1HCZVj5eeiznGok395f?usp=drive_link">Informatique 3</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1PPmwd5CKRLRMRQGaofSn_YP7hvpnxGB6?usp=drive_link">Probabilités et Statistique 1</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/121z2wvN8LTDve-x5liI9s-jyvZiH-E5R?usp=drive_link">Théorie du Signal</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/19VB3P_9VlOsQVowOkQHTIFDBBDVbxwIs?usp=drive_link">Ondes et Vibrations</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1Ug_heT0okIT5e-ZHuN1ggs-sLpI_NtAX?usp=drive_link">Analyse numérique</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1ftOfsbfKYqbqAni97IRDOM5lVUuBHyOS?usp=drive_link">Mesures électriques et électroniques</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1RO8d2ywtGp1m688kOwNRHueEN2_dd5H7?usp=drive_link">Anglais 2</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1sOGPJShIytimqWecR9sEjlAy_DzdoRZw?usp=drive_link" target="_blank"><i class="fas fa-file-alt"></i> Analyse mathématique 3</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1L7gawPPMw_TqY1HCZVj5eeiznGok395f?usp=drive_link" target="_blank"><i class="fas fa-file-code"></i> Informatique 3</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1PPmwd5CKRLRMRQGaofSn_YP7hvpnxGB6?usp=drive_link" target="_blank"><i class="fas fa-chart-bar"></i> Probabilités et Statistique 1</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/121z2wvN8LTDve-x5liI9s-jyvZiH-E5R?usp=drive_link" target="_blank"><i class="fas fa-wave-square"></i> Théorie du Signal</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/19VB3P_9VlOsQVowOkQHTIFDBBDVbxwIs?usp=drive_link" target="_blank"><i class="fas fa-broadcast-tower"></i> Ondes et Vibrations</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1Ug_heT0okIT5e-ZHuN1ggs-sLpI_NtAX?usp=drive_link" target="_blank"><i class="fas fa-calculator"></i> Analyse numérique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1ftOfsbfKYqbqAni97IRDOM5lVUuBHyOS?usp=drive_link" target="_blank"><i class="fas fa-tachometer-alt"></i> Mesures électriques et électroniques</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1RO8d2ywtGp1m688kOwNRHueEN2_dd5H7?usp=drive_link" target="_blank"><i class="fas fa-language"></i> Anglais 2</a></li>
                     </ul>
                 </div>
-                <!-- Semester 2 -->
-                <div id="sem4" class="card">
+            </div>
+            
+            <div id="sem4" class="course-card">
+                <div class="course-card-header">
                     <h2><a href="https://drive.google.com/drive/folders/1Hd32l0JrlvfOPQXOpEDjyYB5_jvstfKw?usp=drive_link" target="_blank">SEMESTRE 2</a></h2>
+                </div>
+                <div class="course-card-body">
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1JwLcKBJFJ7pPbvTHJWAfwXxeW7dRP1i4?usp=drive_link">Analyse mathématique 4</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1XzP5o4iNwfUYDTkCSqLVWsMw3QMTR9qs?usp=drive_link">Informatique 4</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1-f1IyIVcZwlGa8t73-zv322m1zNoM4s9?usp=drive_link">Probabilités et Statistique 2</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1geUDzqSYDHdBzCIv41dbM8lvILuRK1Qj?usp=drive_link">Ondes électromagnétiques et Optique</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1oA9JjMcbDaTT9uh93HiuoZvNyGqqpVD0?usp=drive_link">Logique</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/10LVF01vRVrCz6yHudi_gHNWsYuZQualI?usp=drive_link">Electronique 2</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1CTTZZ1smpgySZVvpEkBCjOgQ960ZDBTI?usp=drive_link">Anglais 3</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1JwLcKBJFJ7pPbvTHJWAfwXxeW7dRP1i4?usp=drive_link" target="_blank"><i class="fas fa-file-alt"></i> Analyse mathématique 4</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1XzP5o4iNwfUYDTkCSqLVWsMw3QMTR9qs?usp=drive_link" target="_blank"><i class="fas fa-file-code"></i> Informatique 4</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1-f1IyIVcZwlGa8t73-zv322m1zNoM4s9?usp=drive_link" target="_blank"><i class="fas fa-chart-bar"></i> Probabilités et Statistique 2</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1geUDzqSYDHdBzCIv41dbM8lvILuRK1Qj?usp=drive_link" target="_blank"><i class="fas fa-broadcast-tower"></i> Ondes électromagnétiques et Optique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1oA9JjMcbDaTT9uh93HiuoZvNyGqqpVD0?usp=drive_link" target="_blank"><i class="fas fa-project-diagram"></i> Logique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/10LVF01vRVrCz6yHudi_gHNWsYuZQualI?usp=drive_link" target="_blank"><i class="fas fa-microchip"></i> Electronique 2</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1CTTZZ1smpgySZVvpEkBCjOgQ960ZDBTI?usp=drive_link" target="_blank"><i class="fas fa-language"></i> Anglais 3</a></li>
                     </ul>
                 </div>
-                <!-- Concour -->
-                <div id="Concour" class="card">
-                    <h2 ><a  href="https://drive.google.com/drive/folders/1ATs6sGEhLcOp0KDX4gfJiC5rus3O5Xtx?usp=drive_link" target="_blank">Concour</a></h2>
+            </div>
+            
+            <div id="Concour" class="course-card">
+                <div class="course-card-header">
+                    <h2><a href="https://drive.google.com/drive/folders/1ATs6sGEhLcOp0KDX4gfJiC5rus3O5Xtx?usp=drive_link" target="_blank">CONCOURS</a></h2>
+                </div>
+                <div class="course-card-body">
                     <ul>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1KNccFY8JrrUwAyy514dN3o-Ggb0b59_V?usp=drive_link">Electricité</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1sL6ZsFo7ihEBNnTHZTlUqLOmL09JOSPx?usp=drive_link">Mécanique</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1n60epGU1Ic3vRENjEBzGRkO4l_S0lBjb?usp=drive_link">Analyse numérique</a></li>
-                        <li><img src="doc.png" alt="icon"><a target="_blank" href="https://drive.google.com/drive/folders/1DmICZpEBAfVGtT8b3YWMqgSaoSclLX84?usp=drive_link">Analyse mathématique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1KNccFY8JrrUwAyy514dN3o-Ggb0b59_V?usp=drive_link" target="_blank"><i class="fas fa-bolt"></i> Electricité</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1sL6ZsFo7ihEBNnTHZTlUqLOmL09JOSPx?usp=drive_link" target="_blank"><i class="fas fa-cogs"></i> Mécanique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1n60epGU1Ic3vRENjEBzGRkO4l_S0lBjb?usp=drive_link" target="_blank"><i class="fas fa-calculator"></i> Analyse numérique</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1DmICZpEBAfVGtT8b3YWMqgSaoSclLX84?usp=drive_link" target="_blank"><i class="fas fa-file-alt"></i> Analyse mathématique</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
+    
     <footer>
         <div class="container">
             <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
-            <p>NOUS CONTACTER</p>
-            <p>Email: <a href="mailto:khbich.ensttic@gmail.com">khbich.ensttic@gmail.com</a></p>
+            <p class="contact-title">NOUS CONTACTER</p>
+            <p>Email: <a href="mailto:khbichensttic@gmail.com">khbichensttic@gmail.com</a></p>
+             
         </div>
     </footer>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
@@ -510,6 +688,51 @@
                 }
             });
         });
+
+        // Set active menu item based on current page
+        function setActiveMenuItem() {
+            // Get the current page filename
+            const path = window.location.pathname;
+            const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+            
+            // Set active class for main menu items
+            const menuLinks = document.querySelectorAll('.menu > li > a');
+            menuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Check if href matches current page or if we're on index.html and the link is to the home page
+                if (href === currentPage || 
+                    (currentPage === 'index.html' && (href === '' || href === '/' || href === '#'))) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Check for hash in URL to set active dropdown item
+            if (window.location.hash) {
+                const hash = window.location.hash;
+                const dropdownItems = document.querySelectorAll('.dropdown li a');
+                
+                dropdownItems.forEach(item => {
+                    if (item.getAttribute('href').includes(hash)) {
+                        item.classList.add('active');
+                        
+                        // Also activate the parent menu item
+                        const parentMenu = item.closest('.dropdown').previousElementSibling;
+                        if (parentMenu) {
+                            parentMenu.classList.add('active');
+                        }
+                    }
+                });
+            }
+            
+            // If we're on a specific page, make sure its menu item is active
+            if (currentPage.includes('cp2')) {
+                document.querySelector('a[href="cp2.html"]').classList.add('active');
+            }
+        }
+
+        // Call the function to set active menu items when page loads
+        setActiveMenuItem();
     </script>
 </body>
 </html>
+

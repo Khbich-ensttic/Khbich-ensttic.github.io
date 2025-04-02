@@ -1,457 +1,744 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="go.png">
-    <title>Khbich ENSTTIC</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        :root {
-            --primary-color: #0047ab;
-            --secondary-color: #00a8ff;
-            --text-color: #333;
-            --bg-color: #f4f4f4;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease;
-        }
-        .navbar:hover {
-            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        }
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar h1 {
-            margin: 0;
-        }
-        .navbar h1 a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 24px;
-        }   
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        .navbar a:hover {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 5px;
-        }
-        .menu {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .menu > li {
-            position: relative;
-            margin: 0px 0px 0px 15px;
-        }
-        .menu > li > a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .menu > li > a:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-        .menu > li:hover > .dropdown {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .dropdown {
-            list-style: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--primary-color);
-            display: none;
-            padding: 10px 0;
-            border-radius: 0 0 5px 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .dropdown li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            display: block;
-            white-space: nowrap;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown li a:hover {
-            background-color: var(--secondary-color);
-        }
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            text-align: center;
-            padding: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-            animation: rotate 20s linear infinite;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }   
-        main {
-            padding: 2rem 0;
-        }
-        .section {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #ddd;
-        }
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        }
-        .section:hover::before {
-            top: 0;
-        }
-        .section h2 {
-            color: #0047ab;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-        .section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .section ul li {
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        .section ul li:hover {
-            transform: translateX(10px);
-        }
-        .section ul li a {
-            color: #0047ab;
-            text-decoration: none;
-            transition: color 0.3s ease, background-color 0.3s ease;
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .section ul li a:hover {
-            color: #fff;
-            background-color: var(--secondary-color);
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 1.2em;
-        }
-        a:hover {
-            color: #0056b3;
-        }
-        footer {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
-            animation: rotate 20s linear infinite;
-        }
-        footer p {
-            position: relative;
-            z-index: 1;
-        }
-        footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }         
-            .menu {
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--primary-color);
-                padding: 1rem 0;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                z-index: 999;
-                visibility: hidden;
-                opacity: 0;
-                transition: visibility 0s, opacity 0.3s ease;
-            }      
-            .menu > li {
-                margin: 0;
-                text-align: center;
-            }
-            .menu.active {
-                visibility: visible;
-                opacity: 1;
-            }        
-            .dropdown {
-                position: static;
-                background-color: var(--secondary-color);
-                display: none;
-            }
-            .menu > li:hover > .dropdown {
-                display: none;
-            }
-            .menu > li > a:focus + .dropdown,
-            .menu > li > a:active + .dropdown {
-                display: block;
-            }
-            .menu > li ul {
-                position: static;
-            }            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .card {
-            flex: 1 1 100%;
-            max-width: none;
-        }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="go.png">
+  <title>Khbich ENSTTIC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      
+      :root {
+          --primary-color: #0047ab;
+          --primary-light: #3a7bd5;
+          --secondary-color: #00a8ff;
+          --text-color: #333;
+          --bg-color: #f8f9fa;
+          --card-bg: #ffffff;
+          --border-radius: 12px;
+          --box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          --transition: all 0.3s ease;
+      }
+      
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      
+      body, html {
+          font-family: 'Poppins', sans-serif;
+          line-height: 1.6;
+          color: var(--text-color);
+          background-color: var(--bg-color);
+          scroll-behavior: smooth;
+      }
+      
+      .container {
+          width: 90%;
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 0 20px;
+      }
+      
+      /* Navbar Styles */
+      .navbar {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          color: #fff;
+          padding: 1rem 0;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: var(--transition);
+      }
+      
+      .navbar .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .navbar h1 {
+          margin: 0;
+      }
+      
+      .navbar h1 a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          display: flex;
+          align-items: center;
+      }
+      
+      .navbar h1 a img {
+          height: 32px;
+          margin-right: 10px;
+      }
+      
+      .navbar a {
+          color: #fff;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          transition: var(--transition);
+          border-radius: 6px;
+      }
+      
+      .navbar a:hover {
+          background-color: rgba(255,255,255,0.15);
+      }
+      
+      .menu {
+          list-style: none;
+          display: flex;
+          margin: 0;
+          padding: 0;
+      }
+      
+      .menu > li {
+          position: relative;
+          margin: 0 5px;
+      }
+      
+      .menu > li > a {
+          color: #fff;
+          text-decoration: none;
+          padding: 0.7rem 1rem;
+          display: block;
+          font-weight: 500;
+          transition: var(--transition);
+          border-radius: 6px;
+          position: relative;
+      }
+      
+      .menu > li > a:hover {
+          background-color: rgba(255,255,255,0.15);
+      }
+      
+      /* Active menu item styling */
+      .menu > li > a.active {
+          background-color: rgba(255,255,255,0.2);
+          box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      }
+      
+      .menu > li > a.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 3px;
+          background-color: #fff;
+          border-radius: 3px;
+          animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+          0% { opacity: 0.6; width: 40%; }
+          50% { opacity: 1; width: 60%; }
+          100% { opacity: 0.6; width: 40%; }
+      }
+      
+      .menu > li:hover > .dropdown {
+          display: block;
+          animation: fadeIn 0.3s ease-in-out;
+      }
+      
+      .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 24px;
+          cursor: pointer;
+      }
+      
+      .dropdown {
+          list-style: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #fff;
+          display: none;
+          padding: 10px 0;
+          border-radius: 0 0 var(--border-radius) var(--border-radius);
+          box-shadow: var(--box-shadow);
+          min-width: 180px;
+      }
+      
+      .dropdown li a {
+          text-decoration: none;
+          color: var(--text-color);
+          padding: 0.7rem 1.5rem;
+          display: block;
+          white-space: nowrap;
+          transition: var(--transition);
+          font-weight: 400;
+      }
+      
+      .dropdown li a:hover {
+          background-color: rgba(0,71,171,0.08);
+          color: var(--primary-color);
+      }
+      
+      /* Active dropdown item */
+      .dropdown li a.active {
+          background-color: rgba(0,71,171,0.1);
+          color: var(--primary-color);
+          font-weight: 500;
+          border-left: 3px solid var(--primary-color);
+      }
+      
+      /* Hero Section */
+      .hero {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          color: #fff;
+          text-align: center;
+          padding: 4rem 0;
+          position: relative;
+          overflow: hidden;
+          border-radius: 0 0 30px 30px;
+          margin-bottom: 2rem;
+      }
+      
+      .hero::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+          animation: rotate 20s linear infinite;
+      }
+      
+      .hero h1 {
+          font-size: 2.8rem;
+          margin-bottom: 1rem;
+          position: relative;
+          z-index: 1;
+          font-weight: 700;
+      }
+      
+      .hero p {
+          font-size: 1.3rem;
+          position: relative;
+          z-index: 1;
+          max-width: 800px;
+          margin: 0 auto;
+          opacity: 0.9;
+      }
+      
+      /* Main Content */
+      main {
+          padding: 2rem 0;
+      }
+      
+      .section {
+          background-color: var(--card-bg);
+          border-radius: var(--border-radius);
+          box-shadow: var(--box-shadow);
+          padding: 2rem;
+          margin-bottom: 2rem;
+          transition: var(--transition);
+          position: relative;
+          overflow: hidden;
+          border: 1px solid rgba(0,0,0,0.05);
+      }
+      
+      .section:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      }
+      
+      .section h2 {
+          color: var(--primary-color);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.8rem;
+          margin-bottom: 1.5rem;
+          position: relative;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+      }
+      
+      .section h2 a {
+          color: var(--primary-color);
+          text-decoration: none;
+          transition: var(--transition);
+          display: flex;
+          align-items: center;
+      }
+      
+      .section h2 a:hover {
+          color: var(--secondary-color);
+      }
+      
+      .section h2 i {
+          margin-right: 10px;
+          font-size: 1.2em;
+      }
+      
+      .section ul {
+          list-style-type: none;
+          padding: 0;
+      }
+      
+      .section ul li {
+          margin-bottom: 0.8rem;
+          transition: var(--transition);
+          border-radius: 8px;
+          padding: 0.3rem;
+      }
+      
+      .section ul li:hover {
+          transform: translateX(8px);
+          background-color: rgba(0,71,171,0.05);
+      }
+      
+      .section ul li a {
+          color: var(--text-color);
+          text-decoration: none;
+          transition: var(--transition);
+          display: flex;
+          align-items: center;
+          padding: 8px 12px;
+          border-radius: 6px;
+          font-weight: 500;
+      }
+      
+      .section ul li a:hover {
+          color: var(--primary-color);
+      }
+      
+      .section ul li a i {
+          margin-right: 10px;
+          color: var(--primary-color);
+      }
+      
+      /* Footer */
+      footer {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          color: #fff;
+          text-align: center;
+          padding: 2.5rem 0;
+          margin-top: 2rem;
+          position: relative;
+          overflow: hidden;
+          border-radius: 30px 30px 0 0;
+      }
+      
+      footer::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+          animation: rotate 20s linear infinite;
+      }
+      
+      footer .container {
+          position: relative;
+          z-index: 1;
+      }
+      
+      footer p {
+          margin: 8px 0;
+          font-weight: 400;
+      }
+      
+      footer .contact-title {
+          font-weight: 600;
+          font-size: 1.1rem;
+          margin-top: 15px;
+      }
+      
+      footer a {
+          color: #fff;
+          text-decoration: underline;
+          transition: var(--transition);
+      }
+      
+      footer a:hover {
+          color: rgba(255,255,255,0.8);
+      }
+      
+      footer .social-links {
+          margin-top: 15px;
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+      }
+      
+      footer .social-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: rgba(255,255,255,0.1);
+          color: #fff;
+          text-decoration: none;
+          transition: var(--transition);
+      }
+      
+      footer .social-links a:hover {
+          background-color: rgba(255,255,255,0.2);
+          transform: translateY(-3px);
+      }
+      
+      /* Animations */
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 992px) {
+          .hero h1 {
+              font-size: 2.3rem;
+          }
+          
+          .hero p {
+              font-size: 1.1rem;
+          }
+      }
+      
+      @media (max-width: 768px) {
+          .menu-toggle {
+              display: block;
+          }
+          
+          .menu {
+              flex-direction: column;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              background-color: var(--primary-color);
+              padding: 1rem 0;
+              box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+              z-index: 999;
+              visibility: hidden;
+              opacity: 0;
+              transition: visibility 0s, opacity 0.3s ease;
+          }
+          
+          .menu > li {
+              margin: 0;
+              text-align: center;
+          }
+          
+          .menu.active {
+              visibility: visible;
+              opacity: 1;
+          }
+          
+          .dropdown {
+              position: static;
+              background-color: rgba(0,0,0,0.1);
+              display: none;
+              box-shadow: none;
+              border-radius: 0;
+          }
+          
+          .dropdown li a {
+              color: #fff;
+              padding: 0.7rem 2rem;
+          }
+          
+          .dropdown li a:hover {
+              background-color: rgba(255,255,255,0.1);
+              color: #fff;
+          }
+          
+          .menu > li:hover > .dropdown {
+              display: none;
+          }
+          
+          .menu > li > a:focus + .dropdown,
+          .menu > li > a:active + .dropdown {
+              display: block;
+          }
+          
+          .menu > li ul {
+              position: static;
+          }
+          
+          .hero h1 {
+              font-size: 2rem;
+          }
+          
+          .hero p {
+              font-size: 1rem;
+          }
+          
+          .section {
+              padding: 1.5rem;
+          }
+          
+          /* Mobile active menu styling */
+          .menu > li > a.active::after {
+              width: 30%;
+          }
+          
+          @keyframes pulse {
+              0% { opacity: 0.6; width: 20%; }
+              50% { opacity: 1; width: 30%; }
+              100% { opacity: 0.6; width: 20%; }
+          }
+      }
+      
+      @media (max-width: 576px) {
+          .container {
+              width: 95%;
+              padding: 0 10px;
+          }
+          
+          .navbar h1 a {
+              font-size: 20px;
+          }
+          
+          .section h2 {
+              font-size: 1.3rem;
+          }
+          
+          .hero {
+              padding: 3rem 0;
+          }
+          
+          .hero h1 {
+              font-size: 1.8rem;
+          }
+      }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <h1><a href="index.html">Khbich ENSTTIC</a></h1>
-             
-            <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-            <ul class="menu">
-                <li>
-                    <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
-                    <ul class="dropdown">
-                        <li><a href="cp1.html#sem1">Semestre 1</a></li>
-                        <li><a href="cp1.html#sem2">Semestre 2</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
-                    <ul class="dropdown">
-                        <li><a href="cp2.html#sem3">Semestre 1</a></li>
-                        <li><a href="cp2.html#sem4">Semestre 2</a></li>
-                        <li><a href="cp2.html#Concour">Concour</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="cs1.html" title="1er Classes Spécialité">1CS</a>
-                    <ul class="dropdown">
-                        <li><a href="cs1.html#sem5">Semestre 1</a></li>
-                        <li><a href="cs1.html#sem6">Semestre 2</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="cs2.html" title="2eme Classes Spécialité">2CS</a>
-                    <ul class="dropdown">
-                        <li><a href="cs2.html#sem7">Semestre 1</a></li>
-                        <li><a href="cs2.html#sem8">Semestre 2</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="cs3.html" title="3er Classes Spécialité">3CS</a>
-                    <ul class="dropdown">
-                        <li><a href="cs3.html#ttn">TTN</a></li>
-                        <li><a href="cs3.html#rip">TRIP</a></li>
-                        <li><a href="cs3.html#st">ST</a></li>
-                        <li><a href="cs3.html#pfe">PFE</a></li>
-                    </ul>
-                </li>
-                <!-- Add this inside your navbar's menu ul element -->
-                <li>
-                    <a href="cal.html" class="calc-link">
-                        <span>Calculer-Moyenne</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIRn6v09BPkYqIb_fJld8hJaZZub3zz6KtT1LFMfn1siechw/viewform?usp=header" target="_blank" class="calc-link">
-                        <span>Contribution</span>
-                    </a>
-                </li>
-            </ul> 
-        </div>
-    </nav>      
-    <header class="hero">
-        <div class="container">
-            <h1>Bienvenue à Khbich ENSTTIC</h1>
-            <p>Ressources et documents pour les étudiants de l'ENSTTIC</p>
-        </div>
-    </header>
-    <main class="container">
-        <section id="1CP" style="margin-top: 2rem;" class="section">
-            <h2 title="1er Classes Préparatoires"><a href="cp1.html">1CP</a></h2>
-            <ul>
-                <li><a href="cp1.html#sem1">Semestre 1</a></li>
-                <li><a href="cp1.html#sem2">Semestre 2</a></li>
-            </ul>
-        </section>
-        <section id="2CP" class="section">
-            <h2 title="2eme Classes Préparatoires"><a href="cp2.html">2CP</a></h2>
-            <ul>
-                <li><a href="cp2.html#sem3">Semestre 1</a></li>
-                <li><a href="cp2.html#sem4">Semestre 2</a></li>
-                <li><a href="cp2.html#Concour">Concour</a></li>
-            </ul>
-        </section>
-        <section id="1CS" class="section">
-            <h2 title="1er Classes Spécialité"><a href="cs1.html">1CS</a></h2>
-            <ul>
-                <li><a href="cs1.html#sem5">Semestre 1</a></li>
-                <li><a href="cs1.html#sem6">Semestre 2</a></li>
-            </ul>
-        </section>
-        <section id="2CS" class="section">
-            <h2 title="2eme Classes Spécialité"><a href="cs2.html">2CS</a></h2>
-            <ul>
-                <li><a href="cs2.html#sem7">Semestre 1</a></li>
-                <li><a href="cs2.html#sem8">Semestre 2</a></li>
-            </ul>
-        </section>
-        <section id="3CS" class="section">
-            <h2 title="3er Classes Spécialité"><a href="cs3.html">3CS</a></h2>
-            <ul>
-                <li><a href="cs3.html#ttn">TELECOMMUNICATIONS-ET-TECHNOLOGIES-NUMERIQUES</a></li>
-                <li><a href="cs3.html#rip">TELECOMMUNICATIONS-ET-RESEAUX-IP</a></li>
-                <li><a href="cs3.html#st">SYSTEMES-DE-TELECOMMUNICATIONS</a></li>
-                <li><a href="cs3.html#pfe">- Projet fin d'etude -</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
-            <p>NOUS CONTACTER</p>
-            <p>Email: <a href="mailto:khbich.ensttic@gmail.com">khbich.ensttic@gmail.com</a></p>
-        </div>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menu = document.querySelector('.menu');
-            
-            menuToggle.addEventListener('click', function() {
-                menu.classList.toggle('active');
-            });
-
-            document.addEventListener('click', function(event) {
-                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    menu.classList.remove('active');
-                }
-            });
-
-            const dropdownLinks = document.querySelectorAll('.menu > li > a');
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768 && this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
-                        e.preventDefault();
-                        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
-                    }
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    menu.classList.remove('active');
-                    document.querySelectorAll('.dropdown').forEach(dropdown => {
-                        dropdown.style.display = '';
-                    });
-                }
-            });
-        });
-    </script>
+  <nav class="navbar">
+      <div class="container">
+          <h1><a href="index.html" class="active"><i class="fas fa-graduation-cap"></i> Khbich ENSTTIC</a></h1>
+          
+          <button class="menu-toggle" aria-label="Toggle menu">
+              <i class="fas fa-bars"></i>
+          </button>
+          <ul class="menu">
+              <li>
+                  <a href="cp1.html" title="1er Classes Préparatoires">1CP</a>
+                  <ul class="dropdown">
+                      <li><a href="cp1.html#sem1">Semestre 1</a></li>
+                      <li><a href="cp1.html#sem2">Semestre 2</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="cp2.html" title="2eme Classes Préparatoires">2CP</a>
+                  <ul class="dropdown">
+                      <li><a href="cp2.html#sem3">Semestre 1</a></li>
+                      <li><a href="cp2.html#sem4">Semestre 2</a></li>
+                      <li><a href="cp2.html#Concour">Concours</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="cs1.html" title="1er Classes Spécialité">1CS</a>
+                  <ul class="dropdown">
+                      <li><a href="cs1.html#sem5">Semestre 1</a></li>
+                      <li><a href="cs1.html#sem6">Semestre 2</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="cs2.html" title="2eme Classes Spécialité">2CS</a>
+                  <ul class="dropdown">
+                      <li><a href="cs2.html#sem7">Semestre 1</a></li>
+                      <li><a href="cs2.html#sem8">Semestre 2</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="cs3.html" title="3er Classes Spécialité">3CS</a>
+                  <ul class="dropdown">
+                      <li><a href="cs3.html#ttn">TTN</a></li>
+                      <li><a href="cs3.html#rip">TRIP</a></li>
+                      <li><a href="cs3.html#st">ST</a></li>
+                      <li><a href="cs3.html#pfe">PFE</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="cal.html" class="calc-link">
+                      <i class="fas fa-calculator"></i> Calculer Moyenne
+                  </a>
+              </li>
+              <li>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIRn6v09BPkYqIb_fJld8hJaZZub3zz6KtT1LFMfn1siechw/viewform?usp=header" target="_blank" class="calc-link">
+                      <i class="fas fa-edit"></i> Contribution
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  
+  <header class="hero">
+      <div class="container">
+          <h1>Bienvenue à Khbich ENSTTIC</h1>
+          <p>Ressources et documents pour les étudiants de l'ENSTTIC</p>
+      </div>
+  </header>
+  
+  <main class="container">
+      <section id="1CP" class="section">
+          <h2><i class="fas fa-book"></i><a href="cp1.html">1CP - Première Année Classes Préparatoires</a></h2>
+          <ul>
+              <li><a href="cp1.html#sem1"><i class="fas fa-folder"></i> Semestre 1</a></li>
+              <li><a href="cp1.html#sem2"><i class="fas fa-folder"></i> Semestre 2</a></li>
+          </ul>
+      </section>
+      
+      <section id="2CP" class="section">
+          <h2><i class="fas fa-book"></i><a href="cp2.html">2CP - Deuxième Année Classes Préparatoires</a></h2>
+          <ul>
+              <li><a href="cp2.html#sem3"><i class="fas fa-folder"></i> Semestre 1</a></li>
+              <li><a href="cp2.html#sem4"><i class="fas fa-folder"></i> Semestre 2</a></li>
+              <li><a href="cp2.html#Concour"><i class="fas fa-medal"></i> Concours</a></li>
+          </ul>
+      </section>
+      
+      <section id="1CS" class="section">
+          <h2><i class="fas fa-laptop-code"></i><a href="cs1.html">1CS - Première Année Classes Spécialité</a></h2>
+          <ul>
+              <li><a href="cs1.html#sem5"><i class="fas fa-folder"></i> Semestre 1</a></li>
+              <li><a href="cs1.html#sem6"><i class="fas fa-folder"></i> Semestre 2</a></li>
+          </ul>
+      </section>
+      
+      <section id="2CS" class="section">
+          <h2><i class="fas fa-laptop-code"></i><a href="cs2.html">2CS - Deuxième Année Classes Spécialité</a></h2>
+          <ul>
+              <li><a href="cs2.html#sem7"><i class="fas fa-folder"></i> Semestre 1</a></li>
+              <li><a href="cs2.html#sem8"><i class="fas fa-folder"></i> Semestre 2</a></li>
+          </ul>
+      </section>
+      
+      <section id="3CS" class="section">
+          <h2><i class="fas fa-laptop-code"></i><a href="cs3.html">3CS - Troisième Année Classes Spécialité</a></h2>
+          <ul>
+              <li><a href="cs3.html#ttn"><i class="fas fa-code"></i> TELECOMMUNICATIONS-ET-TECHNOLOGIES-NUMERIQUES</a></li>
+              <li><a href="cs3.html#rip"><i class="fas fa-network-wired"></i> TELECOMMUNICATIONS-ET-RESEAUX-IP</a></li>
+              <li><a href="cs3.html#st"><i class="fas fa-broadcast-tower"></i> SYSTEMES-DE-TELECOMMUNICATIONS</a></li>
+              <li><a href="cs3.html#pfe"><i class="fas fa-project-diagram"></i> Projet fin d'études</a></li>
+          </ul>
+      </section>
+  </main>
+  
+  <footer>
+      <div class="container">
+          <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
+          <p class="contact-title">NOUS CONTACTER</p>
+          <p>Email: <a href="mailto:khbichensttic@gmail.com">khbichensttic@gmail.com</a></p>
+           
+      </div>
+  </footer>
+  
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const menuToggle = document.querySelector('.menu-toggle');
+          const menu = document.querySelector('.menu');
+          
+          menuToggle.addEventListener('click', function() {
+              menu.classList.toggle('active');
+          });
+          
+          document.addEventListener('click', function(event) {
+              if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                  menu.classList.remove('active');
+              }
+          });
+          
+          const dropdownLinks = document.querySelectorAll('.menu > li > a');
+          dropdownLinks.forEach(link => {
+              link.addEventListener('click', function(e) {
+                  if (window.innerWidth <= 768 && this.nextElementSibling && this.nextElementSibling.classList.contains('dropdown')) {
+                      e.preventDefault();
+                      this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                  }
+              });
+          });
+          
+          window.addEventListener('resize', function() {
+              if (window.innerWidth > 768) {
+                  menu.classList.remove('active');
+                  document.querySelectorAll('.dropdown').forEach(dropdown => {
+                      dropdown.style.display = '';
+                  });
+              }
+          });
+          
+          // Set active menu item based on current page
+          function setActiveMenuItem() {
+              // Get the current page filename
+              const path = window.location.pathname;
+              const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+              
+              // Set active class for main menu items
+              const menuLinks = document.querySelectorAll('.menu > li > a');
+              menuLinks.forEach(link => {
+                  const href = link.getAttribute('href');
+                  // Check if href matches current page or if we're on index.html and the link is to the home page
+                  if (href === currentPage || 
+                      (currentPage === 'index.html' && (href === '' || href === '/' || href === '#'))) {
+                      link.classList.add('active');
+                  }
+              });
+              
+              // Check for hash in URL to set active dropdown item
+              if (window.location.hash) {
+                  const hash = window.location.hash;
+                  const dropdownItems = document.querySelectorAll('.dropdown li a');
+                  
+                  dropdownItems.forEach(item => {
+                      if (item.getAttribute('href').includes(hash)) {
+                          item.classList.add('active');
+                          
+                          // Also activate the parent menu item
+                          const parentMenu = item.closest('.dropdown').previousElementSibling;
+                          if (parentMenu) {
+                              parentMenu.classList.add('active');
+                          }
+                      }
+                  });
+              }
+              
+              // If we're on a specific page, make sure its menu item is active
+              if (currentPage.includes('cs2')) {
+                  document.querySelector('a[href="cs2.html"]').classList.add('active');
+              } else if (currentPage.includes('cs3')) {
+                  document.querySelector('a[href="cs3.html"]').classList.add('active');
+              } else if (currentPage.includes('cs1')) {
+                  document.querySelector('a[href="cs1.html"]').classList.add('active');
+              } else if (currentPage.includes('cp1')) {
+                  document.querySelector('a[href="cp1.html"]').classList.add('active');
+              } else if (currentPage.includes('cp2')) {
+                  document.querySelector('a[href="cp2.html"]').classList.add('active');
+              } else if (currentPage.includes('cal')) {
+                  document.querySelector('a[href="cal.html"]').classList.add('active');
+              } else if (currentPage === 'index.html' || currentPage === '') {
+                  // Make sure home link is active
+                  document.querySelector('h1 a').classList.add('active');
+              }
+          }
+          
+          // Call the function to set active menu items when page loads
+          setActiveMenuItem();
+      });
+  </script>
 </body>
 </html>
+
