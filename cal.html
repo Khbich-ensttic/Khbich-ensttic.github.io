@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur de Moyenne - ENSTTIC</title>
+    <link rel="icon" type="image/png" href="go.png">
+    <title>Calculateur de Moyenne - Khbich ENSTTIC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+        
         :root {
             --primary-color: #0047ab;
             --primary-light: #3a7bd5;
@@ -19,13 +20,13 @@
             --box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body, html {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -33,14 +34,14 @@
             background-color: var(--bg-color);
             scroll-behavior: smooth;
         }
-
+        
         .container {
             width: 90%;
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         /* Navbar Styles */
         .navbar {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -52,17 +53,17 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: var(--transition);
         }
-
+        
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .navbar h1 {
             margin: 0;
         }
-
+        
         .navbar h1 a {
             text-decoration: none;
             color: #fff;
@@ -72,11 +73,11 @@
             display: flex;
             align-items: center;
         }
-
+        
         .navbar h1 a i {
             margin-right: 10px;
         }
-
+        
         .navbar a {
             color: #fff;
             text-decoration: none;
@@ -84,23 +85,23 @@
             transition: var(--transition);
             border-radius: 6px;
         }
-
+        
         .navbar a:hover {
             background-color: rgba(255,255,255,0.15);
         }
-
+        
         .menu {
             list-style: none;
             display: flex;
             margin: 0;
             padding: 0;
         }
-
+        
         .menu > li {
             position: relative;
             margin: 0 5px;
         }
-
+        
         .menu > li > a {
             color: #fff;
             text-decoration: none;
@@ -110,16 +111,16 @@
             transition: var(--transition);
             border-radius: 6px;
         }
-
+        
         .menu > li > a:hover {
             background-color: rgba(255,255,255,0.15);
         }
-
+        
         .menu > li:hover > .dropdown {
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
-
+        
         .menu-toggle {
             display: none;
             background: none;
@@ -128,7 +129,7 @@
             font-size: 24px;
             cursor: pointer;
         }
-
+        
         .dropdown {
             list-style: none;
             position: absolute;
@@ -141,7 +142,7 @@
             box-shadow: var(--box-shadow);
             min-width: 180px;
         }
-
+        
         .dropdown li a {
             text-decoration: none;
             color: var(--text-color);
@@ -151,12 +152,12 @@
             transition: var(--transition);
             font-weight: 400;
         }
-
+        
         .dropdown li a:hover {
             background-color: rgba(0,71,171,0.08);
             color: var(--primary-color);
         }
-
+        
         /* Calculator Styles */
         .calculator-container {
             max-width: 900px;
@@ -166,30 +167,30 @@
             box-shadow: var(--box-shadow);
             padding: 30px;
         }
-
+        
         .calculator-header {
             text-align: center;
             margin-bottom: 30px;
         }
-
+        
         .calculator-header h1 {
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 10px;
         }
-
+        
         .calculator-header p {
             color: #666;
             font-size: 1rem;
         }
-
+        
         .grade-selector {
             display: flex;
             justify-content: space-between;
             margin-bottom: 25px;
             gap: 20px;
         }
-
+        
         .grade-selector select {
             flex: 1;
             padding: 12px 15px;
@@ -207,18 +208,13 @@
             background-position: right 15px center;
             background-size: 16px;
         }
-
+        
         .grade-selector select:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(0,71,171,0.2);
         }
-
-        .table-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
+        
         .grades-table {
             width: 100%;
             border-collapse: collapse;
@@ -227,7 +223,7 @@
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
-
+        
         .grades-table thead th {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
             color: #ffffff;
@@ -236,7 +232,7 @@
             font-size: 1rem;
             font-weight: 600;
         }
-
+        
         .grades-table tbody td {
             text-align: center;
             padding: 12px;
@@ -244,16 +240,16 @@
             border: 1px solid #eee;
             background-color: #fff;
         }
-
+        
         .grades-table tbody tr:nth-child(even) td {
             background-color: #f9f9f9;
         }
-
+        
         .grades-table tbody tr:hover td {
             background-color: #f0f7ff;
         }
-
-        .grades-table input[type="number"] {
+        
+        .grades-table input[type="text"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -263,13 +259,13 @@
             font-family: 'Poppins', sans-serif;
             transition: var(--transition);
         }
-
-        .grades-table input[type="number"]:focus {
+        
+        .grades-table input[type="text"]:focus {
             border-color: var(--primary-color);
             outline: none;
             box-shadow: 0 0 0 2px rgba(0,71,171,0.2);
         }
-
+        
         .grades-table tfoot td {
             text-align: center;
             font-weight: bold;
@@ -278,12 +274,12 @@
             padding: 15px;
             font-size: 1.1rem;
         }
-
+        
         .average {
             font-weight: 600;
             color: var(--primary-color);
         }
-
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -295,7 +291,7 @@
             overflow: hidden;
             border-radius: 30px 30px 0 0;
         }
-
+        
         footer::before {
             content: '';
             position: absolute;
@@ -306,40 +302,40 @@
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
             animation: rotate 20s linear infinite;
         }
-
+        
         footer .container {
             position: relative;
             z-index: 1;
         }
-
+        
         footer p {
             margin: 8px 0;
             font-weight: 400;
         }
-
+        
         footer .contact-title {
             font-weight: 600;
             font-size: 1.1rem;
             margin-top: 15px;
         }
-
+        
         footer a {
             color: #fff;
             text-decoration: underline;
             transition: var(--transition);
         }
-
+        
         footer a:hover {
             color: rgba(255,255,255,0.8);
         }
-
+        
         footer .social-links {
             margin-top: 15px;
             display: flex;
             justify-content: center;
             gap: 15px;
         }
-
+        
         footer .social-links a {
             display: inline-flex;
             align-items: center;
@@ -352,55 +348,30 @@
             text-decoration: none;
             transition: var(--transition);
         }
-
+        
         footer .social-links a:hover {
             background-color: rgba(255,255,255,0.2);
             transform: translateY(-3px);
         }
-
-        /* Active menu item styling */
-        .menu > li > a.active {
-            background-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-        }
-
-        .menu > li > a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background-color: #fff;
-            border-radius: 3px;
-            animation: pulse 2s infinite;
-        }
-
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+        
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; width: 40%; }
-            50% { opacity: 1; width: 60%; }
-            100% { opacity: 0.6; width: 40%; }
-        }
-
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .calculator-container {
                 padding: 20px;
             }
         }
-
+        
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -463,9 +434,22 @@
                 gap: 10px;
             }
             
+            .grades-table {
+                font-size: 0.9rem;
+                overflow-x: auto;
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+                max-width: 100%;
+                text-align: center;
+            }
+            
             .calculator-container {
                 padding: 15px;
                 margin: 20px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
             
             .grades-table thead th,
@@ -475,21 +459,11 @@
                 white-space: nowrap;
             }
             
-            .grades-table input[type="number"] {
+            .grades-table input[type="text"] {
                 padding: 8px;
             }
-            
-            .menu > li > a.active::after {
-                width: 30%;
-            }
-            
-            @keyframes pulse {
-                0% { opacity: 0.6; width: 20%; }
-                50% { opacity: 1; width: 30%; }
-                100% { opacity: 0.6; width: 20%; }
-            }
         }
-
+        
         @media (max-width: 576px) {
             .container {
                 width: 95%;
@@ -507,6 +481,44 @@
             .calculator-container {
                 padding: 15px;
                 margin: 20px auto;
+            }
+        }
+
+        /* Active menu item styling */
+        .menu > li > a.active {
+            background-color: rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        .menu > li > a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; width: 40%; }
+            50% { opacity: 1; width: 60%; }
+            100% { opacity: 0.6; width: 40%; }
+        }
+
+        /* Mobile active menu styling */
+        @media (max-width: 768px) {
+            .menu > li > a.active::after {
+                width: 30%;
+            }
+            
+            @keyframes pulse {
+                0% { opacity: 0.6; width: 20%; }
+                50% { opacity: 1; width: 30%; }
+                100% { opacity: 0.6; width: 20%; }
             }
         }
     </style>
@@ -593,43 +605,45 @@
             </select>
         </div>
         
-        <div class="table-container">
-            <table class="grades-table">
-                <thead>
-                    <tr>
-                        <th>Matière</th>
-                        <th>Coef</th>
-                        <th>ECD</th>
-                        <th>TP</th>
-                        <th>EMD</th>
-                        <th>Moyenne</th>
-                    </tr>
-                </thead>
-                <tbody id="gradesTableBody">
-                    <!-- Les lignes seront ajoutées ici par JavaScript -->
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">Moyenne Générale:</td>
-                        <td id="overall-average-value">0.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th>Matière</th>
+                    <th>Coef</th>
+                    <th>ECD</th>
+                    <th>TP</th>
+                    <th>EMD</th>
+                    <th>Moyenne</th>
+                </tr>
+            </thead>
+            <tbody id="gradesTableBody">
+                <!-- Les lignes seront ajoutées ici par JavaScript -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5">Moyenne Générale:</td>
+                    <td id="overall-average-value">0.00</td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     
     <footer>
         <div class="container">
             <p>Cet espace est dédié et exclusivement géré par des étudiants</p>
             <p class="contact-title">NOUS CONTACTER</p>
-            <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
-             
+            <p>Email: <a href="mailto:khbichensttic@gmail.com">khbichensttic@gmail.com</a></p>
+            
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </div>
     </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const menu = document.querySelector('.menu');
             
@@ -643,7 +657,6 @@
                 }
             });
             
-            // Mobile dropdown handling
             const dropdownLinks = document.querySelectorAll('.menu > li > a');
             dropdownLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -654,7 +667,6 @@
                 });
             });
             
-            // Reset dropdowns on window resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768) {
                     menu.classList.remove('active');
@@ -662,10 +674,9 @@
                         dropdown.style.display = '';
                     });
                 }
-                updateSubjectNames();
             });
             
-            // Subject data for different years and semesters
+            // Calculator functionality
             const subjects = {
                 '1CP': {
                     'S1': [
@@ -686,7 +697,9 @@
                         { name: 'Anglais 1', shortName: 'Ang1', coef: 2 },
                         { name: 'Technique d\'expression 2', shortName: 'TE2', coef: 2 }
                     ],
-                    'G': [] // Will be populated dynamically
+                    'G': [
+                        // Combine S1 and S2 subjects
+                    ]
                 },
                 '2CP': {
                     'S1': [
@@ -708,146 +721,148 @@
                         { name: 'Electronique 2', shortName: 'Electro2', coef: 3 },
                         { name: 'Anglais 3', shortName: 'Ang3', coef: 2 }
                     ],
-                    'G': [] // Will be populated dynamically
+                    'G': [
+                        // Combine S1 and S2 subjects
+                    ]
                 },
                 '1CS': {
-                    'S1': [
-                        { name: 'Traitement du signal 1', shortName: 'TS1', coef: 5, hasTP: true },
-                        { name: 'Réseaux de données 1', shortName: 'RDD1', coef: 5, hasTP: true },
-                        { name: 'Introduction aux Systèmes d\'Exploitation', shortName: 'ISE', coef: 4, hasTP: true },
-                        { name: 'Dispositifs Micro-Ondes', shortName: 'M.Onde', coef: 4, hasTP: true },
-                        { name: 'Programmation Orientée Objet', shortName: 'POO', coef: 4, hasTP: true },
-                        { name: 'Systèmes d\'Information et Bases de Données', shortName: 'SIBD', coef: 4, hasTP: true },
-                        { name: 'Projet électronique 1', shortName: 'P.elctro1', coef: 4, hasTP: true },
-                        { name: 'Gestion financière et comptabilité', shortName: 'GFC', coef: 2 },
-                        { name: 'Anglais 4', shortName: 'Ang4', coef: 2 }
-                    ],
-                    'S2': [
-                        { name: 'Traitement du signal 2', shortName: 'TS2', coef: 5, hasTP: true },
-                        { name: 'Réseaux de données 2', shortName: 'RDD2', coef: 5, hasTP: true },
-                        { name: 'Analyse de données', shortName: 'AD', coef: 4, hasTP: true },
-                        { name: 'Antennes et propagation', shortName: 'AP', coef: 4, hasTP: true },
-                        { name: 'Bases des Télécommunications', shortName: 'BT', coef: 3, hasTP: true },
-                        { name: 'Technologies Web 1', shortName: 'T.Web1', coef: 3, hasTP: true },
-                        { name: 'Traitement d\'image', shortName: 'TI', coef: 3, hasTP: true },
-                        { name: 'Projet électronique 2', shortName: 'P.elctro2', coef: 3, hasTP: true },
-                        { name: 'Marketing', shortName: 'Market', coef: 2 },
-                        { name: 'Anglais 5', shortName: 'Ang5', coef: 2 }
-                    ],
-                    'G': [] // Will be populated dynamically
-                },
-                '2CS': {
-                    'S1': [
-                        { name: 'Théorie de l\'information et codage', shortName: 'TI-Code', coef: 5, hasTP: true },
-                        { name: 'Communications Numériques', shortName: 'CN', coef: 5, hasTP: true },
-                        { name: 'Communications unifiées et NGN', shortName: 'CUNGN', coef: 5, hasTP: true },
-                        { name: 'Cyber Sécurité', shortName: 'CS', coef: 4, hasTP: true },
-                        { name: 'Technologies Web 2', shortName: 'T.Web2', coef: 4, hasTP: true },
-                        { name: 'Projet 1', shortName: 'Proj1', coef: 3 },
-                        { name: 'Economie et stratégies d\'entreprises', shortName: 'ESE', coef: 3 },
-                        { name: 'Management de Projet', shortName: 'MP', coef: 2 },
-                        { name: 'Anglais 6', shortName: 'Ang6', coef: 2 }
-                    ],
-                    'S2': [
-                        { name: 'Radio communications', shortName: 'RC', coef: 5, hasTP: true },
-                        { name: 'Infrastructure des télécommunications & Techniques d\'Accès', shortName: 'ITTA', coef: 5, hasTP: true },
-                        { name: 'DataCenter', shortName: 'DC', coef: 5, hasTP: true },
-                        { name: 'Composants photoniques pour télécoms optiques', shortName: 'CPTO', coef: 4, hasTP: true },
-                        { name: 'Programmation réseaux', shortName: 'PR', coef: 4, hasTP: true },
-                        { name: 'Communication multimédia', shortName: 'CM', coef: 4, hasTP: true },
-                        { name: 'Optimisation numérique', shortName: 'ON', coef: 4, hasTP: true },
-                        { name: 'Projet 2', shortName: 'Proj2', coef: 3 },
-                        { name: 'Anglais 7', shortName: 'Ang7', coef: 2 },
-                        { name: 'Stage de découverte de l\'éntreprise', shortName: 'Stage', coef: 1, hasTP: true }
-                    ],
-                    'G': [] // Will be populated dynamically
-                },
-                '3CS': {
-                    'TTN': [
-                        { name: 'Traitement et Analyse de Données Massives -Big Data-', shortName: 'TADM-BD-', coef: 5, hasTP: true },
-                        { name: 'Systèmes distribués', shortName: 'SD', coef: 5, hasTP: true },
-                        { name: 'Bases de Données Non Relationnelles', shortName: 'BDNR', coef: 5, hasTP: true },
-                        { name: 'Apprentissage automatique -Machine Learning-', shortName: 'AA-ML-', coef: 5, hasTP: true },
-                        { name: 'Génie logiciel', shortName: 'GL', coef: 4, hasTP: true },
-                        { name: 'Architectures Réparties', shortName: 'AR', coef: 4, hasTP: true },
-                        { name: 'Sécurité des données et des réseaux', shortName: 'SDR', coef: 4, hasTP: true },
-                        { name: 'Systèmes embarqués, mobilités et objets communicants', shortName: 'SEMOC', coef: 3 },
-                        { name: 'Economie numérique et Management de l\'Innovation', shortName: 'ENMI', coef: 2 },
-                        { name: 'Création d\'entreprises', shortName: 'CE', coef: 2 },
-                        { name: 'Anglais 8', shortName: 'Ang8', coef: 2 }
-                    ],
-                    'TRIP': [
-                        { name: 'Réseaux avancés', shortName: 'RA', coef: 6, hasTP: true },
-                        { name: 'Software-Defined Networking', shortName: 'SDN', coef: 5, hasTP: true },
-                        { name: 'Ingénierie de trafic dans les réseaux', shortName: 'ITR', coef: 5 },
-                        { name: 'Sécurité des données et des réseaux', shortName: 'SDR', coef: 4, hasTP: true },
-                        { name: 'Systèmes et réseaux de télécommunications optiques', shortName: 'SRTO', coef: 4 },
-                        { name: 'Gestion et maintenance des réseaux', shortName: 'GMR', coef: 3 },
-                        { name: 'Systèmes embarqués, mobilités et objets communicants', shortName: 'SEMOC', coef: 3 },
-                        { name: 'Economie numérique et Management de l\'Innovation', shortName: 'ENMI', coef: 2 },
-                        { name: 'Création d\'entreprises', shortName: 'CE', coef: 2 },
-                        { name: 'Anglais 8', shortName: 'Ang8', coef: 2 }
-                    ],
-                    'ST': [
-                        { name: 'Radiocommunications avancées', shortName: 'RA', coef: 5, hasTP: true },
-                        { name: 'Réseaux mobiles', shortName: 'RM', coef: 5, hasTP: true },
-                        { name: 'Ingénierie de trafic dans les réseaux', shortName: 'ITR', coef: 5 },
-                        { name: 'Systèmes et réseaux de télécommunications optiques', shortName: 'SRTO', coef: 4 },
-                        { name: 'Systèmes Satellitaires', shortName: 'SS', coef: 4 },
-                        { name: 'Techniques des systèmes FHN', shortName: 'TSFHN', coef: 3 },
-                        { name: 'Conception RF', shortName: 'CRF', coef: 3 },
-                        { name: 'Gestion et maintenance des réseaux', shortName: 'GMR', coef: 3 },
-                        { name: 'Systèmes embarqués, mobilités et objets communicants', shortName: 'SEMOC', coef: 3 },
-                        { name: 'Economie numérique et Management de l\'Innovation', shortName: 'ENMI', coef: 2 },
-                        { name: 'Création d\'entreprises', shortName: 'CE', coef: 2 },
-                        { name: 'Anglais 8', shortName: 'Ang8', coef: 2 }
-                    ]
-                }
-            };
-            
-            // List of subjects that exclude ECD
-            const excludeECDSubjects = [
-                "Technique d'expression 1",
-                "Technique d'expression 2",
-                "Réseaux de données 1",
-                "Réseaux de données 2",
-                "Introduction aux Systèmes d'Exploitation",
-                "Programmation Orientée Objet",
-                "Systèmes d'Information et Bases de Données",
-                "Projet électronique 1",
-                "Analyse de données",
-                "Bases des Télécommunications",
-                "Technologies Web 1",
-                "Traitement d'image",
-                "Composants photoniques pour télécoms optiques",
-                "Technologies Web 2",
-                "Communications unifiées et NGN",
-                "Cyber Sécurité",
-                "Projet 1",
-                "Projet 2",
-                "Infrastructure des télécommunications & Techniques d'Accès",
-                "DataCenter",
-                "Communication multimédia",
-                "Optimisation numérique",
-                "Programmation réseaux",
-                "Stage de découverte de l'éntreprise",
-                "Traitement et Analyse de Données Massives -Big Data-",
-                "Systèmes distribués",
-                "Bases de Données Non Relationnelles",
-                "Apprentissage automatique -Machine Learning-",
-                "Génie logiciel",
-                "Architectures Réparties",
-                "Sécurité des données et des réseaux",
-                "Systèmes embarqués, mobilités et objets communicants",
-                "Réseaux avancés",
-                "Software-Defined Networking",
-                "Conception RF",
-                "Techniques des systèmes FHN",
-                "Systèmes Satellitaires",
-                "Réseaux mobiles",
-                "Radiocommunications avancées",
-                "Projet électronique 2"
-            ];
+                'S1': [
+                    { name: 'Traitement du signal 1',shortName: 'TS1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1',shortName: 'RDD1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation',shortName: 'ISE', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes',shortName: 'M.Onde', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet',shortName: 'POO', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données',shortName: 'SIBD', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1',shortName: 'P.elctro1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité',shortName: 'GFC', coef: 2 },
+                    { name: 'Anglais 4',shortName: 'Ang4', coef: 2 }
+                ],
+                'S2': [
+                    { name: 'Traitement du signal 2',shortName: 'TS2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2',shortName: 'RDD2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données',shortName: 'AD', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation',shortName: 'AP', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications',shortName: 'BT', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1',shortName: 'T.Web1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image',shortName: 'TI', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2',shortName: 'P.elctro1', coef: 3 , hasTP: true},
+                    { name: 'Marketing',shortName: 'Market', coef: 2 },
+                    { name: 'Anglais 5',shortName: 'Ang5',  coef: 2 }
+                ],
+                'G': [
+                    { name: 'Traitement du signal 1',shortName: 'TS1', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 1',shortName: 'RDD1', coef: 5, hasTP: true },
+                    { name: 'Introduction aux Systèmes d\'Exploitation',shortName: 'ISE', coef: 4 , hasTP: true},
+                    { name: 'Dispositifs Micro-Ondes',shortName: 'M.Onde', coef: 4 , hasTP: true},
+                    { name: 'Programmation Orientée Objet',shortName: 'POO', coef: 4 , hasTP: true},  // ECD removed
+                    { name: 'Systèmes d\'Information et Bases de Données',shortName: 'SIBD', coef: 4 , hasTP: true},
+                    { name: 'Projet électronique 1',shortName: 'P.elctro1', coef: 4 , hasTP: true},
+                    { name: 'Gestion financière et comptabilité',shortName: 'GFC', coef: 2 },
+                    { name: 'Anglais 4',shortName: 'Ang4', coef: 2 },
+                    { name: 'Traitement du signal 2',shortName: 'TS2', coef: 5, hasTP: true },
+                    { name: 'Réseaux de données 2',shortName: 'RDD2', coef: 5, hasTP: true },
+                    { name: 'Analyse de données',shortName: 'AD', coef: 4 , hasTP: true},
+                    { name: 'Antennes et propagation',shortName: 'AP', coef: 4 , hasTP: true},
+                    { name: 'Bases des Télécommunications',shortName: 'BT', coef: 3 , hasTP: true},
+                    { name: 'Technologies Web 1',shortName: 'T.Web1', coef: 3 , hasTP: true},
+                    { name: 'Traitement d\'image',shortName: 'TI', coef: 3 , hasTP: true},
+                    { name: 'Projet électronique 2',shortName: 'P.elctro1', coef: 3 , hasTP: true},
+                    { name: 'Marketing',shortName: 'Market', coef: 2 },
+                    { name: 'Anglais 5',shortName: 'Ang5',  coef: 2 }
+                ] 
+            },
+            '2CS': {
+                'S1': [
+                    { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1',shortName: 'Proj1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises',shortName: 'ESE', coef: 3 },
+                    { name: 'Management de Projet',shortName: 'MP', coef: 2  },
+                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 }
+                ],
+                'S2': [ 
+                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
+                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 }
+                ],
+                'S2': [ 
+                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès',shortName: 'ITTA', coef: 5 , hasTP: true},
+                    { name: 'DataCenter',shortName: 'DC', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques',shortName: 'CPTO', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux',shortName: 'PR', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia',shortName: 'CM', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique',shortName: 'ON', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2',shortName: 'Proj2', coef: 3 }, 
+                    { name: 'Anglais 7',shortName: 'Ang7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise',shortName: 'Stage', coef: 1 , hasTP: true} 
+                ],
+                'G': [
+                    { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
+                    { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
+                    { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
+                    { name: 'Projet 1',shortName: 'Proj1', coef: 3 }, 
+                    { name: 'Economie et stratégies d\'entreprises',shortName: 'ESE', coef: 3 },
+                    { name: 'Management de Projet',shortName: 'MP', coef: 2  },
+                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 },
+                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
+                    { name: 'Infrastructure des télécommunications & Techniques d\'Accès',shortName: 'ITTA', coef: 5 , hasTP: true},
+                    { name: 'DataCenter',shortName: 'DC', coef: 5 , hasTP: true},
+                    { name: 'Composants photoniques pour télécoms optiques',shortName: 'CPTO', coef: 4 , hasTP: true},
+                    { name: 'Programmation réseaux',shortName: 'PR', coef: 4 , hasTP: true},
+                    { name: 'Communication multimédia',shortName: 'CM', coef: 4 , hasTP: true},
+                    { name: 'Optimisation numérique',shortName: 'ON', coef: 4 ,hasTP: true }, 
+                    { name: 'Projet 2',shortName: 'Proj2', coef: 3 }, 
+                    { name: 'Anglais 7',shortName: 'Ang7', coef: 2 },
+                    { name: 'Stage de découverte de l\'éntreprise',shortName: 'Stage', coef: 1 , hasTP: true} 
+                ] 
+            },
+            '3CS': {
+                'TTN': [
+                    { name: 'Traitement et Analyse de Données Massives -Big Data-', hasTP: true ,shortName: 'TADM-BD-', coef: 5 },
+                    { name: 'Systèmes distribués',shortName: 'SD', hasTP: true , coef: 5  },
+                    { name: 'Bases de Données Non Relationnelles',shortName: 'BDNR', hasTP: true, coef: 5 }, 
+                    { name: 'Apprentissage automatique -Machine Learning-',shortName: 'AA-ML-', hasTP: true , coef: 5 }, 
+                    { name: 'Génie logiciel',shortName: 'GL', hasTP: true , coef: 4,  },
+                    { name: 'Architectures Réparties',shortName: 'AR', hasTP: true , coef: 4  },
+                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', hasTP: true , coef: 4 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises',shortName: 'CE', coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
+                ],
+                'TRIP': [ 
+                    { name: 'Réseaux avancés',shortName: 'RA',hasTP: true, coef: 6  },
+                    { name: 'Software-Defined Networking',shortName: 'SDN',hasTP: true, coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux',shortName: 'ITR', coef: 5 }, 
+                    { name: 'Sécurité des données et des réseaux',shortName: 'SDR', hasTP: true, coef: 4 },
+                    { name: 'Systèmes et réseaux de télécommunications optiques',shortName: 'SRTO', coef: 4  },
+                    { name: 'Gestion et maintenance des réseaux', shortName: 'GMR',coef: 3  },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises',shortName: 'CE', coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
+                ],
+                'ST': [
+                    { name: 'Radiocommunications avancées',shortName: 'RA',hasTP: true, coef: 5  },
+                    { name: 'Réseaux mobiles ',shortName: 'RM',hasTP: true, coef: 5 },
+                    { name: 'Ingénierie de trafic dans les réseaux',shortName: 'ITR', coef: 5 }, 
+                    { name: 'Systèmes et réseaux de télécommunications optiques',shortName: 'SRTO', coef: 4 },
+                    { name: 'Systèmes Satellitaires',shortName: 'SS', coef: 4 },
+                    { name: 'Techniques des systèmes FHN',shortName: 'TSFHN', coef: 3 },
+                    { name: 'Conception RF',shortName: 'CRF', coef: 3 },
+                    { name: 'Gestion et maintenance des réseaux',shortName: 'GMR', coef: 3 },
+                    { name: 'Systèmes embarqués, mobilités et objets communicants',shortName: 'SEMOC', coef: 3  },
+                    { name: 'Economie numérique et Management de l\'Innovation',shortName: 'ENMI', coef: 2 },
+                    { name: 'Création d\'entreprises', shortName: 'CE',coef: 2 },
+                    { name: 'Anglais 8',shortName: 'Ang8', coef: 2 }
+                ] 
+            }
+        }; 
             
             // Initialize grades object
             let grades = {};
@@ -856,62 +871,64 @@
             function calculateAverage(subject) {
                 const year = document.getElementById('yearSelect').value;
                 const subjectGrades = grades[subject.name] || { ecd: '', tp: '', emd: '' };
-                const ecd = parseFloat(subjectGrades.ecd) || 0;
-                const tp = parseFloat(subjectGrades.tp) || 0;
-                const emd = parseFloat(subjectGrades.emd) || 0;
+                const ecd = parseFloat((subjectGrades.ecd || '0').replace(',', '.')) || 0;
+                const tp = parseFloat((subjectGrades.tp || '0').replace(',', '.')) || 0;
+                const emd = parseFloat((subjectGrades.emd || '0').replace(',', '.')) || 0;
+                
+                let result;
                 
                 if (year === '1CP' || year === '2CP') {
                     if (subject.hasTP) {
                         // Matière with TP
-                        return (((ecd + tp) / 2 + emd * 2) / 3).toFixed(2);
+                        result = (((ecd + tp) / 2 + emd * 2) / 3).toFixed(2);
                     } else if (!subject.hasTP && !subjectGrades.ecd) {
-                        return emd.toFixed(2);
+                        result = emd.toFixed(2);
                     } else {
                         // Matière without TP
-                        return ((ecd + emd * 2) / 3).toFixed(2);
+                        result = ((ecd + emd * 2) / 3).toFixed(2);
                     }
                 }
-                
                 // Special cases for other years
-                if (subject.name === 'Projet électronique 2') {
-                    return ((0.7 * tp) + (0.3 * emd)).toFixed(2);
+                else if (subject.name === 'Projet électronique 2') {
+                    result = ((0.7 * tp) + (0.3 * emd)).toFixed(2);
                 } else if (subject.name === 'Bases des Télécommunications') {
-                    return ((0.5 * tp) + (0.5 * emd)).toFixed(2);
+                    result = ((0.5 * tp) + (0.5 * emd)).toFixed(2);
                 }
-                
-                if (!subject.hasTP && !subjectGrades.ecd) {
-                    return emd ? emd.toFixed(2) : '0.00';
+                else if (!subject.hasTP && !subjectGrades.ecd) {
+                    result = emd ? emd.toFixed(2) : '0.00';
                 }
-                
                 // General rules for other years
-                if (subject.hasTP && subjectGrades.ecd) {
-                    return ((0.2 * ecd) + (0.2 * tp) + (0.6 * emd)).toFixed(2);
+                else if (subject.hasTP && subjectGrades.ecd) {
+                    result = ((0.2 * ecd) + (0.2 * tp) + (0.6 * emd)).toFixed(2);
                 } else if (subject.hasTP) {
-                    return ((0.4 * tp) + (0.6 * emd)).toFixed(2);
+                    result = ((0.4 * tp) + (0.6 * emd)).toFixed(2);
                 } else if (subjectGrades.ecd) {
-                    return ((0.4 * ecd) + (0.6 * emd)).toFixed(2);
+                    result = ((0.4 * ecd) + (0.6 * emd)).toFixed(2);
+                } else {
+                    // Default case
+                    result = '0.00';
                 }
                 
-                // Default case
-                return '0.00';
+                // Format with comma for display
+                return result.replace('.', ',');
             }
             
             // Function to calculate overall average
             function calculateOverallAverage() {
                 const year = document.getElementById('yearSelect').value;
                 const semester = document.getElementById('semesterSelect').value;
-                if (!subjects[year] || !subjects[year][semester]) return '0.00';
+                if (!subjects[year] || !subjects[year][semester]) return '0,00';
                 
                 let totalWeightedGrade = 0;
                 let totalCoef = 0;
                 
                 subjects[year][semester].forEach(subject => {
-                    const average = parseFloat(calculateAverage(subject)) || 0;
+                    const average = parseFloat(calculateAverage(subject).replace(',', '.')) || 0;
                     totalWeightedGrade += average * subject.coef;
                     totalCoef += subject.coef;
                 });
                 
-                return totalCoef > 0 ? (totalWeightedGrade / totalCoef).toFixed(2) : '0.00';
+                return totalCoef > 0 ? (totalWeightedGrade / totalCoef).toFixed(2).replace('.', ',') : '0,00';
             }
             
             // Function to update the grades table
@@ -933,24 +950,65 @@
                     const row = document.createElement('tr');
                     
                     // Check if subject should exclude ECD
-                    const excludeECD = excludeECDSubjects.includes(subject.name);
+                    const excludeECD = [
+                        "Technique d'expression 1",
+                        "Technique d'expression 2",
+                        "Réseaux de données 1",
+                        "Réseaux de données 2",
+                        "Introduction aux Systèmes d'Exploitation",
+                        "Programmation Orientée Objet",
+                        "Systèmes d'Information et Bases de Données",
+                        "Projet électronique 1",
+                        "Analyse de données",
+                        "Bases des Télécommunications",
+                        "Technologies Web 1",
+                        "Traitement d'image",
+                        "Composants photoniques pour télécoms optiques",
+                        "Technologies Web 2",
+                        "Communications unifiées et NGN",
+                        "Cyber Sécurité",
+                        "Projet 1",
+                        "Projet 2",
+                        "Infrastructure des télécommunications & Techniques d\'Accès",
+                        "DataCenter",
+                        "Communication multimédia",
+                        "Optimisation numérique", 
+                        "Programmation réseaux", 
+                        "Stage de découverte de l\'éntreprise",
+                        "Traitement et Analyse de Données Massives -Big Data-",
+                        "Systèmes distribués",
+                        "Bases de Données Non Relationnelles",
+                        "Apprentissage automatique -Machine Learning-",
+                        "Génie logiciel",
+                        "Architectures Réparties",
+                        "Sécurité des données et des réseaux",
+                        "Systèmes embarqués, mobilités et objets communicants", 
+                        "Réseaux avancés",
+                        "Software-Defined Networking", 
+                        "Conception RF",
+                        "Techniques des systèmes FHN",
+                        "Systèmes Satellitaires",
+                        "Réseaux mobiles ",
+                        "Radiocommunications avancées",  
+                        "Projet électronique 2"
+                    ].includes(subject.name);
                     
                     if (subject.hasTP) {
                         row.innerHTML = `
                             <td>${subject.name}</td>
                             <td>${subject.coef}</td>
-                            <td>${excludeECD ? '—' : '<input type="number" min="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
-                            <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="tp"></td>
-                            <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                            <td>${excludeECD ? '—' : '<input type="text" inputmode="decimal" data-subject="' + subject.name + '" data-type="ecd" placeholder="0,00">'}</td>
+                            <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="tp" placeholder="0,00"></td>
+                            <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="emd" placeholder="0,00"></td>
                             <td class="average">0.00</td>
                         `;
                     } else {
                         row.innerHTML = `
                             <td>${subject.name}</td>
                             <td>${subject.coef}</td>
-                            <td>${excludeECD ? '—' : '<input type="number" min="0" max="20" step="0.01" data-subject="' + subject.name + '" data-type="ecd">'}</td>
+                            <td>${excludeECD ? '—' : '<input type="text" inputmode="decimal" data-subject="' + subject.name + '" data-type="ecd" placeholder="0,00">'}</td>
                             <td>—</td>
-                            <td><input type="number" min="0" max="20" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                            <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="emd" placeholder="0,00"></td>
                             <td class="average">0.00</td>
                         `;
                     }
@@ -997,25 +1055,11 @@
                     const emdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="emd"]`);
                     const averageCell = row.querySelector('.average');
                     
-                    // Update grades object with current input values
-                    if (!grades[subject.name]) {
-                        grades[subject.name] = {};
-                    }
-                    
-                    if (ecdInput) {
-                        grades[subject.name].ecd = ecdInput.value || '';
-                        ecdInput.value = grades[subject.name].ecd;
-                    }
-                    
-                    if (tpInput) {
-                        grades[subject.name].tp = tpInput.value || '';
-                        tpInput.value = grades[subject.name].tp;
-                    }
-                    
-                    if (emdInput) {
-                        grades[subject.name].emd = emdInput.value || '';
-                        emdInput.value = grades[subject.name].emd;
-                    }
+                    grades[subject.name] = {
+                        ecd: ecdInput ? ecdInput.value : '',
+                        tp: tpInput ? tpInput.value : '',
+                        emd: emdInput ? emdInput.value : ''
+                    };
                     
                     averageCell.textContent = calculateAverage(subject);
                 });
@@ -1054,12 +1098,38 @@
             
             // Handle input events for grade inputs
             document.addEventListener('input', function(e) {
-                if (e.target.type === 'number' && e.target.dataset.subject) {
+                if (e.target.dataset.subject) {
                     const subject = e.target.dataset.subject;
                     const type = e.target.dataset.type;
-                    let value = e.target.value;
                     
-                    if (value === '' || (!isNaN(value) && parseFloat(value) >= 0 && parseFloat(value) <= 20)) {
+                    // Allow both periods and commas as decimal separators
+                    let value = e.target.value.replace(/[^0-9.,]/g, '');
+                    
+                    // Ensure only one decimal separator (either period or comma)
+                    const periodCount = (value.match(/\./g) || []).length;
+                    const commaCount = (value.match(/,/g) || []).length;
+                    
+                    if (periodCount + commaCount > 1) {
+                        // Keep only the last decimal separator
+                        const lastPeriodIndex = value.lastIndexOf('.');
+                        const lastCommaIndex = value.lastIndexOf(',');
+                        const lastSeparatorIndex = Math.max(lastPeriodIndex, lastCommaIndex);
+                        
+                        // Remove all decimal separators
+                        value = value.replace(/[.,]/g, '');
+                        
+                        // Insert the last separator at its original position
+                        if (lastSeparatorIndex !== -1) {
+                            const separator = lastPeriodIndex > lastCommaIndex ? '.' : ',';
+                            value = value.slice(0, lastSeparatorIndex) + separator + value.slice(lastSeparatorIndex);
+                        }
+                    }
+                    
+                    // Validate the value is between 0 and 20
+                    const numValue = parseFloat(value.replace(',', '.'));
+                    if (value === '' || (!isNaN(numValue) && numValue >= 0 && numValue <= 20)) {
+                        e.target.value = value;
+                        
                         if (!grades[subject]) {
                             grades[subject] = {};
                         }
@@ -1074,7 +1144,7 @@
             
             // Handle blur events for empty inputs
             document.addEventListener('blur', function(e) {
-                if (e.target.type === 'number' && e.target.dataset.subject && e.target.value.trim() === '') {
+                if (e.target.dataset.subject && e.target.value.trim() === '') {
                     const subject = e.target.dataset.subject;
                     const type = e.target.dataset.type;
                     
@@ -1083,20 +1153,47 @@
                     }
                     
                     grades[subject][type] = '0';
+                    e.target.value = '0';
                     updateGrades();
                 }
             }, true);
-            
-            // Prevent comma input in number fields
-            document.addEventListener('keydown', function(e) {
-                if (e.target.type === 'number' && e.key === ',') {
-                    e.preventDefault();
-                }
-            });
+        
+        
             
             // Initialize the calculator
             updateGradesTable();
         });
+
+        // Set active menu item based on current page
+        function setActiveMenuItem() {
+            // Get the current page filename
+            const path = window.location.pathname;
+            const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+            
+            // Set active class for main menu items
+            const menuLinks = document.querySelectorAll('.menu > li > a');
+            menuLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Check if href matches current page or if we're on index.html and the link is to the home page
+                if (href === currentPage || 
+                    (currentPage === 'index.html' && (href === '' || href === '/' || href === '#'))) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Special case for calculator page
+            if (currentPage.includes('cal')) {
+                document.querySelectorAll('.calc-link').forEach(link => {
+                    if (link.getAttribute('href') === 'cal.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // Call the function to set active menu items when page loads
+        setActiveMenuItem();
     </script>
 </body>
 </html>
+
