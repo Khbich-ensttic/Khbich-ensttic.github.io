@@ -33,6 +33,7 @@
             color: var(--text-color);
             background-color: var(--bg-color);
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .container {
@@ -203,7 +204,7 @@
             transition: var(--transition);
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230047ab' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230047ab' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 16px;
@@ -215,13 +216,21 @@
             box-shadow: 0 0 0 2px rgba(0,71,171,0.2);
         }
         
+        .grades-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
         .grades-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
         
         .grades-table thead th {
@@ -231,6 +240,7 @@
             padding: 15px;
             font-size: 1rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         
         .grades-table tbody td {
@@ -365,10 +375,15 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Responsive Design */
+        /* Responsive Design - Improved */
         @media (max-width: 992px) {
             .calculator-container {
                 padding: 20px;
+                margin: 30px auto;
+            }
+            
+            .calculator-header h1 {
+                font-size: 1.8rem;
             }
         }
         
@@ -390,6 +405,8 @@
                 visibility: hidden;
                 opacity: 0;
                 transition: visibility 0s, opacity 0.3s ease;
+                max-height: 80vh;
+                overflow-y: auto;
             }
             
             .menu > li {
@@ -408,11 +425,14 @@
                 display: none;
                 box-shadow: none;
                 border-radius: 0;
+                width: 100%;
+                max-width: 100%;
             }
             
             .dropdown li a {
                 color: #fff;
                 padding: 0.7rem 2rem;
+                text-align: center;
             }
             
             .dropdown li a:hover {
@@ -434,33 +454,34 @@
                 gap: 10px;
             }
             
-            .grades-table {
-                font-size: 0.9rem;
-                overflow-x: auto;
-                display: block;
-                width: 100%;
-                margin: 0 auto;
-                max-width: 100%;
-                text-align: center;
-            }
-            
             .calculator-container {
                 padding: 15px;
                 margin: 20px auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                width: 95%;
+            }
+            
+            .calculator-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .calculator-header p {
+                font-size: 0.9rem;
             }
             
             .grades-table thead th,
             .grades-table tbody td,
             .grades-table tfoot td {
                 padding: 10px 8px;
-                white-space: nowrap;
             }
             
             .grades-table input[type="text"] {
-                padding: 8px;
+                padding: 8px 5px;
+                font-size: 0.85rem;
+                min-width: 60px;
+            }
+            
+            .grades-table th {
+                font-size: 0.85rem;
             }
         }
         
@@ -471,16 +492,43 @@
             }
             
             .navbar h1 a {
-                font-size: 20px;
+                font-size: 18px;
+            }
+            
+            .navbar h1 a i {
+                margin-right: 5px;
             }
             
             .calculator-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
             }
             
             .calculator-container {
-                padding: 15px;
-                margin: 20px auto;
+                padding: 12px;
+                margin: 15px auto;
+                border-radius: 8px;
+            }
+            
+            .grades-table thead th,
+            .grades-table tbody td,
+            .grades-table tfoot td {
+                padding: 8px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .grades-table input[type="text"] {
+                padding: 6px 3px;
+                font-size: 0.8rem;
+                min-width: 50px;
+            }
+            
+            .grades-table th {
+                font-size: 0.75rem;
+            }
+            
+            .grade-selector select {
+                padding: 10px;
+                font-size: 0.9rem;
             }
         }
 
@@ -521,12 +569,59 @@
                 100% { opacity: 0.6; width: 20%; }
             }
         }
+
+        /* Style pour la colonne Note Directe */
+        .grades-table input[data-type="direct"] {
+            background-color: #e6f7ff;
+            border-color: #91d5ff;
+        }
+
+        .grades-table input[data-type="direct"]:focus {
+            background-color: #e6f7ff;
+            border-color: #1890ff;
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        }
+
+        /* Style pour l'en-tête de la colonne Note Directe */
+        .grades-table th.note-directe {
+            background: linear-gradient(135deg, var(--primary-color) , #69c0ff 100%);
+        }
+        
+        /* Improved mobile styles */
+        @media (max-width: 480px) {
+            .navbar h1 a span {
+                display: none;
+            }
+            
+            .menu-toggle {
+                padding: 5px;
+            }
+            
+            .grades-table input[type="text"] {
+                min-width: 40px;
+                width: 100%;
+            }
+            
+            .grades-table th, 
+            .grades-table td {
+                padding: 6px 3px;
+            }
+            
+            /* Better touch targets for mobile */
+            .dropdown li a {
+                padding: 12px 15px;
+            }
+            
+            .menu > li > a {
+                padding: 12px 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1><a href="index.html"><i class="fas fa-graduation-cap"></i> Khbich ENSTTIC</a></h1>
+            <h1><a href="index.html"><i class="fas fa-graduation-cap"></i> <span>Khbich ENSTTIC</span></a></h1>
             
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -605,27 +700,30 @@
             </select>
         </div>
         
-        <table class="grades-table">
-            <thead>
-                <tr>
-                    <th>Matière</th>
-                    <th>Coef</th>
-                    <th>ECD</th>
-                    <th>TP</th>
-                    <th>EMD</th>
-                    <th>Moyenne</th>
-                </tr>
-            </thead>
-            <tbody id="gradesTableBody">
-                <!-- Les lignes seront ajoutées ici par JavaScript -->
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5">Moyenne Générale:</td>
-                    <td id="overall-average-value">0.00</td>
-                </tr>
-            </tfoot>
-        </table>
+        <div class="grades-table-wrapper">
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Coef</th>
+                        <th>ECD</th>
+                        <th>TP</th>
+                        <th>EMD</th>
+                        <th>Moyenne</th>
+                        <th class="note-directe">Moyenne Directe</th>
+                    </tr>
+                </thead>
+                <tbody id="gradesTableBody">
+                    <!-- Les lignes seront ajoutées ici par JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">Moyenne Générale:</td>
+                        <td colspan="2" id="overall-average-value">0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
     
     <footer>
@@ -669,6 +767,7 @@
                         dropdown.style.display = '';
                     });
                 }
+                updateSubjectNames();
             });
             
             // Calculator functionality
@@ -769,17 +868,13 @@
             '2CS': {
                 'S1': [
                     { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
-                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
                     { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
                     { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
                     { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
                     { name: 'Projet 1',shortName: 'Proj1', coef: 3 }, 
                     { name: 'Economie et stratégies d\'entreprises',shortName: 'ESE', coef: 3 },
                     { name: 'Management de Projet',shortName: 'MP', coef: 2  },
-                    { name: 'Anglais 6',shortName: 'Ang6', coef: 2 }
-                ],
-                'S2': [ 
-                    { name: 'Radio communications',shortName: 'RC', coef: 5 , hasTP: true},
                     { name: 'Anglais 6',shortName: 'Ang6', coef: 2 }
                 ],
                 'S2': [ 
@@ -796,7 +891,7 @@
                 ],
                 'G': [
                     { name: 'Théorie de l\'information et codage',shortName: 'TI-Code', coef: 5, hasTP: true },
-                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
+                    { name: 'Communications Numériques',shortName: 'CN', coef: 5 , hasTP: true},
                     { name: 'Communications unifiées et NGN',shortName: 'CUNGN', coef: 5, hasTP: true },
                     { name: 'Cyber Sécurité',shortName: 'CS', coef: 4 , hasTP: true},
                     { name: 'Technologies Web 2',shortName: 'T.Web2', coef: 4 , hasTP: true}, 
@@ -865,10 +960,16 @@
             // Function to calculate average for a subject
             function calculateAverage(subject) {
                 const year = document.getElementById('yearSelect').value;
-                const subjectGrades = grades[subject.name] || { ecd: '', tp: '', emd: '' };
+                const subjectGrades = grades[subject.name] || { ecd: '', tp: '', emd: '', direct: '' };
                 const ecd = parseFloat((subjectGrades.ecd || '0').replace(',', '.')) || 0;
                 const tp = parseFloat((subjectGrades.tp || '0').replace(',', '.')) || 0;
                 const emd = parseFloat((subjectGrades.emd || '0').replace(',', '.')) || 0;
+                const direct = parseFloat((subjectGrades.direct || '0').replace(',', '.')) || 0;
+                
+                // Si une note directe est fournie, l'utiliser
+                if (direct > 0) {
+                    return direct.toFixed(2).replace('.', ',');
+                }
                 
                 let result;
                 
@@ -996,6 +1097,7 @@
                             <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="tp" placeholder="0,00"></td>
                             <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="emd" placeholder="0,00"></td>
                             <td class="average">0.00</td>
+                            <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="direct" placeholder="0,00"></td>
                         `;
                     } else {
                         row.innerHTML = `
@@ -1005,6 +1107,7 @@
                             <td>—</td>
                             <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="emd" placeholder="0,00"></td>
                             <td class="average">0.00</td>
+                            <td><input type="text" inputmode="decimal" data-subject="${subject.name}" data-type="direct" placeholder="0,00"></td>
                         `;
                     }
                     
@@ -1048,12 +1151,14 @@
                     const ecdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="ecd"]`);
                     const tpInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="tp"]`);
                     const emdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="emd"]`);
+                    const directInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="direct"]`);
                     const averageCell = row.querySelector('.average');
-                    
+
                     grades[subject.name] = {
                         ecd: ecdInput ? ecdInput.value : '',
                         tp: tpInput ? tpInput.value : '',
-                        emd: emdInput ? emdInput.value : ''
+                        emd: emdInput ? emdInput.value : '',
+                        direct: directInput ? directInput.value : ''
                     };
                     
                     averageCell.textContent = calculateAverage(subject);
@@ -1191,4 +1296,3 @@
     </script>
 </body>
 </html>
-
